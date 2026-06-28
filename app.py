@@ -43,7 +43,29 @@ def init_db():
                 "INSERT INTO usuarios VALUES (?,?,?,?)",
                 ('eduardo', 'EML2026!', 'Eduardo Luchini', 0)
             )
+        conn.execute('''
+            CREATE TABLE IF NOT EXISTS precios_iniciales (
+                ticker      TEXT PRIMARY KEY,
+                precio      REAL NOT NULL,
+                fecha       TEXT,
+                notas       TEXT
+            )
+        ''')
+        # Seed precios iniciales desde el PDF si la tabla está vacía
+        count = conn.execute('SELECT COUNT(*) FROM precios_iniciales').fetchone()[0]
+        if count == 0:
+            for items in PORTFOLIO_INICIAL['instrumentos'].values():
+                for item in items:
+                    conn.execute(
+                        'INSERT OR IGNORE INTO precios_iniciales VALUES (?,?,?,?)',
+                        (item['ticker'], item['precio'], PORTFOLIO_INICIAL['fecha'], 'Precio PDF 26/06/2026')
+                    )
         conn.commit()
+
+def get_precios_iniciales():
+    with get_db() as conn:
+        rows = conn.execute('SELECT * FROM precios_iniciales').fetchall()
+    return {r['ticker']: {'precio': r['precio'], 'fecha': r['fecha'], 'notas': r['notas']} for r in rows}
 
 # ── Auth ──────────────────────────────────────────────────────────────────────
 def login_required(f):
@@ -277,45 +299,96 @@ def cotizaciones():
         d['nombre_es'] = nombres_es.get(casa, d.get('nombre', casa.title()))
 
     p = get_portfolio()
-    precios = fetch_precios_cartera(p)
+    precios      = fetch_precios_cartera(p)
+    precios_ini  = get_precios_iniciales()
 
     # Construir tabla de instrumentos con precio live
     filas = []
     for tipo, items in p['instrumentos'].items():
         for item in items:
-            ticker = item['ticker']
-            pr = precios.get(ticker)
-            precio_actual = pr['ultimo'] if pr else None
+            ticker        = item['ticker']
+            pr            = precios.get(ticker)
+            pi            = precios_ini.get(ticker)
+            precio_actual = pr['ultimo']   if pr else None
             variacion     = pr['variacion'] if pr else None
+            precio_ini    = pi['precio']   if pi else item['precio']
             valor_actual  = precio_actual * item['cantidad'] if precio_actual else None
             valor_orig    = item['valor']
-            diff_pct      = ((valor_actual - valor_orig) / valor_orig * 100) if valor_actual else None
+            valor_ini     = precio_ini * item['cantidad']
+            diff_pct_live = ((valor_actual - valor_ini) / valor_ini * 100) if valor_actual else None
             filas.append({
-                'tipo':         tipo,
-                'ticker':       ticker,
-                'descripcion':  item['descripcion'],
-                'cantidad':     item['cantidad'],
-                'precio_orig':  item['precio'],
-                'precio_actual':precio_actual,
-                'variacion':    variacion,
-                'valor_orig':   valor_orig,
-                'valor_actual': valor_actual,
-                'diff_pct':     diff_pct,
-                'fuente':       pr['fuente'] if pr else None,
+                'tipo':          tipo,
+                'ticker':        ticker,
+                'descripcion':   item['descripcion'],
+                'cantidad':      item['cantidad'],
+                'precio_ini':    precio_ini,
+                'precio_actual': precio_actual,
+                'variacion':     variacion,
+                'valor_ini':     valor_ini,
+                'valor_actual':  valor_actual,
+                'diff_pct':      diff_pct_live,
+                'fuente':        pr['fuente'] if pr else None,
+                'pi_fecha':      pi['fecha']  if pi else None,
+                'pi_notas':      pi['notas']  if pi else None,
             })
 
-    total_orig   = sum(f['valor_orig'] for f in filas)
+    total_ini    = sum(f['valor_ini']    for f in filas)
     total_actual = sum(f['valor_actual'] for f in filas if f['valor_actual'])
     con_precio   = sum(1 for f in filas if f['precio_actual'])
 
     return render_template('cotizaciones.html',
         dolares=dolares_sorted,
         filas=filas,
-        total_orig=total_orig,
+        total_ini=total_ini,
         total_actual=total_actual,
         con_precio=con_precio,
         total_filas=len(filas),
         portfolio=p,
+        colores=COLORES,
+    )
+
+@app.route('/precios-iniciales', methods=['GET', 'POST'])
+@login_required
+def precios_iniciales():
+    p = get_portfolio()
+    if request.method == 'POST':
+        ticker  = request.form.get('ticker', '').strip().upper()
+        precio  = request.form.get('precio', '').strip()
+        fecha   = request.form.get('fecha', '').strip()
+        notas   = request.form.get('notas', '').strip()
+        try:
+            precio_f = float(precio.replace(',', '.'))
+            with get_db() as conn:
+                conn.execute(
+                    'INSERT INTO precios_iniciales VALUES (?,?,?,?) '
+                    'ON CONFLICT(ticker) DO UPDATE SET precio=excluded.precio, fecha=excluded.fecha, notas=excluded.notas',
+                    (ticker, precio_f, fecha or None, notas or None)
+                )
+                conn.commit()
+            flash(f'Precio inicial de {ticker} actualizado.', 'success')
+        except Exception as e:
+            flash(f'Error: {e}', 'error')
+        return redirect(url_for('precios_iniciales'))
+
+    precios_ini = get_precios_iniciales()
+    # Armar lista con todos los instrumentos del portfolio
+    instrumentos = []
+    for tipo, items in p['instrumentos'].items():
+        for item in items:
+            pi = precios_ini.get(item['ticker'])
+            instrumentos.append({
+                'tipo':        tipo,
+                'ticker':      item['ticker'],
+                'descripcion': item['descripcion'],
+                'cantidad':    item['cantidad'],
+                'precio_ini':  pi['precio'] if pi else item['precio'],
+                'fecha':       pi['fecha']  if pi else p['fecha'],
+                'notas':       pi['notas']  if pi else '',
+                'color':       COLORES.get(tipo, '#64748b'),
+            })
+
+    return render_template('precios_iniciales.html',
+        instrumentos=instrumentos,
         colores=COLORES,
     )
 

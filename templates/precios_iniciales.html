@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Precios Iniciales – EML Finance{% endblock %}
+
+{% block content %}
+<div style="display:flex;align-items:center;gap:12px;margin-bottom:24px;">
+  <a href="{{ url_for('cotizaciones') }}" style="color:var(--muted);text-decoration:none;font-size:13px;">← Cotizaciones</a>
+  <span style="color:var(--border);">/</span>
+  <h1 style="font-size:20px;font-weight:700;letter-spacing:-.02em;">Precios iniciales (costo)</h1>
+</div>
+
+<div class="card card-sm" style="margin-bottom:20px;border-left:3px solid var(--accent);font-size:13px;color:var(--muted);">
+  Estos precios se usan como base para calcular la rentabilidad en Cotizaciones.
+  Fueron pre-cargados con los precios del PDF del 26/06/2026. Editá cada uno con tu precio real de compra.
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px;">
+  {% for inst in instrumentos %}
+  <div class="card card-sm" style="border-top:3px solid {{ inst.color }};">
+    <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+      <span style="font-family:var(--mono);font-weight:700;font-size:14px;color:{{ inst.color }};">{{ inst.ticker }}</span>
+      <span style="font-size:11px;color:var(--muted);">{{ inst.tipo }}</span>
+      <span style="font-size:11px;color:var(--muted);margin-left:auto;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:160px;" title="{{ inst.descripcion }}">{{ inst.descripcion }}</span>
+    </div>
+    <form method="POST" style="display:flex;flex-direction:column;gap:8px;">
+      <input type="hidden" name="ticker" value="{{ inst.ticker }}">
+      <div style="display:flex;gap:8px;">
+        <div style="flex:1;">
+          <label class="form-label">Precio inicial $</label>
+          <input type="text" class="form-control" name="precio"
+                 value="{{ '{:.4f}'.format(inst.precio_ini) if inst.precio_ini < 100 else '{:.2f}'.format(inst.precio_ini) }}"
+                 required style="font-family:var(--mono);">
+        </div>
+        <div style="flex:1;">
+          <label class="form-label">Fecha compra</label>
+          <input type="text" class="form-control" name="fecha"
+                 value="{{ inst.fecha or '' }}" placeholder="dd/mm/aaaa">
+        </div>
+      </div>
+      <div>
+        <label class="form-label">Notas</label>
+        <input type="text" class="form-control" name="notas"
+               value="{{ inst.notas or '' }}" placeholder="Ej: Compra parcial, promedio...">
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-top:2px;">
+        <span style="font-size:11px;color:var(--muted);">
+          Cant: {% if inst.cantidad == inst.cantidad|int %}{{ '{:,.0f}'.format(inst.cantidad).replace(',','.') }}{% else %}{{ '{:,.4f}'.format(inst.cantidad) }}{% endif %}
+          · Total: ${{ '{:,.0f}'.format(inst.precio_ini * inst.cantidad).replace(',','.') }}
+        </span>
+        <button type="submit" class="btn btn-ghost btn-sm">Guardar</button>
+      </div>
+    </form>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock %}

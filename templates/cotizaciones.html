@@ -2,10 +2,10 @@
 {% block title %}Cotizaciones – EML Finance{% endblock %}
 
 {% block content %}
-<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px;">
   <h1 class="page-title" style="margin-bottom:0;">Cotizaciones en tiempo real</h1>
   <span style="font-size:11px;color:var(--muted);font-family:var(--mono);">
-    Actualización automática cada 5 min · Fuente: dolarapi.com + Rava/BYMA
+    Caché 5 min · Rava/BYMA + dolarapi.com
   </span>
 </div>
 
@@ -13,89 +13,66 @@
 <h2 style="font-size:11px;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">
   Tipo de cambio USD
 </h2>
-
-<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px;margin-bottom:32px;">
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:12px;margin-bottom:32px;">
   {% for d in dolares %}
-  {% set compra = d.compra if d.compra else '–' %}
-  {% set venta  = d.venta  if d.venta  else '–' %}
   <div class="card card-sm" style="border-top:3px solid
     {% if 'blue' in d.nombre_es|lower %}#ef4444
     {% elif 'mep' in d.nombre_es|lower or 'bolsa' in d.nombre_es|lower %}#f59e0b
-    {% elif 'ccl' in d.nombre_es|lower or 'liqui' in d.nombre_es|lower %}#8b5cf6
+    {% elif 'liqui' in d.nombre_es|lower %}#8b5cf6
     {% elif 'tarjeta' in d.nombre_es|lower or 'turista' in d.nombre_es|lower %}#ec4899
     {% elif 'cripto' in d.nombre_es|lower %}#06b6d4
     {% else %}#10b981{% endif %};">
-    <div style="font-size:10px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">
-      {{ d.nombre_es }}
-    </div>
+    <div style="font-size:10px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">{{ d.nombre_es }}</div>
     <div style="display:flex;justify-content:space-between;align-items:flex-end;">
       <div>
         <div style="font-size:10px;color:var(--muted);">Compra</div>
-        <div style="font-size:15px;font-weight:700;">
-          {% if compra != '–' %}${{ '{:,.2f}'.format(compra).replace(',', '.') }}{% else %}–{% endif %}
-        </div>
+        <div style="font-size:15px;font-weight:700;">{% if d.compra %}${{ '{:,.2f}'.format(d.compra).replace(',', '.') }}{% else %}–{% endif %}</div>
       </div>
       <div style="text-align:right;">
         <div style="font-size:10px;color:var(--muted);">Venta</div>
-        <div style="font-size:15px;font-weight:700;color:var(--accent2);">
-          {% if venta != '–' %}${{ '{:,.2f}'.format(venta).replace(',', '.') }}{% else %}–{% endif %}
-        </div>
+        <div style="font-size:15px;font-weight:700;color:var(--accent2);">{% if d.venta %}${{ '{:,.2f}'.format(d.venta).replace(',', '.') }}{% else %}–{% endif %}</div>
       </div>
     </div>
-    {% if d.fechaActualizacion %}
-    <div style="font-size:10px;color:var(--muted);margin-top:8px;">
-      {{ d.fechaActualizacion[:16] if d.fechaActualizacion else '' }}
-    </div>
-    {% endif %}
+    {% if d.fechaActualizacion %}<div style="font-size:10px;color:var(--muted);margin-top:8px;">{{ d.fechaActualizacion[:16] }}</div>{% endif %}
   </div>
   {% else %}
-  <div style="color:var(--muted);font-size:13px;">No se pudo cargar el tipo de cambio. Reintentá en unos segundos.</div>
+  <div style="color:var(--muted);font-size:13px;">No se pudo cargar el tipo de cambio.</div>
   {% endfor %}
 </div>
 
-<!-- Valorización de cartera -->
-<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-  <h2 style="font-size:11px;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);">
-    Valorización de cartera (precios live)
-  </h2>
-  <span style="font-size:11px;color:var(--muted);">
-    Cotizando {{ con_precio }}/{{ total_filas }} instrumentos
-  </span>
-</div>
-
-<!-- Resumen diferencia -->
+<!-- Resumen -->
 {% if total_actual > 0 %}
-{% set diff_total = total_actual - total_orig %}
-{% set diff_pct_total = diff_total / total_orig * 100 %}
+{% set diff_total = total_actual - total_ini %}
+{% set diff_pct_total = diff_total / total_ini * 100 if total_ini else 0 %}
 <div class="stat-grid" style="margin-bottom:20px;">
   <div class="stat-card">
-    <div class="label">Valor posición (PDF 26/06)</div>
-    <div class="value">${{ '{:,.0f}'.format(total_orig).replace(',', '.') }}</div>
+    <div class="label">Valor inicial (precio costo)</div>
+    <div class="value">${{ '{:,.0f}'.format(total_ini).replace(',', '.') }}</div>
+    <div class="sub">{{ con_precio }}/{{ total_filas }} instrumentos cotizando</div>
   </div>
   <div class="stat-card">
     <div class="label">Valor actual (live)</div>
-    <div class="value" style="color:{% if total_actual >= total_orig %}var(--accent2){% else %}#f87171{% endif %};">
+    <div class="value" style="color:{% if total_actual >= total_ini %}var(--accent2){% else %}#f87171{% endif %};">
       ${{ '{:,.0f}'.format(total_actual).replace(',', '.') }}
     </div>
-    <div class="sub">Solo instrumentos con cotización live</div>
   </div>
   <div class="stat-card">
-    <div class="label">Variación</div>
+    <div class="label">Resultado</div>
     <div class="value" style="color:{% if diff_total >= 0 %}var(--accent2){% else %}#f87171{% endif %};">
       {% if diff_total >= 0 %}+{% endif %}${{ '{:,.0f}'.format(diff_total).replace(',', '.') }}
     </div>
     <div class="sub" style="color:{% if diff_pct_total >= 0 %}var(--accent2){% else %}#f87171{% endif %};">
-      {% if diff_pct_total >= 0 %}▲{% else %}▼{% endif %}
-      {{ '{:.2f}'.format(diff_pct_total|abs) }}%
+      {% if diff_pct_total >= 0 %}▲{% else %}▼{% endif %} {{ '{:.2f}'.format(diff_pct_total|abs) }}%
     </div>
   </div>
 </div>
 {% endif %}
 
+<!-- Filtros -->
 <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:center;">
   <input id="search-text" type="text" placeholder="Buscar ticker o denominación..."
     style="background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:7px;
-           padding:8px 14px;font-size:13px;font-family:inherit;width:280px;">
+           padding:8px 14px;font-size:13px;font-family:inherit;width:260px;">
   <select id="search-tipo"
     style="background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:7px;
            padding:8px 14px;font-size:13px;font-family:inherit;">
@@ -105,74 +82,73 @@
     {% endfor %}
   </select>
   <span id="search-count" style="font-size:12px;color:var(--muted);"></span>
-  <button onclick="limpiarFiltros()" class="btn btn-ghost btn-sm" style="margin-left:auto;">Limpiar</button>
+  <div style="margin-left:auto;display:flex;gap:8px;">
+    <button onclick="limpiarFiltros()" class="btn btn-ghost btn-sm">Limpiar filtros</button>
+    <a href="{{ url_for('precios_iniciales') }}" class="btn btn-ghost btn-sm">✏️ Editar precios iniciales</a>
+  </div>
 </div>
 
+<!-- Tabla ordenable -->
 <div class="card">
   <div class="table-wrap">
-    <table>
+    <table id="tabla-cot">
       <thead>
         <tr>
-          <th>Tipo</th>
-          <th>Ticker</th>
-          <th>Descripción</th>
-          <th class="text-right">Cantidad</th>
-          <th class="text-right">Precio PDF</th>
-          <th class="text-right">Precio live</th>
-          <th class="text-right">Var. día</th>
-          <th class="text-right">Valor PDF</th>
-          <th class="text-right">Valor live</th>
-          <th class="text-right">Var. %</th>
+          <th class="sortable" data-col="0">Tipo <span class="sort-icon">↕</span></th>
+          <th class="sortable" data-col="1">Ticker <span class="sort-icon">↕</span></th>
+          <th class="sortable" data-col="2">Descripción <span class="sort-icon">↕</span></th>
+          <th class="sortable text-right" data-col="3">Cantidad <span class="sort-icon">↕</span></th>
+          <th class="sortable text-right" data-col="4">Precio inicial <span class="sort-icon">↕</span></th>
+          <th class="sortable text-right" data-col="5">Precio live <span class="sort-icon">↕</span></th>
+          <th class="sortable text-right" data-col="6">Var. día <span class="sort-icon">↕</span></th>
+          <th class="sortable text-right" data-col="7">Valor inicial <span class="sort-icon">↕</span></th>
+          <th class="sortable text-right" data-col="8">Valor live <span class="sort-icon">↕</span></th>
+          <th class="sortable text-right" data-col="9">Rentab. % <span class="sort-icon">↕</span></th>
         </tr>
       </thead>
-      <tbody>
-        {% for f in filas|sort(attribute='tipo') %}
+      <tbody id="tbody-cot">
+        {% for f in filas %}
         <tr data-tipo="{{ f.tipo }}" data-ticker="{{ f.ticker }}" data-desc="{{ f.descripcion|lower }}">
-          <td>
-            <span style="display:inline-block;width:7px;height:7px;border-radius:50%;
-              background:{{ colores.get(f.tipo, '#64748b') }};margin-right:6px;"></span>
+          <td data-val="{{ f.tipo }}">
+            <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:{{ colores.get(f.tipo,'#64748b') }};margin-right:6px;"></span>
             <span style="font-size:11px;color:var(--muted);">{{ f.tipo }}</span>
           </td>
-          <td>
-            <span style="font-family:var(--mono);font-weight:700;font-size:13px;
-              color:{{ colores.get(f.tipo, '#e2e8f0') }};">{{ f.ticker }}</span>
+          <td data-val="{{ f.ticker }}">
+            <span style="font-family:var(--mono);font-weight:700;font-size:13px;color:{{ colores.get(f.tipo,'#e2e8f0') }};">{{ f.ticker }}</span>
           </td>
-          <td style="font-size:11px;color:var(--muted);max-width:200px;">{{ f.descripcion }}</td>
-          <td class="text-right mono" style="font-size:12px;">
-            {% if f.cantidad == f.cantidad|int %}{{ '{:,.0f}'.format(f.cantidad).replace(',', '.') }}
-            {% else %}{{ '{:,.2f}'.format(f.cantidad).replace(',', '.') }}{% endif %}
+          <td style="font-size:11px;color:var(--muted);max-width:180px;" data-val="{{ f.descripcion }}">{{ f.descripcion }}</td>
+          <td class="text-right mono" style="font-size:12px;" data-val="{{ f.cantidad }}">
+            {% if f.cantidad == f.cantidad|int %}{{ '{:,.0f}'.format(f.cantidad).replace(',','.') }}
+            {% else %}{{ '{:,.2f}'.format(f.cantidad).replace(',','.') }}{% endif %}
           </td>
-          <td class="text-right mono" style="font-size:12px;color:var(--muted);">
-            {% if f.precio_orig < 100 %}${{ '{:,.4f}'.format(f.precio_orig) }}
-            {% else %}${{ '{:,.2f}'.format(f.precio_orig).replace(',', '.') }}{% endif %}
+          <td class="text-right mono" style="font-size:12px;color:var(--muted);" data-val="{{ f.precio_ini }}">
+            {% if f.precio_ini < 100 %}${{ '{:,.4f}'.format(f.precio_ini) }}
+            {% else %}${{ '{:,.2f}'.format(f.precio_ini).replace(',','.') }}{% endif %}
           </td>
-          <td class="text-right mono" style="font-size:12px;">
+          <td class="text-right mono" style="font-size:12px;" data-val="{{ f.precio_actual if f.precio_actual else -1 }}">
             {% if f.precio_actual %}
               {% if f.precio_actual < 100 %}${{ '{:,.4f}'.format(f.precio_actual) }}
-              {% else %}${{ '{:,.2f}'.format(f.precio_actual).replace(',', '.') }}{% endif %}
-            {% else %}
-              <span style="color:var(--muted);">–</span>
-            {% endif %}
+              {% else %}${{ '{:,.2f}'.format(f.precio_actual).replace(',','.') }}{% endif %}
+            {% else %}<span style="color:var(--muted);">–</span>{% endif %}
           </td>
-          <td class="text-right" style="font-size:12px;">
+          <td class="text-right" style="font-size:12px;" data-val="{{ f.variacion if f.variacion is not none else -999 }}">
             {% if f.variacion is not none %}
               <span style="color:{% if f.variacion >= 0 %}var(--accent2){% else %}#f87171{% endif %};">
-                {% if f.variacion >= 0 %}▲{% else %}▼{% endif %}
-                {{ '{:.2f}'.format(f.variacion|abs) }}%
+                {% if f.variacion >= 0 %}▲{% else %}▼{% endif %} {{ '{:.2f}'.format(f.variacion|abs) }}%
               </span>
             {% else %}<span style="color:var(--muted);">–</span>{% endif %}
           </td>
-          <td class="text-right mono" style="font-size:12px;color:var(--muted);">
-            ${{ '{:,.0f}'.format(f.valor_orig).replace(',', '.') }}
+          <td class="text-right mono" style="font-size:12px;color:var(--muted);" data-val="{{ f.valor_ini }}">
+            ${{ '{:,.0f}'.format(f.valor_ini).replace(',','.') }}
           </td>
-          <td class="text-right mono" style="font-size:12px;">
-            {% if f.valor_actual %}${{ '{:,.0f}'.format(f.valor_actual).replace(',', '.') }}
+          <td class="text-right mono" style="font-size:12px;" data-val="{{ f.valor_actual if f.valor_actual else -1 }}">
+            {% if f.valor_actual %}${{ '{:,.0f}'.format(f.valor_actual).replace(',','.') }}
             {% else %}<span style="color:var(--muted);">–</span>{% endif %}
           </td>
-          <td class="text-right" style="font-size:12px;">
+          <td class="text-right" style="font-size:12px;" data-val="{{ f.diff_pct if f.diff_pct is not none else -9999 }}">
             {% if f.diff_pct is not none %}
               <span style="color:{% if f.diff_pct >= 0 %}var(--accent2){% else %}#f87171{% endif %};font-weight:600;">
-                {% if f.diff_pct >= 0 %}+{% endif %}{{ '{:.1f}'.format(f.diff_pct) }}%
+                {% if f.diff_pct >= 0 %}+{% endif %}{{ '{:.2f}'.format(f.diff_pct) }}%
               </span>
             {% else %}<span style="color:var(--muted);">–</span>{% endif %}
           </td>
@@ -183,40 +159,79 @@
   </div>
 </div>
 
-<div style="margin-top:16px;font-size:11px;color:var(--muted);">
-  * Los precios live provienen de Rava/BYMA con caché de 5 minutos. Instrumentos sin cotización (FCI, algunos bonos) se muestran con "–".
-  El tipo de cambio proviene de dolarapi.com.
+<div style="margin-top:12px;font-size:11px;color:var(--muted);">
+  * Rentabilidad % = (Valor live − Valor inicial) / Valor inicial. Caché de 5 min. FCI y algunos bonos sin cotización BYMA aparecen con "–".
 </div>
 
+<style>
+th.sortable { cursor:pointer; user-select:none; white-space:nowrap; }
+th.sortable:hover { color:var(--text); }
+th.sortable.asc  .sort-icon::after { content:'▲'; }
+th.sortable.desc .sort-icon::after { content:'▼'; }
+.sort-icon { font-size:9px; color:var(--muted); margin-left:4px; }
+th.sortable.asc .sort-icon, th.sortable.desc .sort-icon { color:var(--accent); }
+</style>
+
 <script>
+// ── Filtro ────────────────────────────────────────────────────────────────────
 const searchText = document.getElementById('search-text');
 const searchTipo = document.getElementById('search-tipo');
 const searchCount = document.getElementById('search-count');
-const rows = document.querySelectorAll('tbody tr');
+const allRows = Array.from(document.querySelectorAll('#tbody-cot tr'));
 
 function filtrar() {
   const txt  = searchText.value.toLowerCase().trim();
   const tipo = searchTipo.value;
-  let visible = 0;
-  rows.forEach(tr => {
-    const matchTipo   = !tipo || tr.dataset.tipo === tipo;
-    const matchTxt    = !txt  || tr.dataset.ticker.toLowerCase().includes(txt) || tr.dataset.desc.includes(txt);
-    const show = matchTipo && matchTxt;
-    tr.style.display = show ? '' : 'none';
-    if (show) visible++;
+  let vis = 0;
+  allRows.forEach(tr => {
+    const ok = (!tipo || tr.dataset.tipo === tipo) &&
+               (!txt  || tr.dataset.ticker.toLowerCase().includes(txt) || tr.dataset.desc.includes(txt));
+    tr.style.display = ok ? '' : 'none';
+    if (ok) vis++;
   });
-  searchCount.textContent = visible + ' de ' + rows.length + ' instrumentos';
+  searchCount.textContent = vis + ' de ' + allRows.length + ' instrumentos';
 }
-
-function limpiarFiltros() {
-  searchText.value = '';
-  searchTipo.value = '';
-  filtrar();
-}
-
+function limpiarFiltros() { searchText.value=''; searchTipo.value=''; filtrar(); }
 searchText.addEventListener('input', filtrar);
 searchTipo.addEventListener('change', filtrar);
 filtrar();
+
+// ── Ordenamiento ──────────────────────────────────────────────────────────────
+let sortCol = -1, sortAsc = true;
+const tbody  = document.getElementById('tbody-cot');
+const ths    = document.querySelectorAll('th.sortable');
+
+ths.forEach(th => {
+  th.addEventListener('click', () => {
+    const col = parseInt(th.dataset.col);
+    if (sortCol === col) { sortAsc = !sortAsc; }
+    else { sortCol = col; sortAsc = true; }
+    ths.forEach(t => t.classList.remove('asc','desc'));
+    th.classList.add(sortAsc ? 'asc' : 'desc');
+    sortTable(col, sortAsc);
+  });
+});
+
+function sortTable(col, asc) {
+  const rows = Array.from(tbody.querySelectorAll('tr'));
+  rows.sort((a, b) => {
+    const va = cellVal(a, col);
+    const vb = cellVal(b, col);
+    if (typeof va === 'number' && typeof vb === 'number') return asc ? va - vb : vb - va;
+    return asc ? String(va).localeCompare(String(vb), 'es') : String(vb).localeCompare(String(va), 'es');
+  });
+  rows.forEach(r => tbody.appendChild(r));
+  // Re-aplicar filtro visual
+  filtrar();
+}
+
+function cellVal(row, col) {
+  const td = row.querySelectorAll('td')[col];
+  if (!td) return '';
+  const v = td.dataset.val;
+  const n = parseFloat(v);
+  return isNaN(n) ? (v || '') : n;
+}
 </script>
 
 {% endblock %}
