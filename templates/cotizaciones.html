@@ -92,6 +92,22 @@
 </div>
 {% endif %}
 
+<div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;align-items:center;">
+  <input id="search-text" type="text" placeholder="Buscar ticker o denominación..."
+    style="background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:7px;
+           padding:8px 14px;font-size:13px;font-family:inherit;width:280px;">
+  <select id="search-tipo"
+    style="background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:7px;
+           padding:8px 14px;font-size:13px;font-family:inherit;">
+    <option value="">Todos los tipos</option>
+    {% for tipo in colores.keys() %}
+    <option value="{{ tipo }}">{{ tipo }}</option>
+    {% endfor %}
+  </select>
+  <span id="search-count" style="font-size:12px;color:var(--muted);"></span>
+  <button onclick="limpiarFiltros()" class="btn btn-ghost btn-sm" style="margin-left:auto;">Limpiar</button>
+</div>
+
 <div class="card">
   <div class="table-wrap">
     <table>
@@ -111,7 +127,7 @@
       </thead>
       <tbody>
         {% for f in filas|sort(attribute='tipo') %}
-        <tr>
+        <tr data-tipo="{{ f.tipo }}" data-ticker="{{ f.ticker }}" data-desc="{{ f.descripcion|lower }}">
           <td>
             <span style="display:inline-block;width:7px;height:7px;border-radius:50%;
               background:{{ colores.get(f.tipo, '#64748b') }};margin-right:6px;"></span>
@@ -171,5 +187,36 @@
   * Los precios live provienen de Rava/BYMA con caché de 5 minutos. Instrumentos sin cotización (FCI, algunos bonos) se muestran con "–".
   El tipo de cambio proviene de dolarapi.com.
 </div>
+
+<script>
+const searchText = document.getElementById('search-text');
+const searchTipo = document.getElementById('search-tipo');
+const searchCount = document.getElementById('search-count');
+const rows = document.querySelectorAll('tbody tr');
+
+function filtrar() {
+  const txt  = searchText.value.toLowerCase().trim();
+  const tipo = searchTipo.value;
+  let visible = 0;
+  rows.forEach(tr => {
+    const matchTipo   = !tipo || tr.dataset.tipo === tipo;
+    const matchTxt    = !txt  || tr.dataset.ticker.toLowerCase().includes(txt) || tr.dataset.desc.includes(txt);
+    const show = matchTipo && matchTxt;
+    tr.style.display = show ? '' : 'none';
+    if (show) visible++;
+  });
+  searchCount.textContent = visible + ' de ' + rows.length + ' instrumentos';
+}
+
+function limpiarFiltros() {
+  searchText.value = '';
+  searchTipo.value = '';
+  filtrar();
+}
+
+searchText.addEventListener('input', filtrar);
+searchTipo.addEventListener('change', filtrar);
+filtrar();
+</script>
 
 {% endblock %}
