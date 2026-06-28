@@ -243,6 +243,12 @@
   </a>
   {% endfor %}
 
+  <div class="nav-label" style="margin-top:12px;">Mercado</div>
+  <a href="{{ url_for('cotizaciones') }}"
+     class="{% if request.endpoint == 'cotizaciones' %}active{% endif %}">
+    💱 Cotizaciones
+  </a>
+
   <div class="nav-label" style="margin-top:12px;">Cuenta</div>
   <a href="{{ url_for('cambiar_password') }}"
      class="{% if request.endpoint == 'cambiar_password' %}active{% endif %}">

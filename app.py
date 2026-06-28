@@ -1,7 +1,8 @@
-import os, sqlite3, json
+import os, sqlite3, json, time
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from functools import wraps
 from datetime import datetime
+import requests as req
 
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'eml-finance-secret-2026')
@@ -113,6 +114,61 @@ PORTFOLIO_INICIAL = {
     }
 }
 
+# ── Precios en tiempo real ────────────────────────────────────────────────────
+_cache = {}
+CACHE_TTL = 300  # 5 minutos
+
+def _cached(key, fn):
+    now = time.time()
+    if key in _cache and now - _cache[key]['ts'] < CACHE_TTL:
+        return _cache[key]['data']
+    try:
+        data = fn()
+        _cache[key] = {'data': data, 'ts': now}
+        return data
+    except Exception:
+        return _cache.get(key, {}).get('data')
+
+def fetch_dolares():
+    def _fetch():
+        r = req.get('https://dolarapi.com/v1/dolares', timeout=8)
+        r.raise_for_status()
+        return r.json()
+    return _cached('dolares', _fetch) or []
+
+def fetch_precio_rava(ticker):
+    """Precio de un instrumento listado en BYMA via Rava."""
+    def _fetch():
+        r = req.get(
+            f'https://www.rava.com/empresas/cotizacion.php?e={ticker}&t=json',
+            timeout=8,
+            headers={'User-Agent': 'Mozilla/5.0'}
+        )
+        r.raise_for_status()
+        return r.json()
+    return _cached(f'rava_{ticker}', _fetch)
+
+def fetch_precios_cartera(portfolio):
+    """Devuelve dict {ticker: {ultimo, variacion, fuente}} para todos los instrumentos."""
+    todos = []
+    for items in portfolio['instrumentos'].values():
+        todos.extend(items)
+
+    precios = {}
+    for item in todos:
+        ticker = item['ticker']
+        data = fetch_precio_rava(ticker)
+        if data:
+            ultimo = data.get('Ultimo') or data.get('ultimo') or data.get('UltimoPrecio')
+            var    = data.get('Variacion') or data.get('variacion') or 0
+            if ultimo:
+                precios[ticker] = {
+                    'ultimo':    float(ultimo),
+                    'variacion': float(var),
+                    'fuente':    'Rava/BYMA',
+                }
+    return precios
+
 COLORES = {
     'Acciones':     '#3b82f6',
     'Bonos':        '#10b981',
@@ -195,6 +251,72 @@ def cartera_tipo(tipo):
         total_tipo=total_tipo,
         portfolio=p,
         color=COLORES.get(tipo, '#3b82f6'),
+    )
+
+@app.route('/cotizaciones')
+@login_required
+def cotizaciones():
+    dolares = fetch_dolares()
+    # Ordenar por nombre conocido
+    orden = ['oficial', 'blue', 'bolsa', 'contadoconliqui', 'tarjeta', 'mayorista', 'cripto']
+    nombres_es = {
+        'oficial':          'Oficial',
+        'blue':             'Blue',
+        'bolsa':            'MEP / Bolsa',
+        'contadoconliqui':  'Contado con Liqui',
+        'tarjeta':          'Tarjeta / Turista',
+        'mayorista':        'Mayorista',
+        'cripto':           'Cripto',
+    }
+    dolares_sorted = sorted(
+        dolares,
+        key=lambda d: orden.index(d.get('casa','').lower()) if d.get('casa','').lower() in orden else 99
+    )
+    for d in dolares_sorted:
+        casa = d.get('casa', '').lower()
+        d['nombre_es'] = nombres_es.get(casa, d.get('nombre', casa.title()))
+
+    p = get_portfolio()
+    precios = fetch_precios_cartera(p)
+
+    # Construir tabla de instrumentos con precio live
+    filas = []
+    for tipo, items in p['instrumentos'].items():
+        for item in items:
+            ticker = item['ticker']
+            pr = precios.get(ticker)
+            precio_actual = pr['ultimo'] if pr else None
+            variacion     = pr['variacion'] if pr else None
+            valor_actual  = precio_actual * item['cantidad'] if precio_actual else None
+            valor_orig    = item['valor']
+            diff_pct      = ((valor_actual - valor_orig) / valor_orig * 100) if valor_actual else None
+            filas.append({
+                'tipo':         tipo,
+                'ticker':       ticker,
+                'descripcion':  item['descripcion'],
+                'cantidad':     item['cantidad'],
+                'precio_orig':  item['precio'],
+                'precio_actual':precio_actual,
+                'variacion':    variacion,
+                'valor_orig':   valor_orig,
+                'valor_actual': valor_actual,
+                'diff_pct':     diff_pct,
+                'fuente':       pr['fuente'] if pr else None,
+            })
+
+    total_orig   = sum(f['valor_orig'] for f in filas)
+    total_actual = sum(f['valor_actual'] for f in filas if f['valor_actual'])
+    con_precio   = sum(1 for f in filas if f['precio_actual'])
+
+    return render_template('cotizaciones.html',
+        dolares=dolares_sorted,
+        filas=filas,
+        total_orig=total_orig,
+        total_actual=total_actual,
+        con_precio=con_precio,
+        total_filas=len(filas),
+        portfolio=p,
+        colores=COLORES,
     )
 
 @app.route('/cambiar-password', methods=['GET', 'POST'])
