@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block title %}Dashboard – EML Finance{% endblock %}
+
+{% block content %}
+<h1 class="page-title">Cartera de Inversiones</h1>
+
+<!-- Stat cards superiores -->
+<div class="stat-grid">
+  <div class="stat-card" style="border-left: 3px solid var(--accent);">
+    <div class="label">Total ARS</div>
+    <div class="value">${{ '{:,.0f}'.format(portfolio.total_ars).replace(',', '.') }}</div>
+    <div class="sub">Posición al {{ portfolio.fecha }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Tipo de cambio MEP</div>
+    <div class="value">${{ '{:,.2f}'.format(portfolio.tc_mep).replace(',', '.') }}</div>
+    <div class="sub">USD oficial: ${{ '{:,.2f}'.format(portfolio.tc_usd).replace(',', '.') }}</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Total USD (MEP)</div>
+    <div class="value">USD {{ '{:,.0f}'.format(portfolio.total_ars / portfolio.tc_mep).replace(',', '.') }}</div>
+    <div class="sub">≈ {{ '{:,.1f}'.format(portfolio.total_ars / portfolio.tc_mep / 1000) }}k USD</div>
+  </div>
+  <div class="stat-card">
+    <div class="label">Efectivo disponible</div>
+    <div class="value">${{ '{:,.0f}'.format(portfolio.monedas['Pesos']).replace(',', '.') }}</div>
+    <div class="sub">+ USD {{ '{:,.2f}'.format(portfolio.monedas['Dólares'] + portfolio.monedas['USD Cable']) }}</div>
+  </div>
+</div>
+
+<!-- Distribución por tipo -->
+<div class="card" style="margin-bottom:28px;">
+  <h2 style="font-size:13px;font-weight:600;margin-bottom:20px;letter-spacing:.02em;">Distribución por instrumento</h2>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px;">
+    <!-- Barras -->
+    <div>
+      {% for tipo, total in totales_tipo.items() %}
+      {% set pct = pcts[tipo] %}
+      {% set color = colores[tipo] %}
+      <div style="margin-bottom:16px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <a href="{{ url_for('cartera_tipo', tipo=tipo) }}"
+             style="font-size:13px;font-weight:500;color:var(--text);text-decoration:none;display:flex;align-items:center;gap:8px;">
+            <span style="width:10px;height:10px;border-radius:50%;background:{{ color }};display:inline-block;flex-shrink:0;"></span>
+            {{ tipo }}
+          </a>
+          <div style="text-align:right;">
+            <span style="font-size:13px;font-family:var(--mono);">${{ '{:,.0f}'.format(total).replace(',', '.') }}</span>
+            <span style="font-size:11px;color:var(--muted);margin-left:8px;">{{ pct }}%</span>
+          </div>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:{{ pct }}%;background:{{ color }};"></div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+    <!-- Donut SVG -->
+    <div style="display:flex;align-items:center;justify-content:center;">
+      {% set tipos_list = totales_tipo.keys()|list %}
+      {% set total_cartera = portfolio.total_ars %}
+      <svg viewBox="0 0 200 200" width="200" height="200">
+        {% set cx = 100 %}
+        {% set cy = 100 %}
+        {% set r = 80 %}
+        {% set stroke = 30 %}
+        {% set circumference = 2 * 3.14159 * r %}
+        {% set offset = namespace(val=0) %}
+        {% for tipo in tipos_list %}
+          {% set pct_raw = totales_tipo[tipo] / total_cartera %}
+          {% set dash = pct_raw * circumference %}
+          {% set gap  = circumference - dash %}
+          <circle
+            cx="{{ cx }}" cy="{{ cy }}" r="{{ r }}"
+            fill="none"
+            stroke="{{ colores[tipo] }}"
+            stroke-width="{{ stroke }}"
+            stroke-dasharray="{{ dash }} {{ gap }}"
+            stroke-dashoffset="{{ -(offset.val * circumference) }}"
+            transform="rotate(-90 {{ cx }} {{ cy }})"
+            opacity=".9"
+          />
+          {% set offset.val = offset.val + pct_raw %}
+        {% endfor %}
+        <circle cx="{{ cx }}" cy="{{ cy }}" r="{{ r - stroke / 2 - 2 }}" fill="var(--bg2)" />
+        <text x="{{ cx }}" y="{{ cy - 8 }}" text-anchor="middle" fill="var(--text)" font-size="13" font-weight="bold">
+          Total
+        </text>
+        <text x="{{ cx }}" y="{{ cy + 10 }}" text-anchor="middle" fill="var(--accent)" font-size="11" font-weight="bold">
+          ${{ '{:,.0f}'.format(total_cartera / 1000000).replace(',', '.') }}M
+        </text>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<!-- Resumen por tipo: tabla rápida -->
+<div class="card">
+  <h2 style="font-size:13px;font-weight:600;margin-bottom:16px;">Detalle por categoría</h2>
+  <div class="table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Categoría</th>
+          <th class="text-right">Valor ARS</th>
+          <th class="text-right">% cartera</th>
+          <th class="text-right">Instrumentos</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for tipo, total in totales_tipo.items() %}
+        <tr>
+          <td>
+            <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:{{ colores[tipo] }};margin-right:8px;"></span>
+            <strong>{{ tipo }}</strong>
+          </td>
+          <td class="text-right mono">${{ '{:,.0f}'.format(total).replace(',', '.') }}</td>
+          <td class="text-right">
+            <span style="color:{{ colores[tipo] }};font-weight:600;">{{ pcts[tipo] }}%</span>
+          </td>
+          <td class="text-right muted">{{ portfolio.instrumentos[tipo]|length }}</td>
+          <td class="text-right">
+            <a href="{{ url_for('cartera_tipo', tipo=tipo) }}"
+               style="font-size:12px;color:var(--accent);text-decoration:none;">Ver →</a>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+      <tfoot>
+        <tr style="border-top:2px solid var(--border);">
+          <td style="font-weight:700;padding-top:12px;">TOTAL</td>
+          <td class="text-right mono" style="font-weight:700;padding-top:12px;">
+            ${{ '{:,.0f}'.format(portfolio.total_ars).replace(',', '.') }}
+          </td>
+          <td class="text-right" style="padding-top:12px;font-weight:700;">100%</td>
+          <td></td><td></td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+</div>
+
+{% endblock %}

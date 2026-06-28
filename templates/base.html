@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}EML Finance{% endblock %}</title>
+  <style>
+    :root {
+      --bg:      #0f1117;
+      --bg2:     #1a1d27;
+      --bg3:     #22263a;
+      --border:  #2e3248;
+      --text:    #e2e8f0;
+      --muted:   #64748b;
+      --accent:  #6366f1;
+      --accent2: #34d399;
+      --danger:  #ef4444;
+      --mono:    'Courier New', monospace;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-size: 14px;
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: 220px;
+      background: var(--bg2);
+      border-right: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      padding: 24px 0 16px;
+      position: fixed;
+      top: 0; left: 0; bottom: 0;
+      overflow-y: auto;
+    }
+    .sidebar-brand {
+      padding: 0 20px 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 16px;
+    }
+    .sidebar-brand h1 {
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      color: var(--accent);
+    }
+    .sidebar-brand small {
+      font-size: 10px;
+      color: var(--muted);
+      font-family: var(--mono);
+      letter-spacing: .08em;
+    }
+    .nav-label {
+      font-size: 10px;
+      font-family: var(--mono);
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding: 8px 20px 4px;
+    }
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 20px;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 13px;
+      border-radius: 0;
+      transition: background .15s, color .15s;
+    }
+    .sidebar a:hover { background: var(--bg3); color: var(--text); }
+    .sidebar a.active { background: rgba(99,102,241,.15); color: var(--accent); border-right: 2px solid var(--accent); }
+    .sidebar-footer {
+      margin-top: auto;
+      padding: 16px 20px;
+      border-top: 1px solid var(--border);
+    }
+    .sidebar-footer a {
+      font-size: 12px;
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .sidebar-footer a:hover { color: var(--danger); }
+
+    /* ── Main ── */
+    .main {
+      margin-left: 220px;
+      flex: 1;
+      padding: 32px;
+      max-width: 1200px;
+    }
+    .page-title {
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 24px;
+      letter-spacing: -.02em;
+    }
+
+    /* ── Cards ── */
+    .card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .card-sm { padding: 14px 18px; }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-bottom: 28px;
+    }
+    .stat-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 18px 20px;
+    }
+    .stat-card .label {
+      font-size: 10px;
+      font-family: var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .stat-card .value {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -.02em;
+    }
+    .stat-card .sub {
+      font-size: 11px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+
+    /* ── Table ── */
+    .table-wrap { overflow-x: auto; }
+    table { width: 100%; border-collapse: collapse; }
+    th, td { padding: 9px 12px; text-align: left; }
+    th {
+      font-size: 10px;
+      font-family: var(--mono);
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+    }
+    td { border-bottom: 1px solid rgba(46,50,72,.5); font-size: 13px; }
+    tr:hover td { background: rgba(255,255,255,.02); }
+    .text-right { text-align: right; }
+    .mono { font-family: var(--mono); }
+    .muted { color: var(--muted); }
+
+    /* ── Flash ── */
+    .flash {
+      padding: 10px 16px;
+      border-radius: 7px;
+      margin-bottom: 16px;
+      font-size: 13px;
+    }
+    .flash.success { background: rgba(52,211,153,.12); color: #34d399; border: 1px solid rgba(52,211,153,.25); }
+    .flash.error   { background: rgba(239,68,68,.12);  color: #f87171; border: 1px solid rgba(239,68,68,.25); }
+
+    /* ── Btn ── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 16px; border-radius: 6px; font-size: 13px;
+      cursor: pointer; border: none; font-family: inherit; text-decoration: none;
+      transition: opacity .15s;
+    }
+    .btn:hover { opacity: .85; }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-ghost {
+      background: transparent; color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-sm { padding: 5px 12px; font-size: 12px; }
+
+    /* ── Progress bar ── */
+    .bar-track {
+      background: var(--bg3);
+      border-radius: 99px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 99px;
+      transition: width .4s;
+    }
+
+    /* ── Form ── */
+    .form-control {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text);
+      border-radius: 6px;
+      padding: 7px 12px;
+      font-size: 13px;
+      font-family: inherit;
+      width: 100%;
+    }
+    .form-control:focus { outline: none; border-color: var(--accent); }
+    .form-label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 5px; }
+  </style>
+  {% block head %}{% endblock %}
+</head>
+<body>
+
+<nav class="sidebar">
+  <div class="sidebar-brand">
+    <h1>EML Finance</h1>
+    <small>Cartera personal</small>
+  </div>
+
+  <div class="nav-label">Principal</div>
+  <a href="{{ url_for('dashboard') }}" class="{% if request.endpoint == 'dashboard' %}active{% endif %}">
+    📊 Dashboard
+  </a>
+
+  <div class="nav-label" style="margin-top:12px;">Cartera</div>
+  {% set tipos = ['Acciones', 'Bonos', 'CEDEARs', 'Corporativos', 'Fondos', 'Letras'] %}
+  {% for tipo in tipos %}
+  <a href="{{ url_for('cartera_tipo', tipo=tipo) }}"
+     class="{% if request.endpoint == 'cartera_tipo' and request.view_args.tipo == tipo %}active{% endif %}">
+    {% if tipo == 'Acciones' %}📈
+    {% elif tipo == 'Bonos' %}🏛️
+    {% elif tipo == 'CEDEARs' %}🌎
+    {% elif tipo == 'Corporativos' %}🏢
+    {% elif tipo == 'Fondos' %}💼
+    {% elif tipo == 'Letras' %}📋
+    {% endif %}
+    {{ tipo }}
+  </a>
+  {% endfor %}
+
+  <div class="nav-label" style="margin-top:12px;">Cuenta</div>
+  <a href="{{ url_for('cambiar_password') }}"
+     class="{% if request.endpoint == 'cambiar_password' %}active{% endif %}">
+    🔑 Mi contraseña
+  </a>
+
+  <div class="sidebar-footer">
+    <span style="font-size:11px;color:var(--muted);">{{ session.get('nombre','') }}</span><br>
+    <a href="{{ url_for('logout') }}">Cerrar sesión →</a>
+  </div>
+</nav>
+
+<main class="main">
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for cat, msg in messages %}
+    <div class="flash {{ cat }}">{{ msg }}</div>
+    {% endfor %}
+  {% endwith %}
+
+  {% block content %}{% endblock %}
+</main>
+
+</body>
+</html>
