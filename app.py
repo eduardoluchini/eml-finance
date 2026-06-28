@@ -79,7 +79,7 @@ def login_required(f):
 # ── Datos cartera (posición 26/06/2026) ──────────────────────────────────────
 PORTFOLIO_INICIAL = {
     'fecha': '26/06/2026',
-    'total_ars': 37514164,
+    'total_ars': 41568639,
     'tc_mep': 1501.01,
     'tc_usd': 1543.38,
     'monedas': {
@@ -126,9 +126,11 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'YMCJO', 'descripcion': 'ON YPF REGS 1.5% Vto 30/09/2033', 'cantidad': 1134,  'precio': 1595.60,  'valor': 1809410},
         ],
         'Fondos': [
-            {'ticker': 'BRTA',    'descripcion': 'Renta Mixta Clase A',   'cantidad': 1227.43,      'precio': 728.16,  'valor': 893760},
-            {'ticker': 'LECAPSA', 'descripcion': 'Lecaps Clase A',        'cantidad': 2387292.45,   'precio': 2.03,    'valor': 4848612},
-            {'ticker': 'BAHUSDA', 'descripcion': 'Corporativo Clase A',   'cantidad': 3529.11,      'precio': 1.42,    'valor': 4995},
+            {'ticker': 'BRTA',     'descripcion': 'Renta Mixta Clase A (Balanz)',             'cantidad': 1227.43,      'precio': 728.16,       'valor': 893760,   'fuente': 'Balanz', 'moneda': 'ARS'},
+            {'ticker': 'LECAPSA',  'descripcion': 'Lecaps Clase A (Balanz)',                  'cantidad': 2387292.45,   'precio': 2.03,         'valor': 4848612,  'fuente': 'Balanz', 'moneda': 'ARS'},
+            {'ticker': 'BAHUSDA',  'descripcion': 'Corporativo Clase A (Balanz)',             'cantidad': 3529.11,      'precio': 1.42,         'valor': 4995,     'fuente': 'Balanz', 'moneda': 'ARS'},
+            {'ticker': 'FIMAPREM', 'descripcion': 'Fima Premium Clase A (Galicia)',           'cantidad': 30889.58,     'precio': 81.818803,    'valor': 2527348,  'fuente': 'Galicia','moneda': 'ARS'},
+            {'ticker': 'FIMARFDA', 'descripcion': 'Fima Renta Fija Dólares Clase A (Galicia)','cantidad': 914.53,      'precio': 1668.98,      'valor': 1527127,  'fuente': 'Galicia','moneda': 'USD', 'precio_usd': 1.112489, 'valor_usd': 1017.40},
         ],
         'Letras': [
             {'ticker': 'S31L6', 'descripcion': 'Letra Tesoro Nac. Capitalizable 31/07/26', 'cantidad': 495162, 'precio': 1.15, 'valor': 571318},
@@ -327,7 +329,10 @@ def cotizaciones():
                 'valor_ini':     valor_ini,
                 'valor_actual':  valor_actual,
                 'diff_pct':      diff_pct_live,
-                'fuente':        pr['fuente'] if pr else None,
+                'fuente_live':   pr['fuente'] if pr else None,
+                'broker':        item.get('fuente', 'Balanz'),
+                'moneda':        item.get('moneda', 'ARS'),
+                'valor_usd':     item.get('valor_usd'),
                 'pi_fecha':      pi['fecha']  if pi else None,
                 'pi_notas':      pi['notas']  if pi else None,
             })

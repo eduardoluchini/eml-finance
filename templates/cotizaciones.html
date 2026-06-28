@@ -73,6 +73,13 @@
   <input id="search-text" type="text" placeholder="Buscar ticker o denominación..."
     style="background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:7px;
            padding:8px 14px;font-size:13px;font-family:inherit;width:260px;">
+  <select id="search-broker"
+    style="background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:7px;
+           padding:8px 14px;font-size:13px;font-family:inherit;">
+    <option value="">Todos los brokers</option>
+    <option value="Balanz">Balanz</option>
+    <option value="Galicia">Galicia</option>
+  </select>
   <select id="search-tipo"
     style="background:var(--bg2);border:1px solid var(--border);color:var(--text);border-radius:7px;
            padding:8px 14px;font-size:13px;font-family:inherit;">
@@ -94,27 +101,36 @@
     <table id="tabla-cot">
       <thead>
         <tr>
-          <th class="sortable" data-col="0">Tipo <span class="sort-icon">↕</span></th>
-          <th class="sortable" data-col="1">Ticker <span class="sort-icon">↕</span></th>
-          <th class="sortable" data-col="2">Descripción <span class="sort-icon">↕</span></th>
-          <th class="sortable text-right" data-col="3">Cantidad <span class="sort-icon">↕</span></th>
-          <th class="sortable text-right" data-col="4">Precio inicial <span class="sort-icon">↕</span></th>
-          <th class="sortable text-right" data-col="5">Precio live <span class="sort-icon">↕</span></th>
-          <th class="sortable text-right" data-col="6">Var. día <span class="sort-icon">↕</span></th>
-          <th class="sortable text-right" data-col="7">Valor inicial <span class="sort-icon">↕</span></th>
-          <th class="sortable text-right" data-col="8">Valor live <span class="sort-icon">↕</span></th>
-          <th class="sortable text-right" data-col="9">Rentab. % <span class="sort-icon">↕</span></th>
+          <th class="sortable" data-col="0">Broker <span class="sort-icon">↕</span></th>
+          <th class="sortable" data-col="1">Tipo <span class="sort-icon">↕</span></th>
+          <th class="sortable" data-col="2">Ticker <span class="sort-icon">↕</span></th>
+          <th class="sortable" data-col="3">Descripción <span class="sort-icon">↕</span></th>
+          <th class="sortable text-right" data-col="4">Cantidad <span class="sort-icon">↕</span></th>
+          <th class="sortable text-right" data-col="5">Precio inicial <span class="sort-icon">↕</span></th>
+          <th class="sortable text-right" data-col="6">Precio live <span class="sort-icon">↕</span></th>
+          <th class="sortable text-right" data-col="7">Var. día <span class="sort-icon">↕</span></th>
+          <th class="sortable text-right" data-col="8">Valor inicial <span class="sort-icon">↕</span></th>
+          <th class="sortable text-right" data-col="9">Valor live <span class="sort-icon">↕</span></th>
+          <th class="sortable text-right" data-col="10">Rentab. % <span class="sort-icon">↕</span></th>
         </tr>
       </thead>
       <tbody id="tbody-cot">
         {% for f in filas %}
-        <tr data-tipo="{{ f.tipo }}" data-ticker="{{ f.ticker }}" data-desc="{{ f.descripcion|lower }}">
+        <tr data-tipo="{{ f.tipo }}" data-ticker="{{ f.ticker }}" data-desc="{{ f.descripcion|lower }}" data-broker="{{ f.broker }}">
+          <td data-val="{{ f.broker }}">
+            <span style="font-size:11px;font-weight:600;padding:2px 7px;border-radius:4px;
+              {% if f.broker == 'Galicia' %}background:rgba(59,130,246,.15);color:#60a5fa;
+              {% else %}background:rgba(16,185,129,.15);color:#34d399;{% endif %}">
+              {{ f.broker }}
+            </span>
+          </td>
           <td data-val="{{ f.tipo }}">
             <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:{{ colores.get(f.tipo,'#64748b') }};margin-right:6px;"></span>
             <span style="font-size:11px;color:var(--muted);">{{ f.tipo }}</span>
           </td>
           <td data-val="{{ f.ticker }}">
             <span style="font-family:var(--mono);font-weight:700;font-size:13px;color:{{ colores.get(f.tipo,'#e2e8f0') }};">{{ f.ticker }}</span>
+            {% if f.moneda == 'USD' %}<span style="font-size:9px;color:var(--muted);margin-left:4px;">USD</span>{% endif %}
           </td>
           <td style="font-size:11px;color:var(--muted);max-width:180px;" data-val="{{ f.descripcion }}">{{ f.descripcion }}</td>
           <td class="text-right mono" style="font-size:12px;" data-val="{{ f.cantidad }}">
@@ -174,26 +190,30 @@ th.sortable.asc .sort-icon, th.sortable.desc .sort-icon { color:var(--accent); }
 
 <script>
 // ── Filtro ────────────────────────────────────────────────────────────────────
-const searchText = document.getElementById('search-text');
-const searchTipo = document.getElementById('search-tipo');
-const searchCount = document.getElementById('search-count');
+const searchText   = document.getElementById('search-text');
+const searchTipo   = document.getElementById('search-tipo');
+const searchBroker = document.getElementById('search-broker');
+const searchCount  = document.getElementById('search-count');
 const allRows = Array.from(document.querySelectorAll('#tbody-cot tr'));
 
 function filtrar() {
-  const txt  = searchText.value.toLowerCase().trim();
-  const tipo = searchTipo.value;
+  const txt    = searchText.value.toLowerCase().trim();
+  const tipo   = searchTipo.value;
+  const broker = searchBroker.value;
   let vis = 0;
   allRows.forEach(tr => {
-    const ok = (!tipo || tr.dataset.tipo === tipo) &&
-               (!txt  || tr.dataset.ticker.toLowerCase().includes(txt) || tr.dataset.desc.includes(txt));
+    const ok = (!tipo   || tr.dataset.tipo   === tipo)   &&
+               (!broker || tr.dataset.broker  === broker) &&
+               (!txt    || tr.dataset.ticker.toLowerCase().includes(txt) || tr.dataset.desc.includes(txt));
     tr.style.display = ok ? '' : 'none';
     if (ok) vis++;
   });
   searchCount.textContent = vis + ' de ' + allRows.length + ' instrumentos';
 }
-function limpiarFiltros() { searchText.value=''; searchTipo.value=''; filtrar(); }
+function limpiarFiltros() { searchText.value=''; searchTipo.value=''; searchBroker.value=''; filtrar(); }
 searchText.addEventListener('input', filtrar);
 searchTipo.addEventListener('change', filtrar);
+searchBroker.addEventListener('change', filtrar);
 filtrar();
 
 // ── Ordenamiento ──────────────────────────────────────────────────────────────
