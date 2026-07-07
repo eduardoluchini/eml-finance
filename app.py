@@ -2,6 +2,7 @@ import os, sqlite3, json, time
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from functools import wraps
 from datetime import datetime
+from concurrent.futures import ThreadPoolExecutor, as_completed
 import requests as req
 
 app = Flask(__name__)
@@ -170,7 +171,7 @@ def fetch_precio_rava(ticker):
     def _fetch():
         r = req.get(
             f'https://www.rava.com/empresas/cotizacion.php?e={ticker}&t=json',
-            timeout=8,
+            timeout=5,
             headers={'User-Agent': 'Mozilla/5.0'}
         )
         r.raise_for_status()
@@ -178,24 +179,30 @@ def fetch_precio_rava(ticker):
     return _cached(f'rava_{ticker}', _fetch)
 
 def fetch_precios_cartera(portfolio):
-    """Devuelve dict {ticker: {ultimo, variacion, fuente}} para todos los instrumentos."""
+    """Devuelve dict {ticker: {ultimo, variacion, fuente}} para todos los instrumentos, en paralelo."""
     todos = []
     for items in portfolio['instrumentos'].values():
         todos.extend(items)
+    tickers = [item['ticker'] for item in todos]
 
     precios = {}
-    for item in todos:
-        ticker = item['ticker']
-        data = fetch_precio_rava(ticker)
-        if data:
-            ultimo = data.get('Ultimo') or data.get('ultimo') or data.get('UltimoPrecio')
-            var    = data.get('Variacion') or data.get('variacion') or 0
-            if ultimo:
-                precios[ticker] = {
-                    'ultimo':    float(ultimo),
-                    'variacion': float(var),
-                    'fuente':    'Rava/BYMA',
-                }
+    with ThreadPoolExecutor(max_workers=12) as executor:
+        futures = {executor.submit(fetch_precio_rava, t): t for t in tickers}
+        for future in as_completed(futures):
+            ticker = futures[future]
+            try:
+                data = future.result()
+            except Exception:
+                continue
+            if data:
+                ultimo = data.get('Ultimo') or data.get('ultimo') or data.get('UltimoPrecio')
+                var    = data.get('Variacion') or data.get('variacion') or 0
+                if ultimo:
+                    precios[ticker] = {
+                        'ultimo':    float(ultimo),
+                        'variacion': float(var),
+                        'fuente':    'Rava/BYMA',
+                    }
     return precios
 
 COLORES = {
