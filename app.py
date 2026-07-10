@@ -90,7 +90,8 @@ PORTFOLIO_INICIAL = {
     },
     'disponibilidad': {
         'Balanz Pesos':   {'ars': 3673457.57, 'usd': None},
-        'Balanz USD':     {'ars': None,        'usd': 138.16},   # 95.63 + 42.53
+        'Balanz USD':     {'ars': None,        'usd': 95.63},
+        'Balanz Cable':   {'ars': None,        'usd': 42.53},
         'Galicia Pesos':  {'ars': 701988.97,   'usd': None},
         'Galicia USD':    {'ars': None,        'usd': 66.62},
         'MercadoPago':    {'ars': 1495471.34,  'usd': None},
