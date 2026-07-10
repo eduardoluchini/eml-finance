@@ -96,6 +96,39 @@
   </div>
 </div>
 
+<!-- Disponibilidad de efectivo -->
+{% if portfolio.disponibilidad %}
+<div class="card" style="margin-bottom:28px;">
+  <h2 style="font-size:13px;font-weight:600;margin-bottom:16px;">Disponibilidad de efectivo</h2>
+  <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;">
+    {% set tc = portfolio.tc_mep %}
+    {% for cuenta, saldo in portfolio.disponibilidad.items() %}
+    <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
+      <div style="font-size:10px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">{{ cuenta }}</div>
+      {% if saldo.ars %}
+      <div style="font-size:16px;font-weight:700;">${{ '{:,.0f}'.format(saldo.ars).replace(',','.') }}</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px;">≈ USD {{ '{:,.0f}'.format(saldo.ars / tc).replace(',','.') }}</div>
+      {% else %}
+      <div style="font-size:16px;font-weight:700;color:var(--accent2);">USD {{ '{:,.2f}'.format(saldo.usd) }}</div>
+      <div style="font-size:11px;color:var(--muted);margin-top:3px;">≈ ${{ '{:,.0f}'.format(saldo.usd * tc).replace(',','.') }}</div>
+      {% endif %}
+    </div>
+    {% endfor %}
+  </div>
+  {% set total_disp_ars = namespace(val=0) %}
+  {% set total_disp_usd = namespace(val=0) %}
+  {% for cuenta, saldo in portfolio.disponibilidad.items() %}
+    {% if saldo.ars %}{% set total_disp_ars.val = total_disp_ars.val + saldo.ars %}{% endif %}
+    {% if saldo.usd %}{% set total_disp_usd.val = total_disp_usd.val + saldo.usd %}{% endif %}
+  {% endfor %}
+  <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);">
+    Total disponible: <strong style="color:var(--text);">${{ '{:,.0f}'.format(total_disp_ars.val).replace(',','.') }}</strong> ARS
+    + <strong style="color:var(--accent2);">USD {{ '{:,.2f}'.format(total_disp_usd.val) }}</strong>
+    <span style="color:var(--muted);"> · ≈ USD {{ '{:,.0f}'.format(total_disp_ars.val / portfolio.tc_mep + total_disp_usd.val).replace(',','.') }} total</span>
+  </div>
+</div>
+{% endif %}
+
 <!-- Resumen por tipo: tabla rápida -->
 <div class="card">
   <h2 style="font-size:13px;font-weight:600;margin-bottom:16px;">Detalle por categoría</h2>
