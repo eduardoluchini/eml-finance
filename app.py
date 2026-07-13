@@ -79,22 +79,21 @@ def login_required(f):
 
 # ── Datos cartera (posición 03/07/2026) ──────────────────────────────────────
 PORTFOLIO_INICIAL = {
-    'fecha': '08/07/2026',
-    'total_ars': 52507595,
-    'tc_mep': 1523.53,
+    'fecha': '13/07/2026',
+    'total_ars': 52075113,
+    'tc_mep': 1538.57,
     'tc_usd': 1564.48,
     'monedas': {
-        'Pesos': 3673457.57,
-        'Dólares': 95.63,
-        'USD Cable': 42.53,
+        'Pesos': 2002.24,
+        'Dólares': 18.34,
+        'USD Cable': 0,
     },
     'disponibilidad': {
-        'Balanz Pesos':   {'ars': 3673457.57, 'usd': None},
-        'Balanz USD':     {'ars': None,        'usd': 95.63},
-        'Balanz Cable':   {'ars': None,        'usd': 42.53},
-        'Galicia Pesos':  {'ars': 701988.97,   'usd': None},
-        'Galicia USD':    {'ars': None,        'usd': 66.62},
-        'MercadoPago':    {'ars': 1495471.34,  'usd': None},
+        'Balanz Pesos':  {'ars': 2002.24,    'usd': None},
+        'Balanz USD':    {'ars': None,        'usd': 18.34},
+        'Galicia Pesos': {'ars': 701988.97,   'usd': None},
+        'Galicia USD':   {'ars': None,        'usd': 66.62},
+        'MercadoPago':   {'ars': 1495471.34,  'usd': None},
     },
     'instrumentos': {
         'Acciones': [
@@ -115,7 +114,7 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'AO28',  'descripcion': 'Bono Tesoro Nacional 6% 31/10/28',     'cantidad': 1124, 'precio': 1488.00, 'valor': 1672512},
             {'ticker': 'BPOD7', 'descripcion': 'Bopreal S.1-D Vto 31/10/27',           'cantidad': 632,  'precio': 1556.70, 'valor': 983834},
             {'ticker': 'GD30',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2030',     'cantidad': 21,   'precio': 882.90,  'valor': 18541},
-            {'ticker': 'GD35',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2035',     'cantidad': 1818, 'precio': 1265.00, 'valor': 2299770},
+            {'ticker': 'GD35',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2035',     'cantidad': 1865, 'precio': 1265.00, 'valor': 2359225},
         ],
         'CEDEARs': [
             {'ticker': 'AAPL', 'descripcion': 'Apple Inc.',                  'cantidad': 31,  'precio': 24700.00, 'valor': 765700},
@@ -135,9 +134,10 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'XLE',  'descripcion': 'Energy Select Sector SPDR',   'cantidad': 12,  'precio': 43080.00, 'valor': 516960},
         ],
         'Corporativos': [
-            {'ticker': 'DNC3O', 'descripcion': 'ON Edenor Cl.3 Vto 22/11/26',      'cantidad': 336,  'precio': 1564.00, 'valor': 525504},
-            {'ticker': 'LMS7O', 'descripcion': 'ON Aluar S.7 Vto 12/10/28',        'cantidad': 350,  'precio': 1227.60, 'valor': 429660},
-            {'ticker': 'YMCJO', 'descripcion': 'ON YPF REGS 1.5% Vto 30/09/2033', 'cantidad': 1134, 'precio': 1649.70, 'valor': 1870760},
+            {'ticker': 'DNC3O', 'descripcion': 'ON Edenor Cl.3 Vto 22/11/26',          'cantidad': 336,  'precio': 1564.00, 'valor': 525504},
+            {'ticker': 'LMS7O', 'descripcion': 'ON Aluar S.7 Vto 12/10/28',            'cantidad': 350,  'precio': 1227.60, 'valor': 429660},
+            {'ticker': 'VSCVO', 'descripcion': 'ON Vista Energy Cl.O Vto 06/2033 USD', 'cantidad': 1000, 'precio': 1718.89, 'valor': 1718890},
+            {'ticker': 'YMCJO', 'descripcion': 'ON YPF REGS 1.5% Vto 30/09/2033',     'cantidad': 2131, 'precio': 1649.84, 'valor': 3515349},
         ],
         'Fondos': [
             {'ticker': 'BRTA',     'descripcion': 'Renta Mixta Clase A (Balanz)',               'cantidad': 1227.43,    'precio': 740.64,  'valor': 909083,  'fuente': 'Balanz', 'moneda': 'ARS'},
