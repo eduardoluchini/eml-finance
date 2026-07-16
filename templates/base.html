@@ -15,6 +15,7 @@
       --accent:  #6366f1;
       --accent2: #34d399;
       --danger:  #ef4444;
+      --warning: #f59e0b;
       --mono:    'Courier New', monospace;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -40,21 +41,60 @@
       overflow-y: auto;
     }
     .sidebar-brand {
-      padding: 0 20px 24px;
+      padding: 0 20px 20px;
       border-bottom: 1px solid var(--border);
       margin-bottom: 16px;
     }
-    .sidebar-brand h1 {
+    .brand-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+    .brand-info h1 {
       font-size: 15px;
       font-weight: 700;
       letter-spacing: .04em;
       color: var(--accent);
     }
-    .sidebar-brand small {
+    .brand-info small {
       font-size: 10px;
       color: var(--muted);
       font-family: var(--mono);
       letter-spacing: .08em;
+    }
+    .brand-controls {
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      margin-top: 2px;
+    }
+    .icon-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: var(--muted);
+      font-size: 14px;
+      padding: 4px 5px;
+      border-radius: 5px;
+      transition: background .15s, color .15s;
+      line-height: 1;
+    }
+    .icon-btn:hover { background: var(--bg3); color: var(--text); }
+    .icon-btn.active { color: var(--accent); }
+    .notif-wrap { position: relative; }
+    .notif-badge {
+      position: absolute;
+      top: -3px; right: -4px;
+      background: var(--danger);
+      color: #fff;
+      font-size: 8px;
+      font-weight: 700;
+      border-radius: 99px;
+      padding: 1px 3px;
+      min-width: 13px;
+      text-align: center;
+      line-height: 13px;
+      pointer-events: none;
     }
     .nav-label {
       font-size: 10px;
@@ -211,6 +251,72 @@
     }
     .form-control:focus { outline: none; border-color: var(--accent); }
     .form-label { display: block; font-size: 11px; color: var(--muted); margin-bottom: 5px; }
+
+    /* ── Hide amounts ── */
+    .amt { transition: filter .18s; display: inline-block; }
+    body.hide-amounts .amt {
+      filter: blur(7px);
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* ── Notification panel ── */
+    .notif-overlay {
+      position: fixed; inset: 0; z-index: 199; display: none;
+    }
+    .notif-overlay.open { display: block; }
+    .notif-panel {
+      position: fixed;
+      top: 0; right: 0; bottom: 0;
+      width: 300px;
+      background: var(--bg2);
+      border-left: 1px solid var(--border);
+      z-index: 200;
+      transform: translateX(100%);
+      transition: transform .25s cubic-bezier(.4,0,.2,1);
+      display: flex;
+      flex-direction: column;
+      box-shadow: -8px 0 32px rgba(0,0,0,.4);
+    }
+    .notif-panel.open { transform: translateX(0); }
+    .notif-header {
+      padding: 18px 20px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .notif-header h3 { font-size: 14px; font-weight: 600; }
+    .notif-close {
+      background: none; border: none; color: var(--muted);
+      cursor: pointer; font-size: 20px; padding: 0 2px; line-height: 1;
+    }
+    .notif-close:hover { color: var(--text); }
+    .notif-list { flex: 1; overflow-y: auto; padding: 12px; }
+    .notif-item {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+      margin-bottom: 8px;
+      border-left-width: 3px;
+    }
+    .notif-item.danger  { border-left-color: var(--danger); }
+    .notif-item.warning { border-left-color: var(--warning); }
+    .notif-item.info    { border-left-color: var(--accent); }
+    .notif-item.neutral { border-left-color: var(--muted); }
+    .notif-icono { font-size: 15px; margin-bottom: 5px; }
+    .notif-titulo { font-size: 12px; font-weight: 600; margin-bottom: 3px; }
+    .notif-cuerpo { font-size: 11px; color: var(--muted); line-height: 1.5; }
+    .notif-footer {
+      padding: 12px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 10px;
+      color: var(--muted);
+      font-family: var(--mono);
+      flex-shrink: 0;
+    }
   </style>
   {% block head %}{% endblock %}
 </head>
@@ -218,8 +324,21 @@
 
 <nav class="sidebar">
   <div class="sidebar-brand">
-    <h1>EML Finance</h1>
-    <small>Cartera personal</small>
+    <div class="brand-top">
+      <div class="brand-info">
+        <h1>EML Finance</h1>
+        <small>Cartera personal</small>
+      </div>
+      <div class="brand-controls">
+        <button class="icon-btn" id="eyeBtn" title="Ocultar importes" onclick="toggleAmounts()">👁️</button>
+        <div class="notif-wrap">
+          <button class="icon-btn" id="notifBtn" title="Notificaciones" onclick="toggleNotif()">🔔</button>
+          {% if notif_count > 0 %}
+          <span class="notif-badge">{{ notif_count }}</span>
+          {% endif %}
+        </div>
+      </div>
+    </div>
   </div>
 
   <div class="nav-label">Principal</div>
@@ -275,5 +394,70 @@
   {% block content %}{% endblock %}
 </main>
 
+<!-- Notification overlay -->
+<div class="notif-overlay" id="notifOverlay" onclick="closeNotif()"></div>
+
+<!-- Notification panel -->
+<div class="notif-panel" id="notifPanel">
+  <div class="notif-header">
+    <h3>🔔 Notificaciones</h3>
+    <button class="notif-close" onclick="closeNotif()">×</button>
+  </div>
+  <div class="notif-list">
+    {% if notificaciones %}
+      {% for n in notificaciones %}
+      <div class="notif-item {{ n.nivel }}">
+        <div class="notif-icono">{{ n.icono }}</div>
+        <div class="notif-titulo">{{ n.titulo }}</div>
+        <div class="notif-cuerpo">{{ n.cuerpo }}</div>
+      </div>
+      {% endfor %}
+    {% else %}
+      <p style="color:var(--muted);font-size:13px;padding:8px;">Sin notificaciones.</p>
+    {% endif %}
+  </div>
+  <div class="notif-footer">Actualizado: {{ notificaciones[0].titulo[:8] if notificaciones else '—' }}</div>
+</div>
+
+<script>
+  // ── Eye / hide amounts ────────────────────────────────────────────────────
+  const HIDE_KEY = 'eml_hide_amounts';
+  const eyeBtn   = document.getElementById('eyeBtn');
+
+  function applyHide(hidden) {
+    document.body.classList.toggle('hide-amounts', hidden);
+    eyeBtn.textContent = hidden ? '🙈' : '👁️';
+    eyeBtn.classList.toggle('active', hidden);
+    localStorage.setItem(HIDE_KEY, hidden ? '1' : '0');
+  }
+
+  function toggleAmounts() {
+    applyHide(!document.body.classList.contains('hide-amounts'));
+  }
+
+  // Restore state on load
+  if (localStorage.getItem(HIDE_KEY) === '1') applyHide(true);
+
+  // ── Notification panel ────────────────────────────────────────────────────
+  const notifPanel   = document.getElementById('notifPanel');
+  const notifOverlay = document.getElementById('notifOverlay');
+
+  function toggleNotif() {
+    const open = notifPanel.classList.contains('open');
+    open ? closeNotif() : openNotif();
+  }
+  function openNotif() {
+    notifPanel.classList.add('open');
+    notifOverlay.classList.add('open');
+    document.getElementById('notifBtn').classList.add('active');
+  }
+  function closeNotif() {
+    notifPanel.classList.remove('open');
+    notifOverlay.classList.remove('open');
+    document.getElementById('notifBtn').classList.remove('active');
+  }
+</script>
+
+{% block scripts %}{% endblock %}
 </body>
 </html>

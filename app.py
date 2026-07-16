@@ -1,7 +1,7 @@
 import os, sqlite3, json, time
 from flask import Flask, render_template, request, redirect, url_for, session, flash
 from functools import wraps
-from datetime import datetime
+from datetime import datetime, date as _date
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import requests as req
 
@@ -241,6 +241,86 @@ def get_portfolio():
     except Exception:
         pass
     return PORTFOLIO_INICIAL
+
+# ── Notificaciones ───────────────────────────────────────────────────────────
+VENCIMIENTOS_CONOCIDOS = {
+    'S31L6': _date(2026, 7, 31),
+    'S29L6': _date(2026, 6, 29),
+    'DNC3O': _date(2026, 11, 22),
+}
+
+def get_notificaciones(portfolio):
+    hoy = _date.today()
+    notifs = []
+
+    for tipo, items in portfolio['instrumentos'].items():
+        for item in items:
+            t = item['ticker']
+            if t not in VENCIMIENTOS_CONOCIDOS:
+                continue
+            fecha_vto = VENCIMIENTOS_CONOCIDOS[t]
+            dias = (fecha_vto - hoy).days
+            if dias > 90 or dias < -15:
+                continue
+            if dias < 0:
+                nivel, icono = 'danger', '🔴'
+                msg = f'venció hace {-dias} día{"s" if -dias != 1 else ""}'
+            elif dias == 0:
+                nivel, icono = 'danger', '🔴'
+                msg = 'vence HOY'
+            elif dias <= 7:
+                nivel, icono = 'danger', '⚠️'
+                msg = f'vence en {dias} día{"s" if dias != 1 else ""}'
+            elif dias <= 30:
+                nivel, icono = 'warning', '⏰'
+                msg = f'vence en {dias} días ({fecha_vto.strftime("%d/%m")})'
+            else:
+                nivel, icono = 'info', '📋'
+                msg = f'vence el {fecha_vto.strftime("%d/%m/%Y")}'
+            notifs.append({
+                'nivel': nivel,
+                'icono': icono,
+                'titulo': f'{t} – {msg}',
+                'cuerpo': f'${item["valor"]:,.0f} ARS disponibles para reinvertir',
+            })
+
+    # Resumen estratégico
+    fimarfda_usd = 0
+    for item in portfolio['instrumentos'].get('Fondos', []):
+        if item['ticker'] == 'FIMARFDA':
+            fimarfda_usd = item.get('valor_usd', 0)
+    if fimarfda_usd:
+        notifs.append({
+            'nivel': 'info',
+            'icono': '🏠',
+            'titulo': 'Bucket anticipo depto',
+            'cuerpo': f'FIMARFDA: USD {fimarfda_usd:,.2f} — capital líquido en dólares',
+        })
+
+    gd35_u = next((i['cantidad'] for i in portfolio['instrumentos'].get('Bonos', []) if i['ticker'] == 'GD35'), 0)
+    if gd35_u:
+        notifs.append({
+            'nivel': 'neutral',
+            'icono': '📈',
+            'titulo': 'Bucket largo plazo',
+            'cuerpo': f'GD35: {int(gd35_u):,} nominales · ONs: TTCDO + VSCVO + YMCJO',
+        })
+
+    notifs.append({
+        'nivel': 'neutral',
+        'icono': '💱',
+        'titulo': f'TC MEP al {portfolio["fecha"]}',
+        'cuerpo': f'${portfolio["tc_mep"]:,.2f} ARS/USD',
+    })
+
+    return notifs
+
+@app.context_processor
+def inject_notificaciones():
+    p = get_portfolio()
+    notifs = get_notificaciones(p)
+    urgentes = sum(1 for n in notifs if n['nivel'] in ('danger', 'warning'))
+    return {'notificaciones': notifs, 'notif_count': urgentes}
 
 # ── Rutas ─────────────────────────────────────────────────────────────────────
 @app.route('/')

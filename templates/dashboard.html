@@ -2,13 +2,25 @@
 {% block title %}Dashboard – EML Finance{% endblock %}
 
 {% block content %}
-<h1 class="page-title">Cartera de Inversiones</h1>
+<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;">
+  <h1 class="page-title" style="margin-bottom:0;">Cartera de Inversiones</h1>
+  <button id="monedaBtn" class="btn btn-ghost btn-sm" onclick="toggleMoneda()">
+    <span id="monedaIcon">💵</span>
+    <span id="monedaLabel">Ver en USD</span>
+  </button>
+</div>
 
 <!-- Stat cards superiores -->
 <div class="stat-grid">
   <div class="stat-card" style="border-left: 3px solid var(--accent);">
-    <div class="label">Total ARS</div>
-    <div class="value">${{ '{:,.0f}'.format(portfolio.total_ars).replace(',', '.') }}</div>
+    <div class="label" id="labelTotal">Total ARS</div>
+    <div class="value">
+      <span class="amt"
+        data-ars="${{ '{:,.0f}'.format(portfolio.total_ars).replace(',', '.') }}"
+        data-usd="USD {{ '{:,.0f}'.format(portfolio.total_ars / portfolio.tc_mep).replace(',', '.') }}">
+        ${{ '{:,.0f}'.format(portfolio.total_ars).replace(',', '.') }}
+      </span>
+    </div>
     <div class="sub">Posición al {{ portfolio.fecha }}</div>
   </div>
   <div class="stat-card">
@@ -18,12 +30,24 @@
   </div>
   <div class="stat-card">
     <div class="label">Total USD (MEP)</div>
-    <div class="value">USD {{ '{:,.0f}'.format(portfolio.total_ars / portfolio.tc_mep).replace(',', '.') }}</div>
+    <div class="value">
+      <span class="amt"
+        data-ars="USD {{ '{:,.0f}'.format(portfolio.total_ars / portfolio.tc_mep).replace(',', '.') }}"
+        data-usd="USD {{ '{:,.0f}'.format(portfolio.total_ars / portfolio.tc_mep).replace(',', '.') }}">
+        USD {{ '{:,.0f}'.format(portfolio.total_ars / portfolio.tc_mep).replace(',', '.') }}
+      </span>
+    </div>
     <div class="sub">≈ {{ '{:,.1f}'.format(portfolio.total_ars / portfolio.tc_mep / 1000) }}k USD</div>
   </div>
   <div class="stat-card">
     <div class="label">Efectivo disponible</div>
-    <div class="value">${{ '{:,.0f}'.format(portfolio.monedas['Pesos']).replace(',', '.') }}</div>
+    <div class="value">
+      <span class="amt"
+        data-ars="${{ '{:,.0f}'.format(portfolio.monedas['Pesos']).replace(',', '.') }}"
+        data-usd="USD {{ '{:,.0f}'.format(portfolio.monedas['Pesos'] / portfolio.tc_mep + portfolio.monedas['Dólares'] + portfolio.monedas['USD Cable']).replace(',', '.') }}">
+        ${{ '{:,.0f}'.format(portfolio.monedas['Pesos']).replace(',', '.') }}
+      </span>
+    </div>
     <div class="sub">+ USD {{ '{:,.2f}'.format(portfolio.monedas['Dólares'] + portfolio.monedas['USD Cable']) }}</div>
   </div>
 </div>
@@ -46,7 +70,11 @@
             {{ tipo }}
           </a>
           <div style="text-align:right;">
-            <span style="font-size:13px;font-family:var(--mono);">${{ '{:,.0f}'.format(total).replace(',', '.') }}</span>
+            <span class="amt" style="font-size:13px;font-family:var(--mono);"
+              data-ars="${{ '{:,.0f}'.format(total).replace(',', '.') }}"
+              data-usd="USD {{ '{:,.0f}'.format(total / portfolio.tc_mep).replace(',', '.') }}">
+              ${{ '{:,.0f}'.format(total).replace(',', '.') }}
+            </span>
             <span style="font-size:11px;color:var(--muted);margin-left:8px;">{{ pct }}%</span>
           </div>
         </div>
@@ -106,10 +134,22 @@
     <div style="background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:14px 16px;">
       <div style="font-size:10px;font-family:var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:8px;">{{ cuenta }}</div>
       {% if saldo.ars %}
-      <div style="font-size:16px;font-weight:700;">${{ '{:,.0f}'.format(saldo.ars).replace(',','.') }}</div>
+      <div style="font-size:16px;font-weight:700;">
+        <span class="amt"
+          data-ars="${{ '{:,.0f}'.format(saldo.ars).replace(',','.') }}"
+          data-usd="USD {{ '{:,.0f}'.format(saldo.ars / tc).replace(',','.') }}">
+          ${{ '{:,.0f}'.format(saldo.ars).replace(',','.') }}
+        </span>
+      </div>
       <div style="font-size:11px;color:var(--muted);margin-top:3px;">≈ USD {{ '{:,.0f}'.format(saldo.ars / tc).replace(',','.') }}</div>
       {% else %}
-      <div style="font-size:16px;font-weight:700;color:var(--accent2);">USD {{ '{:,.2f}'.format(saldo.usd) }}</div>
+      <div style="font-size:16px;font-weight:700;color:var(--accent2);">
+        <span class="amt"
+          data-ars="USD {{ '{:,.2f}'.format(saldo.usd) }}"
+          data-usd="USD {{ '{:,.2f}'.format(saldo.usd) }}">
+          USD {{ '{:,.2f}'.format(saldo.usd) }}
+        </span>
+      </div>
       <div style="font-size:11px;color:var(--muted);margin-top:3px;">≈ ${{ '{:,.0f}'.format(saldo.usd * tc).replace(',','.') }}</div>
       {% endif %}
     </div>
@@ -122,7 +162,14 @@
     {% if saldo.usd %}{% set total_disp_usd.val = total_disp_usd.val + saldo.usd %}{% endif %}
   {% endfor %}
   <div style="margin-top:12px;padding-top:12px;border-top:1px solid var(--border);font-size:12px;color:var(--muted);">
-    Total disponible: <strong style="color:var(--text);">${{ '{:,.0f}'.format(total_disp_ars.val).replace(',','.') }}</strong> ARS
+    Total disponible:
+    <strong style="color:var(--text);">
+      <span class="amt"
+        data-ars="${{ '{:,.0f}'.format(total_disp_ars.val).replace(',','.') }}"
+        data-usd="USD {{ '{:,.0f}'.format(total_disp_ars.val / portfolio.tc_mep + total_disp_usd.val).replace(',','.') }}">
+        ${{ '{:,.0f}'.format(total_disp_ars.val).replace(',','.') }}
+      </span>
+    </strong> ARS
     + <strong style="color:var(--accent2);">USD {{ '{:,.2f}'.format(total_disp_usd.val) }}</strong>
     <span style="color:var(--muted);"> · ≈ USD {{ '{:,.0f}'.format(total_disp_ars.val / portfolio.tc_mep + total_disp_usd.val).replace(',','.') }} total</span>
   </div>
@@ -137,7 +184,7 @@
       <thead>
         <tr>
           <th>Categoría</th>
-          <th class="text-right">Valor ARS</th>
+          <th class="text-right" id="thValor">Valor ARS</th>
           <th class="text-right">% cartera</th>
           <th class="text-right">Instrumentos</th>
           <th></th>
@@ -150,7 +197,13 @@
             <span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:{{ colores[tipo] }};margin-right:8px;"></span>
             <strong>{{ tipo }}</strong>
           </td>
-          <td class="text-right mono">${{ '{:,.0f}'.format(total).replace(',', '.') }}</td>
+          <td class="text-right mono">
+            <span class="amt"
+              data-ars="${{ '{:,.0f}'.format(total).replace(',', '.') }}"
+              data-usd="USD {{ '{:,.0f}'.format(total / portfolio.tc_mep).replace(',', '.') }}">
+              ${{ '{:,.0f}'.format(total).replace(',', '.') }}
+            </span>
+          </td>
           <td class="text-right">
             <span style="color:{{ colores[tipo] }};font-weight:600;">{{ pcts[tipo] }}%</span>
           </td>
@@ -166,7 +219,11 @@
         <tr style="border-top:2px solid var(--border);">
           <td style="font-weight:700;padding-top:12px;">TOTAL</td>
           <td class="text-right mono" style="font-weight:700;padding-top:12px;">
-            ${{ '{:,.0f}'.format(portfolio.total_ars).replace(',', '.') }}
+            <span class="amt"
+              data-ars="${{ '{:,.0f}'.format(portfolio.total_ars).replace(',', '.') }}"
+              data-usd="USD {{ '{:,.0f}'.format(portfolio.total_ars / portfolio.tc_mep).replace(',', '.') }}">
+              ${{ '{:,.0f}'.format(portfolio.total_ars).replace(',', '.') }}
+            </span>
           </td>
           <td class="text-right" style="padding-top:12px;font-weight:700;">100%</td>
           <td></td><td></td>
@@ -176,4 +233,34 @@
   </div>
 </div>
 
+{% endblock %}
+
+{% block scripts %}
+<script>
+  // ── ARS / USD toggle ───────────────────────────────────────────────────────
+  let monedaMode = localStorage.getItem('eml_moneda') || 'ars';
+
+  function applyMoneda(mode) {
+    monedaMode = mode;
+    localStorage.setItem('eml_moneda', mode);
+    const isUsd = mode === 'usd';
+    document.querySelectorAll('.amt[data-ars][data-usd]').forEach(el => {
+      el.textContent = isUsd ? el.dataset.usd : el.dataset.ars;
+    });
+    document.getElementById('monedaLabel').textContent = isUsd ? 'Ver en ARS' : 'Ver en USD';
+    document.getElementById('monedaIcon').textContent  = isUsd ? '🇦🇷' : '💵';
+    document.getElementById('labelTotal').textContent  = isUsd ? 'Total USD' : 'Total ARS';
+    const thValor = document.getElementById('thValor');
+    if (thValor) thValor.textContent = isUsd ? 'Valor USD' : 'Valor ARS';
+    document.getElementById('monedaBtn').style.borderColor = isUsd ? 'var(--accent2)' : '';
+    document.getElementById('monedaBtn').style.color       = isUsd ? 'var(--accent2)' : '';
+  }
+
+  function toggleMoneda() {
+    applyMoneda(monedaMode === 'ars' ? 'usd' : 'ars');
+  }
+
+  // Restore state on load
+  applyMoneda(monedaMode);
+</script>
 {% endblock %}
