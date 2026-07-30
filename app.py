@@ -79,18 +79,18 @@ def login_required(f):
 
 # ── Datos cartera (posición 03/07/2026) ──────────────────────────────────────
 PORTFOLIO_INICIAL = {
-    'fecha': '23/07/2026',
-    'total_ars': 57949509,
+    'fecha': '30/07/2026',
+    'total_ars': 63232000,
     'tc_mep': 1517.87,
     'tc_usd': 1583.98,
     'monedas': {
         'Pesos': 551.73,
-        'Dólares': 150.83,
+        'Dólares': 21.48,
         'USD Cable': 2.42,
     },
     'disponibilidad': {
         'Balanz Pesos':  {'ars': 551.73,       'usd': None},
-        'Balanz USD':    {'ars': None,          'usd': 150.83},
+        'Balanz USD':    {'ars': None,          'usd': 21.48},
         'Balanz Cable':  {'ars': None,          'usd': 2.42},
         'Galicia Pesos': {'ars': 701988.97,     'usd': None},
         'Galicia USD':   {'ars': None,          'usd': 66.62},
@@ -111,11 +111,11 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'AL30',  'descripcion': 'Bono Rep. Argentina USD Step Up 2030', 'cantidad': 1375, 'precio': 862.10,  'valor': 1185388},
             {'ticker': 'AL35',  'descripcion': 'Bono Rep. Argentina USD Step Up 2035', 'cantidad': 724,  'precio': 1221.80, 'valor': 884583},
             {'ticker': 'AL41',  'descripcion': 'Bono Rep. Argentina USD Step Up 2041', 'cantidad': 1137, 'precio': 1152.80, 'valor': 1310734},
-            {'ticker': 'AO27',  'descripcion': 'Bono Tesoro Nacional 6% 29/10/27',     'cantidad': 1062, 'precio': 1567.10, 'valor': 1664260},
+            {'ticker': 'AO27',  'descripcion': 'Bono Tesoro Nacional 6% 29/10/27',     'cantidad': 2514, 'precio': 1567.10, 'valor': 3939709},
             {'ticker': 'AO28',  'descripcion': 'Bono Tesoro Nacional 6% 31/10/28',     'cantidad': 1124, 'precio': 1492.00, 'valor': 1677008},
             {'ticker': 'BPOD7', 'descripcion': 'Bopreal S.1-D Vto 31/10/27',           'cantidad': 632,  'precio': 1566.60, 'valor': 990091},
             {'ticker': 'GD30',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2030',     'cantidad': 21,   'precio': 884.00,  'valor': 18564},
-            {'ticker': 'GD35',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2035',     'cantidad': 3693, 'precio': 1251.10, 'valor': 4620312},
+            {'ticker': 'GD35',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2035',     'cantidad': 6108, 'precio': 1244.00, 'valor': 7598352},
         ],
         'CEDEARs': [
             {'ticker': 'AAPL', 'descripcion': 'Apple Inc.',                  'cantidad': 31,  'precio': 25480.00, 'valor': 789880},
