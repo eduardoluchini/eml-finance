@@ -79,17 +79,17 @@ def login_required(f):
 
 # ── Datos cartera (posición 03/07/2026) ──────────────────────────────────────
 PORTFOLIO_INICIAL = {
-    'fecha': '30/07/2026',
-    'total_ars': 63232000,
+    'fecha': '31/07/2026',
+    'total_ars': 63193000,
     'tc_mep': 1517.87,
     'tc_usd': 1583.98,
     'monedas': {
-        'Pesos': 551.73,
+        'Pesos': 31721.73,
         'Dólares': 21.48,
         'USD Cable': 2.42,
     },
     'disponibilidad': {
-        'Balanz Pesos':  {'ars': 551.73,       'usd': None},
+        'Balanz Pesos':  {'ars': 31721.73,     'usd': None},
         'Balanz USD':    {'ars': None,          'usd': 21.48},
         'Balanz Cable':  {'ars': None,          'usd': 2.42},
         'Galicia Pesos': {'ars': 701988.97,     'usd': None},
@@ -111,7 +111,7 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'AL30',  'descripcion': 'Bono Rep. Argentina USD Step Up 2030', 'cantidad': 1375, 'precio': 862.10,  'valor': 1185388},
             {'ticker': 'AL35',  'descripcion': 'Bono Rep. Argentina USD Step Up 2035', 'cantidad': 724,  'precio': 1221.80, 'valor': 884583},
             {'ticker': 'AL41',  'descripcion': 'Bono Rep. Argentina USD Step Up 2041', 'cantidad': 1137, 'precio': 1152.80, 'valor': 1310734},
-            {'ticker': 'AO27',  'descripcion': 'Bono Tesoro Nacional 6% 29/10/27',     'cantidad': 2514, 'precio': 1567.10, 'valor': 3939709},
+            {'ticker': 'AO27',  'descripcion': 'Bono Tesoro Nacional 6% 29/10/27',     'cantidad': 2868, 'precio': 1551.30, 'valor': 4447127},
             {'ticker': 'AO28',  'descripcion': 'Bono Tesoro Nacional 6% 31/10/28',     'cantidad': 1124, 'precio': 1492.00, 'valor': 1677008},
             {'ticker': 'BPOD7', 'descripcion': 'Bopreal S.1-D Vto 31/10/27',           'cantidad': 632,  'precio': 1566.60, 'valor': 990091},
             {'ticker': 'GD30',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2030',     'cantidad': 21,   'precio': 884.00,  'valor': 18564},
@@ -148,9 +148,7 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'FIMAPREM', 'descripcion': 'Fima Premium Clase A (Galicia)',             'cantidad': 85006.35,   'precio': 82.670567,   'valor': 7027523, 'fuente': 'Galicia','moneda': 'ARS'},
             {'ticker': 'FIMARFDA', 'descripcion': 'Fima Renta Fija Dolares Clase A (Galicia)', 'cantidad': 914.53,     'precio': 1702.91,     'valor': 1557155, 'fuente': 'Galicia','moneda': 'USD', 'precio_usd': 1.121462, 'valor_usd': 1025.61},
         ],
-        'Letras': [
-            {'ticker': 'S31L6', 'descripcion': 'Letra Tesoro Nac. Capitalizable 31/07/26', 'cantidad': 495162, 'precio': 1.17, 'valor': 580330},
-        ],
+        'Letras': [],
     }
 }
 
