@@ -79,8 +79,8 @@ def login_required(f):
 
 # ── Datos cartera (posición 03/07/2026) ──────────────────────────────────────
 PORTFOLIO_INICIAL = {
-    'fecha': '31/07/2026',
-    'total_ars': 63193000,
+    'fecha': '10/08/2026',
+    'total_ars': 66460000,
     'tc_mep': 1517.87,
     'tc_usd': 1583.98,
     'monedas': {
@@ -101,7 +101,7 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'BBAR',  'descripcion': 'Banco Frances Escriturales',    'cantidad': 58,  'precio': 10050.00, 'valor': 582900},
             {'ticker': 'BMA',   'descripcion': 'Banco Macro S.A.',              'cantidad': 45,  'precio': 14550.00, 'valor': 654750},
             {'ticker': 'GGAL',  'descripcion': 'Grupo Financiero Galicia',      'cantidad': 360, 'precio': 7945.00,  'valor': 2860200},
-            {'ticker': 'PAMP',  'descripcion': 'Pampa Energia',                 'cantidad': 171, 'precio': 5630.00,  'valor': 962730},
+            {'ticker': 'PAMP',  'descripcion': 'Pampa Energia',                 'cantidad': 471, 'precio': 5205.00,  'valor': 2451555},
             {'ticker': 'TGSU2', 'descripcion': 'Transportadora de Gas del Sur', 'cantidad': 83,  'precio': 9995.00,  'valor': 829585},
             {'ticker': 'YPFD',  'descripcion': 'YPF S.A.',                     'cantidad': 9,   'precio': 82475.00, 'valor': 742275},
         ],
@@ -138,7 +138,7 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'DNC3O', 'descripcion': 'ON Edenor Cl.3 Vto 22/11/26',           'cantidad': 336,  'precio': 1567.00, 'valor': 526512},
             {'ticker': 'LMS7O', 'descripcion': 'ON Aluar S.7 Vto 12/10/28',             'cantidad': 350,  'precio': 1184.80, 'valor': 414680},
             {'ticker': 'TTCDO', 'descripcion': 'ON Tecpetrol 7.625% Vto 11/2030 USD',   'cantidad': 1000, 'precio': 1665.40, 'valor': 1665400},
-            {'ticker': 'VSCVO', 'descripcion': 'ON Vista Energy 8.5% Vto 06/2033 USD',  'cantidad': 1000, 'precio': 1705.50, 'valor': 1705500},
+            {'ticker': 'VSCVO', 'descripcion': 'ON Vista Energy 8.5% Vto 06/2033 USD',  'cantidad': 2000, 'precio': 1705.60, 'valor': 3411200},
             {'ticker': 'YMCJO', 'descripcion': 'ON YPF REGS 1.5% Vto 30/09/2033',      'cantidad': 2131, 'precio': 1654.00, 'valor': 3524674},
         ],
         'Fondos': [
