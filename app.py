@@ -80,17 +80,17 @@ def login_required(f):
 # ── Datos cartera (posición 03/07/2026) ──────────────────────────────────────
 PORTFOLIO_INICIAL = {
     'fecha': '10/08/2026',
-    'total_ars': 66460000,
+    'total_ars': 68930000,
     'tc_mep': 1517.87,
     'tc_usd': 1583.98,
     'monedas': {
-        'Pesos': 31721.73,
-        'Dólares': 21.48,
+        'Pesos': 245000.00,
+        'Dólares': 229.00,
         'USD Cable': 2.42,
     },
     'disponibilidad': {
-        'Balanz Pesos':  {'ars': 31721.73,     'usd': None},
-        'Balanz USD':    {'ars': None,          'usd': 21.48},
+        'Balanz Pesos':  {'ars': 245000.00,    'usd': None},
+        'Balanz USD':    {'ars': None,          'usd': 229.00},
         'Balanz Cable':  {'ars': None,          'usd': 2.42},
         'Galicia Pesos': {'ars': 701988.97,     'usd': None},
         'Galicia USD':   {'ars': None,          'usd': 66.62},
@@ -103,7 +103,7 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'GGAL',  'descripcion': 'Grupo Financiero Galicia',      'cantidad': 360, 'precio': 7945.00,  'valor': 2860200},
             {'ticker': 'PAMP',  'descripcion': 'Pampa Energia',                 'cantidad': 471, 'precio': 5205.00,  'valor': 2451555},
             {'ticker': 'TGSU2', 'descripcion': 'Transportadora de Gas del Sur', 'cantidad': 83,  'precio': 9995.00,  'valor': 829585},
-            {'ticker': 'YPFD',  'descripcion': 'YPF S.A.',                     'cantidad': 9,   'precio': 82475.00, 'valor': 742275},
+            {'ticker': 'YPFD',  'descripcion': 'YPF S.A.',                     'cantidad': 90,  'precio': 8247.00,  'valor': 742230},
         ],
         'Bonos': [
             {'ticker': 'AE38',  'descripcion': 'Bono Rep. Argentina USD Step Up 2038', 'cantidad': 137,  'precio': 1262.60, 'valor': 172976},
@@ -115,7 +115,7 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'AO28',  'descripcion': 'Bono Tesoro Nacional 6% 31/10/28',     'cantidad': 1124, 'precio': 1492.00, 'valor': 1677008},
             {'ticker': 'BPOD7', 'descripcion': 'Bopreal S.1-D Vto 31/10/27',           'cantidad': 632,  'precio': 1566.60, 'valor': 990091},
             {'ticker': 'GD30',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2030',     'cantidad': 21,   'precio': 884.00,  'valor': 18564},
-            {'ticker': 'GD35',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2035',     'cantidad': 6108, 'precio': 1244.00, 'valor': 7598352},
+            {'ticker': 'GD35',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2035',     'cantidad': 8154, 'precio': 1234.70, 'valor': 10068554},
         ],
         'CEDEARs': [
             {'ticker': 'AAPL', 'descripcion': 'Apple Inc.',                  'cantidad': 31,  'precio': 25480.00, 'valor': 789880},
@@ -145,8 +145,8 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'BRTA',     'descripcion': 'Renta Mixta Clase A (Balanz)',               'cantidad': 1227.43,    'precio': 748.10,      'valor': 918234,  'fuente': 'Balanz', 'moneda': 'ARS'},
             {'ticker': 'LECAPSA',  'descripcion': 'Lecaps Clase A (Balanz)',                    'cantidad': 2387292.45, 'precio': 2.06,        'valor': 4927539, 'fuente': 'Balanz', 'moneda': 'ARS'},
             {'ticker': 'BAHUSDA',  'descripcion': 'Corporativo Clase A (Balanz)',               'cantidad': 4445.58,    'precio': 1.43,        'valor': 6364,    'fuente': 'Balanz', 'moneda': 'ARS'},
-            {'ticker': 'FIMAPREM', 'descripcion': 'Fima Premium Clase A (Galicia)',             'cantidad': 85006.35,   'precio': 82.670567,   'valor': 7027523, 'fuente': 'Galicia','moneda': 'ARS'},
-            {'ticker': 'FIMARFDA', 'descripcion': 'Fima Renta Fija Dolares Clase A (Galicia)', 'cantidad': 914.53,     'precio': 1702.91,     'valor': 1557155, 'fuente': 'Galicia','moneda': 'USD', 'precio_usd': 1.121462, 'valor_usd': 1025.61},
+            {'ticker': 'FIMAPREM', 'descripcion': 'Fima Premium Clase A (Galicia)',             'cantidad': 57447.00,   'precio': 82.67,       'valor': 4749040, 'fuente': 'Galicia','moneda': 'ARS'},
+            {'ticker': 'FIMARFDA', 'descripcion': 'Fima Renta Fija Dolares Clase A (Galicia)', 'cantidad': 914.53,     'precio': 1699.47,     'valor': 1554466, 'fuente': 'Galicia','moneda': 'USD', 'precio_usd': 1.11970, 'valor_usd': 1024.04},
         ],
         'Letras': [],
     }
