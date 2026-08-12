@@ -140,10 +140,6 @@ def login_required(f):
 # ── Datos cartera (posición 03/07/2026) ──────────────────────────────────────
 PORTFOLIO_INICIAL = {
     'fecha': '12/08/2026',
-    # OJO: total_ars quedó recalculado con los instrumentos nuevos, pero el efectivo
-    # (monedas/disponibilidad más abajo) NO se actualizó — no tenemos confirmado en
-    # qué cuenta entró el nuevo pago de $5.880.000 ni cuánto quedó disponible después
-    # de comprar. Corregir disponibilidad cuando Eduardo confirme los saldos reales.
     'total_ars': 75320305,
     'tc_mep': 1517.87,
     'tc_usd': 1583.98,
@@ -158,7 +154,7 @@ PORTFOLIO_INICIAL = {
         'Balanz Cable':  {'ars': None,          'usd': 2.42},
         'Galicia Pesos': {'ars': 701988.97,     'usd': None},
         'Galicia USD':   {'ars': None,          'usd': 66.62},
-        'MercadoPago':   {'ars': 1495471.34,    'usd': None},
+        'MercadoPago':   {'ars': 1001968.00,    'usd': None},
     },
     'instrumentos': {
         'Acciones': [
@@ -209,10 +205,9 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'BRTA',     'descripcion': 'Renta Mixta Clase A (Balanz)',               'cantidad': 1227.43,    'precio': 748.10,      'valor': 918234,  'fuente': 'Balanz', 'moneda': 'ARS'},
             {'ticker': 'LECAPSA',  'descripcion': 'Lecaps Clase A (Balanz)',                    'cantidad': 2387292.45, 'precio': 2.06,        'valor': 4927539, 'fuente': 'Balanz', 'moneda': 'ARS'},
             {'ticker': 'BAHUSDA',  'descripcion': 'Corporativo Clase A (Balanz)',               'cantidad': 4445.58,    'precio': 1.43,        'valor': 6364,    'fuente': 'Balanz', 'moneda': 'ARS'},
-            {'ticker': 'FIMAPREM', 'descripcion': 'Fima Premium Clase A (Galicia)',             'cantidad': 57447.00,   'precio': 82.67,       'valor': 4749040, 'fuente': 'Galicia','moneda': 'ARS'},
-            {'ticker': 'FIMARFDA', 'descripcion': 'Fima Renta Fija Dolares Clase A (Galicia)', 'cantidad': 914.53,     'precio': 1699.47,     'valor': 1554466, 'fuente': 'Galicia','moneda': 'USD', 'precio_usd': 1.11970, 'valor_usd': 1024.04},
-            # Cantidad/precio son un placeholder (1 cuota = $1.000.000) hasta que tengamos
-            # la cantidad real de cuotas y el valor cuota de Galicia para esta suscripción.
+            {'ticker': 'FIMAPREM', 'descripcion': 'Fima Premium Clase A (Galicia)',             'cantidad': 49663.34,   'precio': 83.419929,   'valor': 4142912, 'fuente': 'Galicia','moneda': 'ARS'},
+            {'ticker': 'FIMARFDA', 'descripcion': 'Fima Renta Fija Dolares Clase A (Galicia)', 'cantidad': 914.53,     'precio': 1699.47,     'valor': 1554466, 'fuente': 'Galicia','moneda': 'USD', 'precio_usd': 1.123117, 'valor_usd': 1027.12},
+            # Cuotapartes pendientes de acreditación (suscripción 12/08/2026 — liquidación pendiente)
             {'ticker': 'FIMARPLUS','descripcion': 'Fima Renta Plus (Galicia)',                  'cantidad': 1,          'precio': 1000000.00,  'valor': 1000000, 'fuente': 'Galicia','moneda': 'ARS'},
         ],
         'Letras': [],
