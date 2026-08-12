@@ -543,9 +543,12 @@ def rendimientos():
                     'cantidad': cantidad_actual,
                     'invertido_ars': None, 'rentas_cobradas_ars': None,
                     'valor_actual_ars': valor_actual_ars,
+                    'invertido_usd': None, 'rentas_cobradas_usd': None,
+                    'valor_actual_usd': valor_actual_usd,
                     'tir_ars': None, 'tir_usd': None,
                     'precio_es_live': precio_es_live,
                     'sin_historial': True,
+                    'ops': [],
                 })
                 continue
 
@@ -555,6 +558,20 @@ def rendimientos():
             r['cantidad'] = cantidad_actual
             r['precio_es_live'] = precio_es_live
             r['sin_historial'] = False
+            r['ops'] = [
+                {
+                    'fecha':    op['fecha'],
+                    'tipo_mov': op['tipo_mov'],
+                    'cantidad': op.get('cantidad'),
+                    'precio':   op.get('precio'),
+                    'gastos':   op.get('gastos'),
+                    'moneda':   op.get('moneda'),
+                    'mep':      op.get('mep'),
+                    'monto_ars':op.get('monto_ars'),
+                    'abierto':  bool(op.get('abierto')),
+                }
+                for op in ops_ticker
+            ]
             filas.append(r)
 
     # Agregados por tipo y por bucket (solo con lo que tiene TIR calculable)

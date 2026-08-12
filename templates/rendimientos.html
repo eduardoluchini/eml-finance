@@ -2,26 +2,30 @@
 {% block title %}Rendimientos – EML Finance{% endblock %}
 
 {% block content %}
-<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px;">
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:10px;">
   <h1 class="page-title" style="margin-bottom:0;">Comparador de rendimientos</h1>
-  <span style="font-size:11px;color:var(--muted);font-family:var(--mono);">
-    TIR anualizada (XIRR) · basada en historial real de compras/ventas/cupones/dividendos de Balanz
-  </span>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <button id="monedaBtn" class="btn btn-ghost btn-sm" onclick="toggleMoneda()" style="font-size:12px;">
+      <span id="monedaIcon">💵</span>
+      <span id="monedaLabel">Ver en USD</span>
+    </button>
+    <span style="font-size:11px;color:var(--muted);font-family:var(--mono);">TIR anualizada (XIRR)</span>
+  </div>
 </div>
 
 <div style="margin-bottom:20px;font-size:12px;color:var(--muted);line-height:1.5;max-width:760px;">
-  La TIR anualizada te permite comparar instrumentos comprados en momentos distintos de forma justa
-  (a diferencia del % simple de <a href="{{ url_for('cotizaciones') }}" style="color:var(--accent);">Cotizaciones</a>,
-  que no tiene en cuenta el tiempo). Se calcula en pesos y en dólares (convirtiendo cada flujo al dólar MEP del día en que ocurrió),
-  incluyendo compras, ventas, cupones y dividendos cobrados según tu historial de Balanz.
-  <strong>Verde en TIR USD</strong> = le ganaste a la estrategia de solo comprar dólares y no hacer nada.
+  La TIR anualizada compara instrumentos comprados en fechas distintas de forma justa —
+  incluye compras, ventas, cupones y dividendos de tu historial de Balanz, convertidos al dólar MEP del día de cada flujo.
+  <strong>TIR USD positiva</strong> = le ganaste a la estrategia de solo comprar dólares y no hacer nada.
+  Hacé clic en <strong>cualquier fila</strong> para ver el historial de operaciones.
 </div>
 
+<!-- Cards resumen -->
 <div class="stat-grid" style="margin-bottom:28px;">
   <div class="stat-card">
-    <div class="label">Instrumentos con TIR calculada</div>
+    <div class="label">Con TIR calculada</div>
     <div class="value">{{ con_tir }}/{{ total_filas }}</div>
-    <div class="sub">El resto (típicamente Fondos de Galicia) todavía no tiene historial de lotes cargado</div>
+    <div class="sub">Fondos de Galicia sin historial de lotes aún</div>
   </div>
 </div>
 
@@ -36,7 +40,14 @@
     <div style="font-size:20px;font-weight:700;color:{% if g.tir_usd_prom and g.tir_usd_prom >= 0 %}var(--accent2){% else %}#f87171{% endif %};">
       {% if g.tir_usd_prom is not none %}{% if g.tir_usd_prom >= 0 %}+{% endif %}{{ '{:.1f}'.format(g.tir_usd_prom * 100) }}%{% else %}–{% endif %}
     </div>
-    <div style="font-size:10px;color:var(--muted);margin-top:4px;">TIR USD promedio · ${{ '{:,.0f}'.format(g.valor_actual_ars).replace(',','.') }} ARS actuales</div>
+    <div style="font-size:10px;color:var(--muted);margin-top:4px;">
+      TIR USD promedio ·
+      <span class="m-amt"
+        data-ars="${{ '{:,.0f}'.format(g.valor_actual_ars).replace(',','.') }}"
+        data-usd="USD {{ '{:,.0f}'.format(g.valor_actual_ars / portfolio.tc_mep).replace(',','.') }}">
+        ${{ '{:,.0f}'.format(g.valor_actual_ars).replace(',','.') }}
+      </span>
+    </div>
   </div>
   {% endfor %}
 </div>
@@ -57,29 +68,46 @@
   {% endfor %}
 </div>
 
-<!-- Tabla por instrumento -->
+<!-- Tabla detalle -->
 <h2 style="font-size:11px;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">
-  Detalle por instrumento · ordenado de peor a mejor TIR en USD
+  Detalle por instrumento
+  <span style="font-weight:400;text-transform:none;letter-spacing:0;margin-left:8px;">
+    — clic en columna para ordenar · clic en fila para ver historial
+  </span>
 </h2>
 <div class="card">
   <div class="table-wrap">
     <table id="tabla-rend">
       <thead>
         <tr>
-          <th>Tipo</th>
-          <th>Bucket</th>
-          <th>Ticker</th>
-          <th>Descripción</th>
-          <th class="text-right">Invertido ARS</th>
-          <th class="text-right">Rentas cobradas ARS</th>
-          <th class="text-right">Valor actual ARS</th>
-          <th class="text-right">TIR ARS</th>
-          <th class="text-right">TIR USD</th>
+          <th data-col="tipo"        class="th-sort">Tipo <span class="sort-ico"></span></th>
+          <th data-col="bucket"      class="th-sort">Bucket <span class="sort-ico"></span></th>
+          <th data-col="ticker"      class="th-sort">Ticker <span class="sort-ico"></span></th>
+          <th data-col="descripcion" class="th-sort">Descripción <span class="sort-ico"></span></th>
+          <th data-col="invertido"   class="th-sort text-right" id="th-invertido">Invertido ARS <span class="sort-ico"></span></th>
+          <th data-col="rentas"      class="th-sort text-right" id="th-rentas">Rentas ARS <span class="sort-ico"></span></th>
+          <th data-col="valor"       class="th-sort text-right" id="th-valor">Valor actual ARS <span class="sort-ico"></span></th>
+          <th data-col="tir_ars"     class="th-sort text-right">TIR ARS <span class="sort-ico"></span></th>
+          <th data-col="tir_usd"     class="th-sort text-right">TIR USD <span class="sort-ico"></span></th>
         </tr>
       </thead>
-      <tbody>
+      <tbody id="tbody-rend">
         {% for f in filas %}
-        <tr>
+        <tr class="fila-inst"
+            data-ticker="{{ f.ticker }}"
+            data-tipo="{{ f.tipo }}"
+            data-bucket="{{ f.bucket }}"
+            data-descripcion="{{ f.descripcion }}"
+            data-invertido-ars="{{ f.invertido_ars or 0 }}"
+            data-invertido-usd="{{ f.invertido_usd or 0 }}"
+            data-rentas-ars="{{ f.rentas_cobradas_ars or 0 }}"
+            data-rentas-usd="{{ f.rentas_cobradas_usd or 0 }}"
+            data-valor-ars="{{ f.valor_actual_ars or 0 }}"
+            data-valor-usd="{{ f.valor_actual_usd or 0 }}"
+            data-tir-ars="{{ f.tir_ars if f.tir_ars is not none else '' }}"
+            data-tir-usd="{{ f.tir_usd if f.tir_usd is not none else '' }}"
+            data-ops='{{ f.ops | tojson }}'
+            style="cursor:pointer;">
           <td>
             <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:{{ colores.get(f.tipo,'#64748b') }};margin-right:6px;"></span>
             <span style="font-size:11px;color:var(--muted);">{{ f.tipo }}</span>
@@ -87,17 +115,36 @@
           <td style="font-size:11px;color:var(--muted);">{{ f.bucket }}</td>
           <td>
             <span style="font-family:var(--mono);font-weight:700;font-size:13px;color:{{ colores.get(f.tipo,'#e2e8f0') }};">{{ f.ticker }}</span>
-            {% if not f.precio_es_live %}<span title="Precio estimado, sin cotización en vivo" style="font-size:9px;color:var(--muted);margin-left:4px;">~</span>{% endif %}
+            {% if not f.precio_es_live %}<span title="Precio estimado" style="font-size:9px;color:var(--muted);margin-left:3px;">~</span>{% endif %}
+            <span class="expand-ico" style="font-size:10px;color:var(--muted);margin-left:5px;">▶</span>
           </td>
-          <td style="font-size:11px;color:var(--muted);max-width:220px;">{{ f.descripcion }}</td>
-          <td class="text-right mono" style="font-size:12px;color:var(--muted);">
-            {% if f.invertido_ars %}${{ '{:,.0f}'.format(f.invertido_ars).replace(',','.') }}{% else %}–{% endif %}
+          <td style="font-size:11px;color:var(--muted);max-width:200px;">{{ f.descripcion }}</td>
+          <td class="text-right mono td-invertido" style="font-size:12px;color:var(--muted);">
+            {% if f.invertido_ars %}
+              <span class="m-amt"
+                data-ars="${{ '{:,.0f}'.format(f.invertido_ars).replace(',','.') }}"
+                data-usd="USD {{ '{:,.0f}'.format(f.invertido_usd or f.invertido_ars / portfolio.tc_mep).replace(',','.') }}">
+                ${{ '{:,.0f}'.format(f.invertido_ars).replace(',','.') }}
+              </span>
+            {% else %}–{% endif %}
           </td>
-          <td class="text-right mono" style="font-size:12px;color:var(--muted);">
-            {% if f.rentas_cobradas_ars %}${{ '{:,.0f}'.format(f.rentas_cobradas_ars).replace(',','.') }}{% else %}–{% endif %}
+          <td class="text-right mono td-rentas" style="font-size:12px;color:var(--muted);">
+            {% if f.rentas_cobradas_ars %}
+              <span class="m-amt"
+                data-ars="${{ '{:,.0f}'.format(f.rentas_cobradas_ars).replace(',','.') }}"
+                data-usd="USD {{ '{:,.0f}'.format(f.rentas_cobradas_usd or f.rentas_cobradas_ars / portfolio.tc_mep).replace(',','.') }}">
+                ${{ '{:,.0f}'.format(f.rentas_cobradas_ars).replace(',','.') }}
+              </span>
+            {% else %}–{% endif %}
           </td>
-          <td class="text-right mono" style="font-size:12px;">
-            {% if f.valor_actual_ars %}${{ '{:,.0f}'.format(f.valor_actual_ars).replace(',','.') }}{% else %}–{% endif %}
+          <td class="text-right mono td-valor" style="font-size:12px;">
+            {% if f.valor_actual_ars %}
+              <span class="m-amt"
+                data-ars="${{ '{:,.0f}'.format(f.valor_actual_ars).replace(',','.') }}"
+                data-usd="USD {{ '{:,.0f}'.format(f.valor_actual_usd or f.valor_actual_ars / portfolio.tc_mep).replace(',','.') }}">
+                ${{ '{:,.0f}'.format(f.valor_actual_ars).replace(',','.') }}
+              </span>
+            {% else %}–{% endif %}
           </td>
           <td class="text-right" style="font-size:12px;">
             {% if f.tir_ars is not none %}
@@ -109,9 +156,76 @@
           <td class="text-right" style="font-size:12px;">
             {% if f.tir_usd is not none %}
               <span style="color:{% if f.tir_usd >= 0 %}var(--accent2){% else %}#f87171{% endif %};font-weight:700;">
-                {% if f.tir_usd >= 0 %}▲{% else %}▼{% endif %} {% if f.tir_usd >= 0 %}+{% endif %}{{ '{:.1f}'.format(f.tir_usd * 100) }}%
+                {% if f.tir_usd >= 0 %}▲{% else %}▼{% endif %}
+                {% if f.tir_usd >= 0 %}+{% endif %}{{ '{:.1f}'.format(f.tir_usd * 100) }}%
               </span>
             {% else %}<span style="color:var(--muted);">sin historial</span>{% endif %}
+          </td>
+        </tr>
+        <!-- fila de historial (oculta) -->
+        <tr class="fila-hist" id="hist-{{ f.ticker }}" style="display:none;">
+          <td colspan="9" style="padding:0;">
+            <div class="hist-inner" style="background:var(--bg3);border-top:1px solid var(--border);padding:16px 20px;">
+              {% if f.ops %}
+              <div style="font-size:11px;font-family:var(--mono);color:var(--muted);margin-bottom:10px;letter-spacing:.06em;">
+                HISTORIAL · {{ f.ticker }} · {{ f.ops|length }} movimientos
+              </div>
+              <div class="table-wrap" style="max-height:300px;overflow-y:auto;">
+                <table style="font-size:11px;">
+                  <thead>
+                    <tr>
+                      <th>Fecha</th>
+                      <th>Movimiento</th>
+                      <th class="text-right">Cantidad</th>
+                      <th class="text-right">Precio</th>
+                      <th class="text-right">Gastos</th>
+                      <th>Moneda</th>
+                      <th class="text-right">MEP del día</th>
+                      <th class="text-right">Monto ARS</th>
+                      <th>Estado</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for op in f.ops | sort(attribute='fecha') %}
+                    <tr style="opacity:{% if not op.abierto and op.tipo_mov == 'compra' %}0.55{% else %}1{% endif %};">
+                      <td style="font-family:var(--mono);white-space:nowrap;">{{ op.fecha }}</td>
+                      <td>
+                        <span style="display:inline-block;padding:2px 7px;border-radius:3px;font-size:10px;font-weight:600;
+                          background:{% if op.tipo_mov == 'compra' %}rgba(59,130,246,.15){% elif op.tipo_mov == 'venta' %}rgba(239,68,68,.15){% elif op.tipo_mov == 'cupon' %}rgba(16,185,129,.15){% else %}rgba(245,158,11,.15){% endif %};
+                          color:{% if op.tipo_mov == 'compra' %}#60a5fa{% elif op.tipo_mov == 'venta' %}#f87171{% elif op.tipo_mov == 'cupon' %}#34d399{% else %}#fbbf24{% endif %};">
+                          {{ op.tipo_mov | upper }}
+                        </span>
+                      </td>
+                      <td class="text-right mono">{% if op.cantidad %}{{ '{:,.0f}'.format(op.cantidad) }}{% else %}–{% endif %}</td>
+                      <td class="text-right mono">
+                        {% if op.precio %}
+                          {% if op.moneda == 'Dólares' %}USD {{ '{:.4f}'.format(op.precio) }}{% else %}${{ '{:,.2f}'.format(op.precio).replace(',','.') }}{% endif %}
+                        {% else %}–{% endif %}
+                      </td>
+                      <td class="text-right mono" style="color:var(--muted);">
+                        {% if op.gastos %}${{ '{:,.0f}'.format(op.gastos).replace(',','.') }}{% else %}–{% endif %}
+                      </td>
+                      <td style="color:var(--muted);">{{ op.moneda or '–' }}</td>
+                      <td class="text-right mono" style="color:var(--muted);">
+                        {% if op.mep %}${{ '{:,.2f}'.format(op.mep).replace(',','.') }}{% else %}–{% endif %}
+                      </td>
+                      <td class="text-right mono" style="color:var(--muted);">
+                        {% if op.monto_ars %}${{ '{:,.0f}'.format(op.monto_ars).replace(',','.') }}{% else %}–{% endif %}
+                      </td>
+                      <td style="font-size:10px;color:var(--muted);">
+                        {% if op.tipo_mov == 'compra' %}
+                          {% if op.abierto %}<span style="color:#34d399;">abierta</span>{% else %}<span>cerrada</span>{% endif %}
+                        {% endif %}
+                      </td>
+                    </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+              </div>
+              {% else %}
+              <span style="font-size:12px;color:var(--muted);">Sin historial de operaciones cargado para este ticker.</span>
+              {% endif %}
+            </div>
           </td>
         </tr>
         {% endfor %}
@@ -121,10 +235,129 @@
 </div>
 
 <div style="margin-top:12px;font-size:11px;color:var(--muted);line-height:1.6;">
-  * "~" junto al ticker = precio estimado (sin cotización en vivo, típico de Fondos). "Sin historial" = todavía no cargamos
-  las operaciones de compra reales de ese ticker (hoy son los Fondos de Galicia: FIMAPREM, FIMARFDA).<br>
-  Pendiente para una próxima vuelta: comparar cada TIR contra inflación (IPC) y contra índices de referencia
-  específicos por tipo — hoy podés comparar a ojo CEDEARs individuales contra SPY/QQQ en esta misma tabla.
+  * "~" = precio estimado (sin cotización en vivo — típico de Fondos).
+  "Sin historial" en TIR = operaciones no cargadas (hoy: Fondos de Galicia — FIMAPREM, FIMARFDA).<br>
+  Compras "cerradas" son posiciones que ya vendiste — aparecen atenuadas en el historial.
 </div>
 
+<style>
+  .th-sort { cursor:pointer; user-select:none; white-space:nowrap; }
+  .th-sort:hover { color: var(--accent); }
+  .sort-ico { font-size:10px; margin-left:3px; opacity:.5; }
+  .th-sort.asc  .sort-ico::after { content: '▲'; opacity:1; }
+  .th-sort.desc .sort-ico::after { content: '▼'; opacity:1; }
+  .fila-inst:hover td { background: var(--bg3); }
+  .fila-hist td { padding: 0 !important; }
+</style>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+// ── ARS / USD toggle ──────────────────────────────────────────────────────────
+let monedaMode = localStorage.getItem('eml_moneda_rend') || 'ars';
+
+function applyMoneda(mode) {
+  monedaMode = mode;
+  localStorage.setItem('eml_moneda_rend', mode);
+  const isUsd = mode === 'usd';
+
+  document.querySelectorAll('.m-amt').forEach(el => {
+    el.textContent = isUsd ? el.dataset.usd : el.dataset.ars;
+  });
+
+  const thInv  = document.getElementById('th-invertido');
+  const thRent = document.getElementById('th-rentas');
+  const thVal  = document.getElementById('th-valor');
+  if (thInv)  thInv.childNodes[0].textContent  = isUsd ? 'Invertido USD '  : 'Invertido ARS ';
+  if (thRent) thRent.childNodes[0].textContent = isUsd ? 'Rentas USD '     : 'Rentas ARS ';
+  if (thVal)  thVal.childNodes[0].textContent  = isUsd ? 'Valor actual USD ': 'Valor actual ARS ';
+
+  document.getElementById('monedaLabel').textContent = isUsd ? 'Ver en ARS' : 'Ver en USD';
+  document.getElementById('monedaIcon').textContent  = isUsd ? '🇦🇷' : '💵';
+  document.getElementById('monedaBtn').style.borderColor = isUsd ? 'var(--accent2)' : '';
+  document.getElementById('monedaBtn').style.color       = isUsd ? 'var(--accent2)' : '';
+}
+
+function toggleMoneda() { applyMoneda(monedaMode === 'ars' ? 'usd' : 'ars'); }
+applyMoneda(monedaMode);
+
+
+// ── Expandir historial al clicar fila ─────────────────────────────────────────
+document.querySelectorAll('.fila-inst').forEach(row => {
+  row.addEventListener('click', () => {
+    const ticker  = row.dataset.ticker;
+    const histRow = document.getElementById('hist-' + ticker);
+    const ico     = row.querySelector('.expand-ico');
+    if (!histRow) return;
+    const open = histRow.style.display !== 'none';
+    histRow.style.display = open ? 'none' : 'table-row';
+    if (ico) ico.textContent = open ? '▶' : '▼';
+  });
+});
+
+
+// ── Ordenamiento de columnas ──────────────────────────────────────────────────
+let sortCol = 'tir_usd', sortDir = 1;  // estado inicial = orden del servidor
+
+document.querySelectorAll('.th-sort').forEach(th => {
+  th.addEventListener('click', () => {
+    const col = th.dataset.col;
+    if (sortCol === col) {
+      sortDir = -sortDir;
+    } else {
+      sortCol = col;
+      sortDir = 1;
+    }
+    document.querySelectorAll('.th-sort').forEach(h => h.classList.remove('asc','desc'));
+    th.classList.add(sortDir === 1 ? 'asc' : 'desc');
+    sortTable();
+  });
+});
+
+function colVal(row, col) {
+  switch (col) {
+    case 'tipo':        return row.dataset.tipo;
+    case 'bucket':      return row.dataset.bucket;
+    case 'ticker':      return row.dataset.ticker;
+    case 'descripcion': return row.dataset.descripcion;
+    case 'invertido':   return monedaMode === 'usd'
+                          ? parseFloat(row.dataset.invertidoUsd  || 0)
+                          : parseFloat(row.dataset.invertidoArs  || 0);
+    case 'rentas':      return monedaMode === 'usd'
+                          ? parseFloat(row.dataset.rentasUsd     || 0)
+                          : parseFloat(row.dataset.rentasArs     || 0);
+    case 'valor':       return monedaMode === 'usd'
+                          ? parseFloat(row.dataset.valorUsd      || 0)
+                          : parseFloat(row.dataset.valorArs      || 0);
+    case 'tir_ars':     return row.dataset.tirArs !== '' ? parseFloat(row.dataset.tirArs) : -Infinity;
+    case 'tir_usd':     return row.dataset.tirUsd !== '' ? parseFloat(row.dataset.tirUsd) : -Infinity;
+    default:            return '';
+  }
+}
+
+function sortTable() {
+  const tbody = document.getElementById('tbody-rend');
+  // Recolectar pares [fila-inst, fila-hist]
+  const pares = [];
+  const rows  = Array.from(tbody.querySelectorAll('tr.fila-inst'));
+  rows.forEach(inst => {
+    const ticker  = inst.dataset.ticker;
+    const histRow = document.getElementById('hist-' + ticker);
+    pares.push([inst, histRow]);
+  });
+
+  pares.sort((a, b) => {
+    const va = colVal(a[0], sortCol);
+    const vb = colVal(b[0], sortCol);
+    if (typeof va === 'string') return sortDir * va.localeCompare(vb);
+    return sortDir * (va - vb);
+  });
+
+  pares.forEach(([inst, hist]) => {
+    tbody.appendChild(inst);
+    if (hist) tbody.appendChild(hist);
+  });
+}
+</script>
 {% endblock %}
