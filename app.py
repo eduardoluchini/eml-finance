@@ -5,6 +5,8 @@ from datetime import datetime, date as _date
 from concurrent.futures import ThreadPoolExecutor, as_completed
 import requests as req
 
+import finanzas
+
 app = Flask(__name__)
 app.secret_key = os.environ.get('SECRET_KEY', 'eml-finance-secret-2026')
 
@@ -61,12 +63,58 @@ def init_db():
                         'INSERT OR IGNORE INTO precios_iniciales VALUES (?,?,?,?)',
                         (item['ticker'], item['precio'], PORTFOLIO_INICIAL['fecha'], 'Precio PDF 03/07/2026')
                     )
+
+        conn.execute('''
+            CREATE TABLE IF NOT EXISTS operaciones (
+                id          INTEGER PRIMARY KEY AUTOINCREMENT,
+                ticker      TEXT NOT NULL,
+                fecha       TEXT NOT NULL,
+                tipo_mov    TEXT NOT NULL,   -- compra | venta | cupon | dividendo
+                cantidad    REAL,
+                precio      REAL,
+                gastos      REAL,
+                moneda      TEXT,
+                mep         REAL,            -- dólar MEP vigente en la fecha de este flujo
+                monto_ars   REAL,            -- solo para cupon/dividendo
+                abierto     INTEGER DEFAULT 0,
+                fuente      TEXT DEFAULT 'balanz_excel'
+            )
+        ''')
+        # Seed histórico de operaciones (Balanz) desde data/operaciones_balanz.json,
+        # una sola vez. Ver README / MEJORAS.md — sale del extracto "resultados por
+        # info completa" descargado en Balanz > Resultados.
+        count_ops = conn.execute('SELECT COUNT(*) FROM operaciones').fetchone()[0]
+        if count_ops == 0:
+            seed_path = os.path.join(os.path.dirname(__file__), 'data', 'operaciones_balanz.json')
+            if os.path.exists(seed_path):
+                with open(seed_path, encoding='utf-8') as fh:
+                    seed_ops = json.load(fh)
+                for op in seed_ops:
+                    conn.execute(
+                        'INSERT INTO operaciones (ticker, fecha, tipo_mov, cantidad, precio, gastos, moneda, mep, monto_ars, abierto) '
+                        'VALUES (?,?,?,?,?,?,?,?,?,?)',
+                        (
+                            op['ticker'], op['fecha'], op['tipo_mov'],
+                            op.get('cantidad'), op.get('precio'), op.get('gastos'),
+                            op.get('moneda'), op.get('mep'), op.get('monto_ars'),
+                            1 if op.get('abierto') else 0,
+                        )
+                    )
         conn.commit()
 
 def get_precios_iniciales():
     with get_db() as conn:
         rows = conn.execute('SELECT * FROM precios_iniciales').fetchall()
     return {r['ticker']: {'precio': r['precio'], 'fecha': r['fecha'], 'notas': r['notas']} for r in rows}
+
+def get_operaciones():
+    """Devuelve todas las operaciones agrupadas por ticker."""
+    with get_db() as conn:
+        rows = conn.execute('SELECT * FROM operaciones ORDER BY fecha ASC').fetchall()
+    por_ticker = {}
+    for r in rows:
+        por_ticker.setdefault(r['ticker'], []).append(dict(r))
+    return por_ticker
 
 # ── Auth ──────────────────────────────────────────────────────────────────────
 def login_required(f):
@@ -447,6 +495,92 @@ def cotizaciones():
         total_ini=total_ini,
         total_actual=total_actual,
         con_precio=con_precio,
+        total_filas=len(filas),
+        portfolio=p,
+        colores=COLORES,
+    )
+
+@app.route('/rendimientos')
+@login_required
+def rendimientos():
+    p = get_portfolio()
+    precios_live = fetch_precios_cartera(p)
+    precios_ini  = get_precios_iniciales()
+    operaciones  = get_operaciones()
+    tc_mep       = p['tc_mep']
+    hoy          = _date.today()
+
+    filas = []
+    for tipo, items in p['instrumentos'].items():
+        for item in items:
+            ticker = item['ticker']
+            ops_ticker = operaciones.get(ticker, [])
+
+            pr = precios_live.get(ticker)
+            if pr:
+                precio_actual = pr['ultimo']
+                precio_es_live = True
+            else:
+                # Sin cotización viva (típico de Fondos): usamos el último precio
+                # conocido (precio_iniciales o el que figura en la posición) como
+                # aproximación, dejándolo marcado como "estimado" en la UI.
+                pi = precios_ini.get(ticker)
+                precio_actual = pi['precio'] if pi else item['precio']
+                precio_es_live = False
+
+            cantidad_actual = item['cantidad']
+            valor_actual_ars = precio_actual * cantidad_actual
+            valor_actual_usd = item.get('valor_usd') if item.get('moneda') == 'USD' else (
+                valor_actual_ars / tc_mep if tc_mep else None
+            )
+
+            if not ops_ticker:
+                # Todavía no tenemos historial de compra real para este ticker
+                # (ej. algo de Galicia). Mostramos la fila igual, sin TIR.
+                filas.append({
+                    'tipo': tipo, 'ticker': ticker, 'descripcion': item['descripcion'],
+                    'bucket': finanzas.get_bucket(ticker),
+                    'cantidad': cantidad_actual,
+                    'invertido_ars': None, 'rentas_cobradas_ars': None,
+                    'valor_actual_ars': valor_actual_ars,
+                    'tir_ars': None, 'tir_usd': None,
+                    'precio_es_live': precio_es_live,
+                    'sin_historial': True,
+                })
+                continue
+
+            r = finanzas.resumen_ticker(ticker, ops_ticker, valor_actual_ars, valor_actual_usd, hoy)
+            r['tipo'] = tipo
+            r['descripcion'] = item['descripcion']
+            r['cantidad'] = cantidad_actual
+            r['precio_es_live'] = precio_es_live
+            r['sin_historial'] = False
+            filas.append(r)
+
+    # Agregados por tipo y por bucket (solo con lo que tiene TIR calculable)
+    def agregar(rows, key):
+        grupos = {}
+        for f in rows:
+            if f['tir_usd'] is None or f.get('sin_historial'):
+                continue
+            g = grupos.setdefault(f[key], {'invertido_ars': 0, 'valor_actual_ars': 0, 'tirs_usd': []})
+            g['invertido_ars'] += f.get('invertido_ars') or 0
+            g['valor_actual_ars'] += f.get('valor_actual_ars') or 0
+            g['tirs_usd'].append(f['tir_usd'])
+        for g in grupos.values():
+            g['tir_usd_prom'] = sum(g['tirs_usd']) / len(g['tirs_usd']) if g['tirs_usd'] else None
+        return grupos
+
+    por_tipo   = agregar(filas, 'tipo')
+    por_bucket = agregar(filas, 'bucket')
+
+    con_tir = sum(1 for f in filas if f['tir_usd'] is not None)
+
+    return render_template('rendimientos.html',
+        filas=sorted(filas, key=lambda f: (f['tir_usd'] is None, f['tir_usd'] if f['tir_usd'] is not None else 0)),
+        por_tipo=por_tipo,
+        por_bucket=por_bucket,
+        con_tir=con_tir,
         total_filas=len(filas),
         portfolio=p,
         colores=COLORES,

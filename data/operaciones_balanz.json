@@ -1,0 +1,5732 @@
+[
+ {
+  "ticker": "AAPL",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-08-16",
+  "monto_ars": 0.25,
+  "mep": 1297.69
+ },
+ {
+  "ticker": "AAPL",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-11-15",
+  "monto_ars": 0.25,
+  "mep": 1094.32
+ },
+ {
+  "ticker": "AAPL",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-02-14",
+  "monto_ars": 0.25,
+  "mep": 1185.58
+ },
+ {
+  "ticker": "AAPL",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-05-16",
+  "monto_ars": 0.26,
+  "mep": 1151.31
+ },
+ {
+  "ticker": "AAPL",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-08-18",
+  "monto_ars": 0.26,
+  "mep": 1304.43
+ },
+ {
+  "ticker": "AAPL",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-11-14",
+  "monto_ars": 0.26,
+  "mep": 1448.12
+ },
+ {
+  "ticker": "AAPL",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-02-13",
+  "monto_ars": 0.26,
+  "mep": 1419.11
+ },
+ {
+  "ticker": "AAPL",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-05-15",
+  "monto_ars": 0.27,
+  "mep": 1426.81
+ },
+ {
+  "ticker": "AAPL",
+  "tipo_mov": "compra",
+  "fecha": "2024-07-02",
+  "cantidad": 31.0,
+  "precio": 15750.0,
+  "gastos": 4017.33,
+  "moneda": "Pesos",
+  "mep": 1434.87,
+  "abierto": true
+ },
+ {
+  "ticker": "AE38",
+  "tipo_mov": "compra",
+  "fecha": "2025-10-13",
+  "cantidad": 1041.0,
+  "precio": 864.5,
+  "gastos": 12524.61,
+  "moneda": "Pesos",
+  "mep": 1407.5,
+  "abierto": false
+ },
+ {
+  "ticker": "AE38",
+  "tipo_mov": "venta",
+  "fecha": "2025-12-02",
+  "cantidad": 1041.0,
+  "precio": 1132.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1477.43,
+  "abierto": false
+ },
+ {
+  "ticker": "AE38",
+  "tipo_mov": "cupon",
+  "fecha": "2026-01-09",
+  "monto_ars": 5006.88,
+  "mep": 1486.3
+ },
+ {
+  "ticker": "AE38",
+  "tipo_mov": "cupon",
+  "fecha": "2026-07-13",
+  "monto_ars": 5088.96,
+  "mep": 1522.36
+ },
+ {
+  "ticker": "AE38",
+  "tipo_mov": "compra",
+  "fecha": "2025-10-13",
+  "cantidad": 137.0,
+  "precio": 864.5,
+  "gastos": 713.58,
+  "moneda": "Pesos",
+  "mep": 1407.5,
+  "abierto": true
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "cupon",
+  "fecha": "2024-07-10",
+  "monto_ars": 5905.96,
+  "mep": 1376.66
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "compra",
+  "fecha": "2024-05-08",
+  "cantidad": 1110.0,
+  "precio": 658.12286159,
+  "gastos": 8752.51,
+  "moneda": "Pesos",
+  "mep": 1038.37,
+  "abierto": false
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "venta",
+  "fecha": "2024-10-07",
+  "cantidad": 1110.0,
+  "precio": 0.6675,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1184.1,
+  "abierto": false
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "cupon",
+  "fecha": "2025-01-09",
+  "monto_ars": 912.12,
+  "mep": 1166.03
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "compra",
+  "fecha": "2024-05-08",
+  "cantidad": 176.0,
+  "precio": 658.12286159,
+  "gastos": 1640.78,
+  "moneda": "Pesos",
+  "mep": 1038.37,
+  "abierto": false
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-04",
+  "cantidad": 176.0,
+  "precio": 889.2,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1332.31,
+  "abierto": false
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-30",
+  "cantidad": 161.0,
+  "precio": 822.0,
+  "gastos": 1659.9,
+  "moneda": "Pesos",
+  "mep": 1161.68,
+  "abierto": false
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-04",
+  "cantidad": 161.0,
+  "precio": 889.2,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1332.31,
+  "abierto": false
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "cupon",
+  "fecha": "2025-07-10",
+  "monto_ars": 2472.35,
+  "mep": 1269.05
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-30",
+  "cantidad": 439.0,
+  "precio": 822.0,
+  "gastos": 4833.17,
+  "moneda": "Pesos",
+  "mep": 1161.68,
+  "abierto": false
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "venta",
+  "fecha": "2025-12-02",
+  "cantidad": 439.0,
+  "precio": 1005.3,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1477.43,
+  "abierto": false
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "compra",
+  "fecha": "2025-11-10",
+  "cantidad": 636.0,
+  "precio": 982.1,
+  "gastos": 7615.52,
+  "moneda": "Pesos",
+  "mep": 1459.95,
+  "abierto": false
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "venta",
+  "fecha": "2025-12-02",
+  "cantidad": 636.0,
+  "precio": 1005.3,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1477.43,
+  "abierto": false
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "cupon",
+  "fecha": "2026-01-09",
+  "monto_ars": 1478.64,
+  "mep": 1486.3
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "cupon",
+  "fecha": "2026-07-13",
+  "monto_ars": 1309.44,
+  "mep": 1522.36
+ },
+ {
+  "ticker": "AL29",
+  "tipo_mov": "compra",
+  "fecha": "2025-11-10",
+  "cantidad": 253.0,
+  "precio": 982.1,
+  "gastos": 1497.04,
+  "moneda": "Pesos",
+  "mep": 1459.95,
+  "abierto": true
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2023-08-23",
+  "cantidad": 637.0,
+  "precio": 215.23,
+  "gastos": 1256.86,
+  "moneda": "Pesos",
+  "mep": 691.58,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2023-08-24",
+  "cantidad": 637.0,
+  "precio": 0.325,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 689.59,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2023-08-24",
+  "cantidad": 1080.0,
+  "precio": 214.935,
+  "gastos": 2163.46,
+  "moneda": "Pesos",
+  "mep": 689.59,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2023-08-25",
+  "cantidad": 1080.0,
+  "precio": 0.3369,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 696.33,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2023-08-28",
+  "cantidad": 8567.0,
+  "precio": 231.5,
+  "gastos": 18190.18,
+  "moneda": "Pesos",
+  "mep": 674.98,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2023-08-29",
+  "cantidad": 8567.0,
+  "precio": 0.34725,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 663.42,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2023-08-29",
+  "cantidad": 8449.0,
+  "precio": 235.49,
+  "gastos": 18139.32,
+  "moneda": "Pesos",
+  "mep": 663.42,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2023-08-30",
+  "cantidad": 8449.0,
+  "precio": 0.347,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 689.36,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2023-09-08",
+  "cantidad": 3222.0,
+  "precio": 209.37,
+  "gastos": 6105.08,
+  "moneda": "Pesos",
+  "mep": 699.39,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2023-09-11",
+  "cantidad": 3222.0,
+  "precio": 0.3023,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 696.15,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2023-09-11",
+  "cantidad": 3189.0,
+  "precio": 207.86,
+  "gastos": 6035.7,
+  "moneda": "Pesos",
+  "mep": 696.15,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2023-09-12",
+  "cantidad": 3189.0,
+  "precio": 0.3051,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 697.83,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2023-09-27",
+  "cantidad": 4633.0,
+  "precio": 210.8,
+  "gastos": 8818.82,
+  "moneda": "Pesos",
+  "mep": 752.94,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2023-09-28",
+  "cantidad": 4633.0,
+  "precio": 0.30171,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 769.96,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2023-10-06",
+  "cantidad": 2431.0,
+  "precio": 211.4,
+  "gastos": 4438.55,
+  "moneda": "Pesos",
+  "mep": 858.21,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2023-10-09",
+  "cantidad": 2431.0,
+  "precio": 0.2635,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 864.19,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2023-11-09",
+  "cantidad": 515.0,
+  "precio": 221.355,
+  "gastos": 969.29,
+  "moneda": "Pesos",
+  "mep": 857.25,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2023-11-13",
+  "cantidad": 515.0,
+  "precio": 0.26150806,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 848.02,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2023-11-10",
+  "cantidad": 2544.0,
+  "precio": 226.39,
+  "gastos": 4865.12,
+  "moneda": "Pesos",
+  "mep": 886.13,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2023-11-13",
+  "cantidad": 2544.0,
+  "precio": 0.26150806,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 848.02,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2023-10-18",
+  "cantidad": 3968.0,
+  "precio": 247.48,
+  "gastos": 8091.73,
+  "moneda": "Pesos",
+  "mep": 939.24,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2023-11-13",
+  "cantidad": 3968.0,
+  "precio": 0.26150806,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 848.02,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2023-11-10",
+  "cantidad": 3968.0,
+  "precio": 226.39,
+  "gastos": 7627.26,
+  "moneda": "Pesos",
+  "mep": 886.13,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2023-11-16",
+  "cantidad": 3968.0,
+  "precio": 0.26403125,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 862.8,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2023-11-15",
+  "cantidad": 2384.0,
+  "precio": 227.93,
+  "gastos": 4604.59,
+  "moneda": "Pesos",
+  "mep": 870.23,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2023-11-16",
+  "cantidad": 2384.0,
+  "precio": 0.26403125,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 862.8,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2023-11-15",
+  "cantidad": 3968.0,
+  "precio": 227.93,
+  "gastos": 8503.44,
+  "moneda": "Pesos",
+  "mep": 870.23,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2023-12-05",
+  "cantidad": 3968.0,
+  "precio": 0.35401,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 944.6,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-02-26",
+  "cantidad": 627.0,
+  "precio": 471.5,
+  "gastos": 3176.47,
+  "moneda": "Pesos",
+  "mep": 1040.33,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-02-27",
+  "cantidad": 627.0,
+  "precio": 0.43905,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1044.67,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-02-09",
+  "cantidad": 1307.0,
+  "precio": 487.5,
+  "gastos": 6747.46,
+  "moneda": "Pesos",
+  "mep": 1149.51,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-02-27",
+  "cantidad": 1307.0,
+  "precio": 0.43905,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1044.67,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-02-06",
+  "cantidad": 3356.0,
+  "precio": 498.13659118,
+  "gastos": 17540.6,
+  "moneda": "Pesos",
+  "mep": 1177.75,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-02-27",
+  "cantidad": 3356.0,
+  "precio": 0.43905,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1044.67,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-02-29",
+  "cantidad": 1490.0,
+  "precio": 461.35,
+  "gastos": 7719.39,
+  "moneda": "Pesos",
+  "mep": 1021.17,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-03-08",
+  "cantidad": 1490.0,
+  "precio": 0.4711,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 998.26,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-02-29",
+  "cantidad": 647.0,
+  "precio": 461.35,
+  "gastos": 4502.98,
+  "moneda": "Pesos",
+  "mep": 1021.17,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-06-03",
+  "cantidad": 647.0,
+  "precio": 693.8,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1264.17,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-03-07",
+  "cantidad": 1490.0,
+  "precio": 463.6,
+  "gastos": 10390.27,
+  "moneda": "Pesos",
+  "mep": 987.18,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-06-03",
+  "cantidad": 1490.0,
+  "precio": 693.8,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1264.17,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-03-08",
+  "cantidad": 318.0,
+  "precio": 467.85,
+  "gastos": 2225.67,
+  "moneda": "Pesos",
+  "mep": 998.26,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-06-03",
+  "cantidad": 318.0,
+  "precio": 693.8,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1264.17,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-04-05",
+  "cantidad": 251.0,
+  "precio": 560.0,
+  "gastos": 1896.09,
+  "moneda": "Pesos",
+  "mep": 992.77,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-06-03",
+  "cantidad": 251.0,
+  "precio": 693.8,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1264.17,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-04-05",
+  "cantidad": 1502.0,
+  "precio": 560.0,
+  "gastos": 11915.54,
+  "moneda": "Pesos",
+  "mep": 992.77,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-07-01",
+  "cantidad": 1502.0,
+  "precio": 756.7,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1406.49,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-04-30",
+  "cantidad": 1612.0,
+  "precio": 614.1,
+  "gastos": 13313.62,
+  "moneda": "Pesos",
+  "mep": 1036.05,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-07-01",
+  "cantidad": 1612.0,
+  "precio": 756.7,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1406.49,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-05-08",
+  "cantidad": 239.0,
+  "precio": 620.0,
+  "gastos": 1982.41,
+  "moneda": "Pesos",
+  "mep": 1038.37,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-07-01",
+  "cantidad": 239.0,
+  "precio": 756.7,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1406.49,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-06-04",
+  "cantidad": 1216.0,
+  "precio": 686.6,
+  "gastos": 10574.19,
+  "moneda": "Pesos",
+  "mep": 1276.19,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-07-01",
+  "cantidad": 1216.0,
+  "precio": 756.7,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1406.49,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "cupon",
+  "fecha": "2024-07-10",
+  "monto_ars": 5713.07,
+  "mep": 1376.66
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-06-04",
+  "cantidad": 1661.0,
+  "precio": 686.6,
+  "gastos": 13102.85,
+  "moneda": "Pesos",
+  "mep": 1276.19,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-08-05",
+  "cantidad": 1661.0,
+  "precio": 622.7,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1350.53,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-08-05",
+  "cantidad": 2364.0,
+  "precio": 626.7,
+  "gastos": 18926.23,
+  "moneda": "Pesos",
+  "mep": 1350.53,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-03",
+  "cantidad": 2364.0,
+  "precio": 702.1,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1288.42,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-08-05",
+  "cantidad": 84.0,
+  "precio": 629.0,
+  "gastos": 673.67,
+  "moneda": "Pesos",
+  "mep": 1350.53,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-03",
+  "cantidad": 84.0,
+  "precio": 702.1,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1288.42,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-08-05",
+  "cantidad": 701.0,
+  "precio": 629.0,
+  "gastos": 4851.11,
+  "moneda": "Pesos",
+  "mep": 1350.53,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-04",
+  "cantidad": 701.0,
+  "precio": 0.5452,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1276.71,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-08-06",
+  "cantidad": 783.0,
+  "precio": 630.7,
+  "gastos": 5426.6,
+  "moneda": "Pesos",
+  "mep": 1334.38,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-04",
+  "cantidad": 783.0,
+  "precio": 0.5452,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1276.71,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-08-06",
+  "cantidad": 1568.0,
+  "precio": 635.3,
+  "gastos": 10910.51,
+  "moneda": "Pesos",
+  "mep": 1334.38,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-04",
+  "cantidad": 1568.0,
+  "precio": 0.5452,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1276.71,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-09-05",
+  "cantidad": 1142.0,
+  "precio": 702.60049628,
+  "gastos": 9595.62,
+  "moneda": "Pesos",
+  "mep": 1255.74,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-06",
+  "cantidad": 1142.0,
+  "precio": 692.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1238.55,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-09-05",
+  "cantidad": 2139.0,
+  "precio": 702.60049628,
+  "gastos": 15902.56,
+  "moneda": "Pesos",
+  "mep": 1255.74,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-12",
+  "cantidad": 2139.0,
+  "precio": 0.5537,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1234.24,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-09-11",
+  "cantidad": 2139.0,
+  "precio": 689.8,
+  "gastos": 15994.57,
+  "moneda": "Pesos",
+  "mep": 1237.48,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-27",
+  "cantidad": 2139.0,
+  "precio": 0.5685,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1206.58,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-09-05",
+  "cantidad": 346.0,
+  "precio": 702.60049628,
+  "gastos": 2613.93,
+  "moneda": "Pesos",
+  "mep": 1255.74,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-27",
+  "cantidad": 346.0,
+  "precio": 0.5685,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1206.58,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-10-07",
+  "cantidad": 1372.0,
+  "precio": 705.6,
+  "gastos": 11784.44,
+  "moneda": "Pesos",
+  "mep": 1184.1,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-10-23",
+  "cantidad": 1372.0,
+  "precio": 720.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1165.27,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-10-07",
+  "cantidad": 1695.0,
+  "precio": 705.6,
+  "gastos": 15026.49,
+  "moneda": "Pesos",
+  "mep": 1184.1,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-11-08",
+  "cantidad": 1695.0,
+  "precio": 765.8,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1123.52,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-10-09",
+  "cantidad": 111.0,
+  "precio": 711.1,
+  "gastos": 987.71,
+  "moneda": "Pesos",
+  "mep": 1145.3,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-11-08",
+  "cantidad": 111.0,
+  "precio": 765.8,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1123.52,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-10-09",
+  "cantidad": 2324.0,
+  "precio": 711.1,
+  "gastos": 20665.84,
+  "moneda": "Pesos",
+  "mep": 1145.3,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-11-11",
+  "cantidad": 2324.0,
+  "precio": 764.80981067,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1130.4,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-10-14",
+  "cantidad": 1392.0,
+  "precio": 706.5,
+  "gastos": 12360.47,
+  "moneda": "Pesos",
+  "mep": 1137.74,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-12-02",
+  "cantidad": 1392.0,
+  "precio": 767.3,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1067.27,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-10-09",
+  "cantidad": 1055.0,
+  "precio": 711.1,
+  "gastos": 9397.26,
+  "moneda": "Pesos",
+  "mep": 1145.3,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-12-02",
+  "cantidad": 1055.0,
+  "precio": 767.3,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1067.27,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-11-11",
+  "cantidad": 128.0,
+  "precio": 767.4,
+  "gastos": 1183.56,
+  "moneda": "Pesos",
+  "mep": 1130.4,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2024-12-02",
+  "cantidad": 128.0,
+  "precio": 767.3,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1067.27,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "cupon",
+  "fecha": "2025-01-09",
+  "monto_ars": 8447.48,
+  "mep": 1166.03
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2024-11-11",
+  "cantidad": 1159.0,
+  "precio": 767.4,
+  "gastos": 10769.14,
+  "moneda": "Pesos",
+  "mep": 1130.4,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2025-02-10",
+  "cantidad": 1159.0,
+  "precio": 774.8,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1182.59,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-08",
+  "cantidad": 116.0,
+  "precio": 893.6,
+  "gastos": 1166.05,
+  "moneda": "Pesos",
+  "mep": 1180.22,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2025-02-10",
+  "cantidad": 116.0,
+  "precio": 774.8,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1182.59,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-08",
+  "cantidad": 380.0,
+  "precio": 893.6,
+  "gastos": 3828.04,
+  "moneda": "Pesos",
+  "mep": 1180.22,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2025-02-27",
+  "cantidad": 380.0,
+  "precio": 778.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1217.02,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2025-02-18",
+  "cantidad": 190.0,
+  "precio": 784.4,
+  "gastos": 1667.39,
+  "moneda": "Pesos",
+  "mep": 1202.42,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2025-03-31",
+  "cantidad": 190.0,
+  "precio": 0.6258,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1316.17,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-08",
+  "cantidad": 609.0,
+  "precio": 893.6,
+  "gastos": 5745.12,
+  "moneda": "Pesos",
+  "mep": 1180.22,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2025-03-31",
+  "cantidad": 609.0,
+  "precio": 0.6258,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1316.17,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2025-02-18",
+  "cantidad": 54.0,
+  "precio": 784.4,
+  "gastos": 527.69,
+  "moneda": "Pesos",
+  "mep": 1202.42,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-01",
+  "cantidad": 54.0,
+  "precio": 837.5,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1312.38,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2025-03-20",
+  "cantidad": 1140.0,
+  "precio": 824.0,
+  "gastos": 11412.01,
+  "moneda": "Pesos",
+  "mep": 1285.29,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-01",
+  "cantidad": 1140.0,
+  "precio": 837.5,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1312.38,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2025-02-18",
+  "cantidad": 536.0,
+  "precio": 784.4,
+  "gastos": 5239.7,
+  "moneda": "Pesos",
+  "mep": 1202.42,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-01",
+  "cantidad": 536.0,
+  "precio": 838.1,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1312.38,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2025-03-20",
+  "cantidad": 365.0,
+  "precio": 824.0,
+  "gastos": 3615.8,
+  "moneda": "Pesos",
+  "mep": 1285.29,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-04",
+  "cantidad": 365.0,
+  "precio": 820.2,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1332.31,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "cupon",
+  "fecha": "2025-07-10",
+  "monto_ars": 13102.2,
+  "mep": 1269.05
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2025-03-20",
+  "cantidad": 16.0,
+  "precio": 824.0,
+  "gastos": 161.1,
+  "moneda": "Pesos",
+  "mep": 1285.29,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2025-10-13",
+  "cantidad": 16.0,
+  "precio": 847.2,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1407.5,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2025-05-23",
+  "cantidad": 1386.0,
+  "precio": 776.6,
+  "gastos": 14396.52,
+  "moneda": "Pesos",
+  "mep": 1141.25,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2025-11-05",
+  "cantidad": 1386.0,
+  "precio": 947.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1477.09,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2025-04-16",
+  "cantidad": 987.0,
+  "precio": 795.9,
+  "gastos": 10366.84,
+  "moneda": "Pesos",
+  "mep": 1168.56,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2025-11-05",
+  "cantidad": 987.0,
+  "precio": 947.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1477.09,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2025-03-20",
+  "cantidad": 265.0,
+  "precio": 824.0,
+  "gastos": 2828.26,
+  "moneda": "Pesos",
+  "mep": 1285.29,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2025-11-05",
+  "cantidad": 265.0,
+  "precio": 947.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1477.09,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "cupon",
+  "fecha": "2026-01-09",
+  "monto_ars": 2239.92,
+  "mep": 1486.3
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2025-05-23",
+  "cantidad": 512.0,
+  "precio": 776.6,
+  "gastos": 5058.14,
+  "moneda": "Pesos",
+  "mep": 1141.25,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2026-03-02",
+  "cantidad": 512.0,
+  "precio": 863.1,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1413.22,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2026-01-12",
+  "cantidad": 299.0,
+  "precio": 877.42810458,
+  "gastos": 3135.52,
+  "moneda": "Pesos",
+  "mep": 1478.66,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2026-03-02",
+  "cantidad": 299.0,
+  "precio": 863.1,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1413.22,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2026-01-12",
+  "cantidad": 313.0,
+  "precio": 877.42810458,
+  "gastos": 3458.06,
+  "moneda": "Pesos",
+  "mep": 1478.66,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2026-07-07",
+  "cantidad": 313.0,
+  "precio": 0.6432,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1529.57,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2026-06-08",
+  "cantidad": 1062.0,
+  "precio": 941.1,
+  "gastos": 12140.5,
+  "moneda": "Pesos",
+  "mep": 1473.17,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2026-07-07",
+  "cantidad": 1062.0,
+  "precio": 0.6432,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1529.57,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-07",
+  "cantidad": 3004.0,
+  "precio": 981.3,
+  "gastos": 35068.51,
+  "moneda": "Pesos",
+  "mep": 1529.57,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2026-07-07",
+  "cantidad": 3004.0,
+  "precio": 0.6432,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1529.57,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "cupon",
+  "fecha": "2026-07-13",
+  "monto_ars": 5520.48,
+  "mep": 1522.36
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-13",
+  "cantidad": 2199.0,
+  "precio": 855.7,
+  "gastos": 22437.61,
+  "moneda": "Pesos",
+  "mep": 1522.36,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2026-07-13",
+  "cantidad": 2199.0,
+  "precio": 0.5629,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1522.36,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-07",
+  "cantidad": 1375.0,
+  "precio": 981.3,
+  "gastos": 15070.4,
+  "moneda": "Pesos",
+  "mep": 1529.57,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "venta",
+  "fecha": "2026-07-13",
+  "cantidad": 1375.0,
+  "precio": 0.5629,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1522.36,
+  "abierto": false
+ },
+ {
+  "ticker": "AL30",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-13",
+  "cantidad": 1375.0,
+  "precio": 855.7,
+  "gastos": 7088.94,
+  "moneda": "Pesos",
+  "mep": 1522.36,
+  "abierto": true
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2024-08-05",
+  "cantidad": 966.0,
+  "precio": 533.8,
+  "gastos": 7260.63,
+  "moneda": "Pesos",
+  "mep": 1350.53,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2024-12-04",
+  "cantidad": 966.0,
+  "precio": 713.7,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1076.17,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2024-10-28",
+  "cantidad": 72.0,
+  "precio": 672.8,
+  "gastos": 601.46,
+  "moneda": "Pesos",
+  "mep": 1132.58,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2024-12-04",
+  "cantidad": 72.0,
+  "precio": 713.7,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1076.17,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2024-10-28",
+  "cantidad": 2864.0,
+  "precio": 672.8,
+  "gastos": 25622.84,
+  "moneda": "Pesos",
+  "mep": 1132.58,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2025-01-02",
+  "cantidad": 2864.0,
+  "precio": 812.1,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1162.34,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2024-12-13",
+  "cantidad": 792.0,
+  "precio": 713.1,
+  "gastos": 7277.95,
+  "moneda": "Pesos",
+  "mep": 1070.59,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2025-01-02",
+  "cantidad": 792.0,
+  "precio": 812.1,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1162.34,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "cupon",
+  "fecha": "2025-01-09",
+  "monto_ars": 27674.55,
+  "mep": 1166.03
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2024-12-13",
+  "cantidad": 620.0,
+  "precio": 713.1,
+  "gastos": 5636.68,
+  "moneda": "Pesos",
+  "mep": 1070.59,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2025-02-10",
+  "cantidad": 620.0,
+  "precio": 795.84645161,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1182.59,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2024-12-13",
+  "cantidad": 675.0,
+  "precio": 713.1,
+  "gastos": 6186.34,
+  "moneda": "Pesos",
+  "mep": 1070.59,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2025-03-12",
+  "cantidad": 675.0,
+  "precio": 808.0520079,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1227.64,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-30",
+  "cantidad": 614.0,
+  "precio": 803.6,
+  "gastos": 5962.07,
+  "moneda": "Pesos",
+  "mep": 1161.68,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2025-03-12",
+  "cantidad": 614.0,
+  "precio": 808.0520079,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1227.64,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2025-03-11",
+  "cantidad": 230.0,
+  "precio": 809.7,
+  "gastos": 2241.8,
+  "moneda": "Pesos",
+  "mep": 1228.11,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2025-03-12",
+  "cantidad": 230.0,
+  "precio": 808.0520079,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1227.64,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2025-03-11",
+  "cantidad": 608.0,
+  "precio": 809.7,
+  "gastos": 5975.05,
+  "moneda": "Pesos",
+  "mep": 1228.11,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-03",
+  "cantidad": 608.0,
+  "precio": 821.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1318.95,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2025-04-21",
+  "cantidad": 216.0,
+  "precio": 733.18480176,
+  "gastos": 1983.01,
+  "moneda": "Pesos",
+  "mep": 1120.73,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2025-05-05",
+  "cantidad": 216.0,
+  "precio": 0.676,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1199.64,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2025-03-11",
+  "cantidad": 375.0,
+  "precio": 809.7,
+  "gastos": 3615.6,
+  "moneda": "Pesos",
+  "mep": 1228.11,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2025-05-05",
+  "cantidad": 375.0,
+  "precio": 0.676,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1199.64,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "cupon",
+  "fecha": "2025-07-10",
+  "monto_ars": 29655.65,
+  "mep": 1269.05
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2025-04-21",
+  "cantidad": 571.0,
+  "precio": 733.18480176,
+  "gastos": 6135.68,
+  "moneda": "Pesos",
+  "mep": 1120.73,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2025-11-07",
+  "cantidad": 571.0,
+  "precio": 1050.3,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1452.57,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2025-04-21",
+  "cantidad": 575.0,
+  "precio": 733.18480176,
+  "gastos": 6356.73,
+  "moneda": "Pesos",
+  "mep": 1120.73,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2025-12-02",
+  "cantidad": 575.0,
+  "precio": 1101.7,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1477.43,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2025-11-10",
+  "cantidad": 495.0,
+  "precio": 1063.0,
+  "gastos": 6455.94,
+  "moneda": "Pesos",
+  "mep": 1459.95,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2025-12-02",
+  "cantidad": 495.0,
+  "precio": 1101.7,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1477.43,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "cupon",
+  "fecha": "2026-01-09",
+  "monto_ars": 62864.16,
+  "mep": 1486.3
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2025-11-10",
+  "cantidad": 257.0,
+  "precio": 1063.0,
+  "gastos": 3429.61,
+  "moneda": "Pesos",
+  "mep": 1459.95,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2026-01-30",
+  "cantidad": 257.0,
+  "precio": 1151.9,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1464.75,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2025-12-04",
+  "cantidad": 110.0,
+  "precio": 1095.8,
+  "gastos": 1489.66,
+  "moneda": "Pesos",
+  "mep": 1473.31,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2026-01-30",
+  "cantidad": 110.0,
+  "precio": 1151.9,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1464.75,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2025-12-04",
+  "cantidad": 848.0,
+  "precio": 1095.8,
+  "gastos": 11483.95,
+  "moneda": "Pesos",
+  "mep": 1473.31,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2026-01-30",
+  "cantidad": 848.0,
+  "precio": 1151.9,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1464.75,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2025-12-04",
+  "cantidad": 867.0,
+  "precio": 1095.8,
+  "gastos": 11679.61,
+  "moneda": "Pesos",
+  "mep": 1473.31,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2026-02-06",
+  "cantidad": 867.0,
+  "precio": 1140.1,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1450.49,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2026-01-12",
+  "cantidad": 447.0,
+  "precio": 1118.4,
+  "gastos": 6082.54,
+  "moneda": "Pesos",
+  "mep": 1478.66,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2026-02-06",
+  "cantidad": 447.0,
+  "precio": 1140.1,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1450.49,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2026-02-09",
+  "cantidad": 1285.0,
+  "precio": 1131.0,
+  "gastos": 17190.62,
+  "moneda": "Pesos",
+  "mep": 1438.86,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2026-03-02",
+  "cantidad": 1285.0,
+  "precio": 1089.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1413.22,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2026-03-18",
+  "cantidad": 1017.0,
+  "precio": 1073.7508596,
+  "gastos": 13469.01,
+  "moneda": "Pesos",
+  "mep": 1422.58,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2026-05-08",
+  "cantidad": 1017.0,
+  "precio": 1124.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1427.42,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2026-02-09",
+  "cantidad": 228.0,
+  "precio": 1131.0,
+  "gastos": 3098.24,
+  "moneda": "Pesos",
+  "mep": 1438.86,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2026-05-08",
+  "cantidad": 228.0,
+  "precio": 1124.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1427.42,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2026-03-18",
+  "cantidad": 346.0,
+  "precio": 1073.7508596,
+  "gastos": 4642.83,
+  "moneda": "Pesos",
+  "mep": 1422.58,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2026-06-03",
+  "cantidad": 346.0,
+  "precio": 1153.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1460.17,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2026-03-18",
+  "cantidad": 4.0,
+  "precio": 1073.7508596,
+  "gastos": 53.57,
+  "moneda": "Pesos",
+  "mep": 1422.58,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "venta",
+  "fecha": "2026-06-05",
+  "cantidad": 4.0,
+  "precio": 1149.1,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1458.42,
+  "abierto": false
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "cupon",
+  "fecha": "2026-07-13",
+  "monto_ars": 22215.84,
+  "mep": 1522.36
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2026-03-18",
+  "cantidad": 29.0,
+  "precio": 1073.7508596,
+  "gastos": 187.61,
+  "moneda": "Pesos",
+  "mep": 1422.58,
+  "abierto": true
+ },
+ {
+  "ticker": "AL35",
+  "tipo_mov": "compra",
+  "fecha": "2026-06-05",
+  "cantidad": 695.0,
+  "precio": 1149.6,
+  "gastos": 4813.8,
+  "moneda": "Pesos",
+  "mep": 1458.42,
+  "abierto": true
+ },
+ {
+  "ticker": "AL41",
+  "tipo_mov": "compra",
+  "fecha": "2025-10-13",
+  "cantidad": 413.0,
+  "precio": 808.7,
+  "gastos": 4476.49,
+  "moneda": "Pesos",
+  "mep": 1407.5,
+  "abierto": false
+ },
+ {
+  "ticker": "AL41",
+  "tipo_mov": "venta",
+  "fecha": "2025-11-07",
+  "cantidad": 413.0,
+  "precio": 990.3,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1452.57,
+  "abierto": false
+ },
+ {
+  "ticker": "AL41",
+  "tipo_mov": "cupon",
+  "fecha": "2026-01-09",
+  "monto_ars": 20905.92,
+  "mep": 1486.3
+ },
+ {
+  "ticker": "AL41",
+  "tipo_mov": "compra",
+  "fecha": "2025-10-13",
+  "cantidad": 816.0,
+  "precio": 808.7,
+  "gastos": 8967.51,
+  "moneda": "Pesos",
+  "mep": 1407.5,
+  "abierto": false
+ },
+ {
+  "ticker": "AL41",
+  "tipo_mov": "venta",
+  "fecha": "2026-03-02",
+  "cantidad": 816.0,
+  "precio": 1015.3,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1413.22,
+  "abierto": false
+ },
+ {
+  "ticker": "AL41",
+  "tipo_mov": "compra",
+  "fecha": "2026-02-10",
+  "cantidad": 562.0,
+  "precio": 1053.0,
+  "gastos": 7003.37,
+  "moneda": "Pesos",
+  "mep": 1433.38,
+  "abierto": false
+ },
+ {
+  "ticker": "AL41",
+  "tipo_mov": "venta",
+  "fecha": "2026-03-02",
+  "cantidad": 562.0,
+  "precio": 1015.3,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1413.22,
+  "abierto": false
+ },
+ {
+  "ticker": "AL41",
+  "tipo_mov": "compra",
+  "fecha": "2026-03-18",
+  "cantidad": 1317.0,
+  "precio": 995.70756972,
+  "gastos": 16279.35,
+  "moneda": "Pesos",
+  "mep": 1422.58,
+  "abierto": false
+ },
+ {
+  "ticker": "AL41",
+  "tipo_mov": "venta",
+  "fecha": "2026-05-08",
+  "cantidad": 1317.0,
+  "precio": 1055.9,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1427.42,
+  "abierto": false
+ },
+ {
+  "ticker": "AL41",
+  "tipo_mov": "compra",
+  "fecha": "2026-02-10",
+  "cantidad": 387.0,
+  "precio": 1053.0,
+  "gastos": 4917.27,
+  "moneda": "Pesos",
+  "mep": 1433.38,
+  "abierto": false
+ },
+ {
+  "ticker": "AL41",
+  "tipo_mov": "venta",
+  "fecha": "2026-05-08",
+  "cantidad": 387.0,
+  "precio": 1055.9,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1427.42,
+  "abierto": false
+ },
+ {
+  "ticker": "AL41",
+  "tipo_mov": "cupon",
+  "fecha": "2026-07-13",
+  "monto_ars": 29596.32,
+  "mep": 1522.36
+ },
+ {
+  "ticker": "AL41",
+  "tipo_mov": "compra",
+  "fecha": "2026-03-18",
+  "cantidad": 189.0,
+  "precio": 995.70756972,
+  "gastos": 1133.84,
+  "moneda": "Pesos",
+  "mep": 1422.58,
+  "abierto": true
+ },
+ {
+  "ticker": "AL41",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-01",
+  "cantidad": 948.0,
+  "precio": 1196.2,
+  "gastos": 6832.34,
+  "moneda": "Pesos",
+  "mep": 1518.52,
+  "abierto": true
+ },
+ {
+  "ticker": "AMD",
+  "tipo_mov": "compra",
+  "fecha": "2024-05-08",
+  "cantidad": 17.0,
+  "precio": 16973.38235294,
+  "gastos": 2374.17,
+  "moneda": "Pesos",
+  "mep": 1038.37,
+  "abierto": true
+ },
+ {
+  "ticker": "AMZN",
+  "tipo_mov": "compra",
+  "fecha": "2024-05-08",
+  "cantidad": 243.0,
+  "precio": 1420.0,
+  "gastos": 2839.16,
+  "moneda": "Pesos",
+  "mep": 1038.37,
+  "abierto": true
+ },
+ {
+  "ticker": "AO27",
+  "tipo_mov": "cupon",
+  "fecha": "2026-06-30",
+  "monto_ars": 3955.61,
+  "mep": 1521.68
+ },
+ {
+  "ticker": "AO27",
+  "tipo_mov": "cupon",
+  "fecha": "2026-07-31",
+  "monto_ars": 18704.16,
+  "mep": 1518.19
+ },
+ {
+  "ticker": "AO27",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-30",
+  "cantidad": 1452.0,
+  "precio": 1.0325,
+  "gastos": 13523.84,
+  "moneda": "Dólares",
+  "mep": 1504.87,
+  "abierto": true
+ },
+ {
+  "ticker": "AO27",
+  "tipo_mov": "compra",
+  "fecha": "2026-06-25",
+  "cantidad": 518.0,
+  "precio": 1541.4,
+  "gastos": 4810.63,
+  "moneda": "Pesos",
+  "mep": 1499.3,
+  "abierto": true
+ },
+ {
+  "ticker": "AO27",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-31",
+  "cantidad": 354.0,
+  "precio": 1551.3,
+  "gastos": 3308.69,
+  "moneda": "Pesos",
+  "mep": 1518.19,
+  "abierto": true
+ },
+ {
+  "ticker": "AO27",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-01",
+  "cantidad": 544.0,
+  "precio": 1559.57058824,
+  "gastos": 5111.65,
+  "moneda": "Pesos",
+  "mep": 1518.52,
+  "abierto": true
+ },
+ {
+  "ticker": "AO28",
+  "tipo_mov": "cupon",
+  "fecha": "2026-06-30",
+  "monto_ars": 4192.65,
+  "mep": 1521.68
+ },
+ {
+  "ticker": "AO28",
+  "tipo_mov": "cupon",
+  "fecha": "2026-07-31",
+  "monto_ars": 8362.56,
+  "mep": 1518.19
+ },
+ {
+  "ticker": "AO28",
+  "tipo_mov": "compra",
+  "fecha": "2026-06-25",
+  "cantidad": 549.0,
+  "precio": 1456.9,
+  "gastos": 4819.03,
+  "moneda": "Pesos",
+  "mep": 1499.3,
+  "abierto": true
+ },
+ {
+  "ticker": "AO28",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-01",
+  "cantidad": 575.0,
+  "precio": 1476.3,
+  "gastos": 5114.46,
+  "moneda": "Pesos",
+  "mep": 1518.52,
+  "abierto": true
+ },
+ {
+  "ticker": "BAHUSDA",
+  "tipo_mov": "compra",
+  "fecha": "2024-03-11",
+  "cantidad": 1257.088934,
+  "precio": 1.193233,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 979.6,
+  "abierto": true
+ },
+ {
+  "ticker": "BAHUSDA",
+  "tipo_mov": "compra",
+  "fecha": "2024-03-18",
+  "cantidad": 1667.190442,
+  "precio": 1.199623,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1019.13,
+  "abierto": true
+ },
+ {
+  "ticker": "BAHUSDA",
+  "tipo_mov": "compra",
+  "fecha": "2024-04-04",
+  "cantidad": 284.095982,
+  "precio": 1.231978,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 988.55,
+  "abierto": true
+ },
+ {
+  "ticker": "BAHUSDA",
+  "tipo_mov": "compra",
+  "fecha": "2026-01-21",
+  "cantidad": 320.732498,
+  "precio": 1.361259,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1462.01,
+  "abierto": true
+ },
+ {
+  "ticker": "BAHUSDA",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-07",
+  "cantidad": 916.473326,
+  "precio": 1.418481,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1529.57,
+  "abierto": true
+ },
+ {
+  "ticker": "BBAR",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-07-06",
+  "monto_ars": 2177.56,
+  "mep": 1524.44
+ },
+ {
+  "ticker": "BBAR",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-08-06",
+  "monto_ars": 2177.56,
+  "mep": 1518.03
+ },
+ {
+  "ticker": "BBAR",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-01",
+  "cantidad": 20.0,
+  "precio": 10160.0,
+  "gastos": 1598.17,
+  "moneda": "Pesos",
+  "mep": 1518.52,
+  "abierto": true
+ },
+ {
+  "ticker": "BBAR",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-01",
+  "cantidad": 38.0,
+  "precio": 10160.0,
+  "gastos": 3036.52,
+  "moneda": "Pesos",
+  "mep": 1518.52,
+  "abierto": true
+ },
+ {
+  "ticker": "BCAHA",
+  "tipo_mov": "compra",
+  "fecha": "2022-06-16",
+  "cantidad": 7197.930615,
+  "precio": 20.839045,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 232.05,
+  "abierto": false
+ },
+ {
+  "ticker": "BCAHA",
+  "tipo_mov": "venta",
+  "fecha": "2022-11-14",
+  "cantidad": 7197.930615,
+  "precio": 26.585013,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 297.38,
+  "abierto": false
+ },
+ {
+  "ticker": "BCAHA",
+  "tipo_mov": "compra",
+  "fecha": "2022-07-19",
+  "cantidad": 15127.739067,
+  "precio": 21.781042,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 297.9,
+  "abierto": false
+ },
+ {
+  "ticker": "BCAHA",
+  "tipo_mov": "venta",
+  "fecha": "2022-11-14",
+  "cantidad": 15127.739067,
+  "precio": 26.585013,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 297.38,
+  "abierto": false
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-06-30",
+  "monto_ars": 4888.96,
+  "mep": 1208.3
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-07-30",
+  "monto_ars": 4968.11,
+  "mep": 1321.27
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-08-28",
+  "monto_ars": 5062.59,
+  "mep": 1345.93
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-09-29",
+  "monto_ars": 5157.55,
+  "mep": 1472.67
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-10-30",
+  "monto_ars": 5264.81,
+  "mep": 1469.89
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "compra",
+  "fecha": "2024-09-05",
+  "cantidad": 47.0,
+  "precio": 8050.0,
+  "gastos": 7803.99,
+  "moneda": "Pesos",
+  "mep": 1255.74,
+  "abierto": false
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "venta",
+  "fecha": "2025-11-07",
+  "cantidad": 47.0,
+  "precio": 12690.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1452.57,
+  "abierto": false
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-11-27",
+  "monto_ars": 2635.49,
+  "mep": 1481.05
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-12-30",
+  "monto_ars": 2700.66,
+  "mep": 1480.46
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-01-29",
+  "monto_ars": 2777.5,
+  "mep": 1461.88
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-02-26",
+  "monto_ars": 2857.54,
+  "mep": 1433.95
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-03-30",
+  "monto_ars": 2940.3,
+  "mep": 1434.0
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-05-19",
+  "monto_ars": 3450.97,
+  "mep": 1435.7
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-06-03",
+  "monto_ars": 3450.97,
+  "mep": 1460.17
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-07-07",
+  "monto_ars": 3450.97,
+  "mep": 1529.57
+ },
+ {
+  "ticker": "BMA",
+  "tipo_mov": "compra",
+  "fecha": "2024-09-05",
+  "cantidad": 45.0,
+  "precio": 8050.0,
+  "gastos": 2980.59,
+  "moneda": "Pesos",
+  "mep": 1255.74,
+  "abierto": true
+ },
+ {
+  "ticker": "BPOA7",
+  "tipo_mov": "compra",
+  "fecha": "2024-03-07",
+  "cantidad": 180.0,
+  "precio": 854.9,
+  "gastos": 1783.14,
+  "moneda": "Pesos",
+  "mep": 987.18,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOA7",
+  "tipo_mov": "venta",
+  "fecha": "2024-03-26",
+  "cantidad": 180.0,
+  "precio": 0.923,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1008.91,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOB7",
+  "tipo_mov": "compra",
+  "fecha": "2024-03-07",
+  "cantidad": 214.0,
+  "precio": 744.99953271,
+  "gastos": 1903.37,
+  "moneda": "Pesos",
+  "mep": 987.18,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOB7",
+  "tipo_mov": "venta",
+  "fecha": "2024-03-26",
+  "cantidad": 214.0,
+  "precio": 0.8551,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1008.91,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "compra",
+  "fecha": "2024-08-05",
+  "cantidad": 802.0,
+  "precio": 939.0,
+  "gastos": 8442.7,
+  "moneda": "Pesos",
+  "mep": 1350.53,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "venta",
+  "fecha": "2024-10-03",
+  "cantidad": 802.0,
+  "precio": 0.8316,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1190.27,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "compra",
+  "fecha": "2024-07-02",
+  "cantidad": 968.0,
+  "precio": 1019.9,
+  "gastos": 10662.01,
+  "moneda": "Pesos",
+  "mep": 1434.87,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "venta",
+  "fecha": "2024-10-03",
+  "cantidad": 968.0,
+  "precio": 0.8316,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1190.27,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "cupon",
+  "fecha": "2024-10-31",
+  "monto_ars": 31779.0,
+  "mep": 1128.98
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "compra",
+  "fecha": "2024-08-06",
+  "cantidad": 531.0,
+  "precio": 930.1,
+  "gastos": 6448.47,
+  "moneda": "Pesos",
+  "mep": 1334.38,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "venta",
+  "fecha": "2025-02-07",
+  "cantidad": 531.0,
+  "precio": 1085.5,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1188.33,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "compra",
+  "fecha": "2024-08-05",
+  "cantidad": 250.0,
+  "precio": 939.0,
+  "gastos": 3049.41,
+  "moneda": "Pesos",
+  "mep": 1350.53,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "venta",
+  "fecha": "2025-02-07",
+  "cantidad": 250.0,
+  "precio": 1085.5,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1188.33,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-02",
+  "cantidad": 38.0,
+  "precio": 1045.8,
+  "gastos": 487.96,
+  "moneda": "Pesos",
+  "mep": 1162.34,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "venta",
+  "fecha": "2025-02-07",
+  "cantidad": 38.0,
+  "precio": 1085.5,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1188.33,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-02",
+  "cantidad": 186.0,
+  "precio": 1045.8,
+  "gastos": 2508.58,
+  "moneda": "Pesos",
+  "mep": 1162.34,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-03",
+  "cantidad": 186.0,
+  "precio": 1192.7,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1318.95,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-09",
+  "cantidad": 652.0,
+  "precio": 1084.62307692,
+  "gastos": 8946.02,
+  "moneda": "Pesos",
+  "mep": 1166.03,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-03",
+  "cantidad": 652.0,
+  "precio": 1192.7,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1318.95,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "cupon",
+  "fecha": "2025-04-30",
+  "monto_ars": 35416.0,
+  "mep": 1174.72
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "compra",
+  "fecha": "2025-04-21",
+  "cantidad": 492.0,
+  "precio": 1043.0,
+  "gastos": 6292.62,
+  "moneda": "Pesos",
+  "mep": 1120.73,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "venta",
+  "fecha": "2025-05-05",
+  "cantidad": 492.0,
+  "precio": 1079.8,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1199.64,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-09",
+  "cantidad": 258.0,
+  "precio": 1084.62307692,
+  "gastos": 3364.49,
+  "moneda": "Pesos",
+  "mep": 1166.03,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "venta",
+  "fecha": "2025-05-05",
+  "cantidad": 258.0,
+  "precio": 1079.8,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1199.64,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "cupon",
+  "fecha": "2025-10-31",
+  "monto_ars": 16752.7,
+  "mep": 1474.92
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "cupon",
+  "fecha": "2026-04-30",
+  "monto_ars": 16210.98,
+  "mep": 1448.93
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "compra",
+  "fecha": "2025-04-21",
+  "cantidad": 419.0,
+  "precio": 1043.0,
+  "gastos": 6243.28,
+  "moneda": "Pesos",
+  "mep": 1120.73,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "venta",
+  "fecha": "2026-05-15",
+  "cantidad": 419.0,
+  "precio": 1430.1,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1426.81,
+  "abierto": false
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "compra",
+  "fecha": "2025-04-21",
+  "cantidad": 47.0,
+  "precio": 1043.0,
+  "gastos": 295.35,
+  "moneda": "Pesos",
+  "mep": 1120.73,
+  "abierto": true
+ },
+ {
+  "ticker": "BPOD7",
+  "tipo_mov": "compra",
+  "fecha": "2026-06-05",
+  "cantidad": 585.0,
+  "precio": 1484.0,
+  "gastos": 5230.54,
+  "moneda": "Pesos",
+  "mep": 1458.42,
+  "abierto": true
+ },
+ {
+  "ticker": "BRKB",
+  "tipo_mov": "compra",
+  "fecha": "2023-10-06",
+  "cantidad": 17.0,
+  "precio": 13999.0,
+  "gastos": 6420.17,
+  "moneda": "Pesos",
+  "mep": 858.21,
+  "abierto": false
+ },
+ {
+  "ticker": "BRKB",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-10",
+  "cantidad": 17.0,
+  "precio": 31900.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1362.52,
+  "abierto": false
+ },
+ {
+  "ticker": "BRKB",
+  "tipo_mov": "compra",
+  "fecha": "2023-10-06",
+  "cantidad": 3.0,
+  "precio": 13999.0,
+  "gastos": 1025.93,
+  "moneda": "Pesos",
+  "mep": 858.21,
+  "abierto": false
+ },
+ {
+  "ticker": "BRKB",
+  "tipo_mov": "venta",
+  "fecha": "2025-07-22",
+  "cantidad": 3.0,
+  "precio": 27975.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1261.25,
+  "abierto": false
+ },
+ {
+  "ticker": "BRTA",
+  "tipo_mov": "compra",
+  "fecha": "2023-12-13",
+  "cantidad": 1227.425183,
+  "precio": 244.400599,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1007.99,
+  "abierto": true
+ },
+ {
+  "ticker": "CEPU",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-09",
+  "cantidad": 316.0,
+  "precio": 1860.0,
+  "gastos": 8060.15,
+  "moneda": "Pesos",
+  "mep": 1166.03,
+  "abierto": false
+ },
+ {
+  "ticker": "CEPU",
+  "tipo_mov": "venta",
+  "fecha": "2025-05-07",
+  "cantidad": 316.0,
+  "precio": 1240.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1155.2,
+  "abierto": false
+ },
+ {
+  "ticker": "DISN",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-07-26",
+  "monto_ars": 1.46,
+  "mep": 1316.91
+ },
+ {
+  "ticker": "DISN",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-01-20",
+  "monto_ars": 1.62,
+  "mep": 1171.34
+ },
+ {
+  "ticker": "DISN",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-07-24",
+  "monto_ars": 1.62,
+  "mep": 1271.14
+ },
+ {
+  "ticker": "DISN",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-01-16",
+  "monto_ars": 2.43,
+  "mep": 1468.96
+ },
+ {
+  "ticker": "DISN",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-07-23",
+  "monto_ars": 2.43,
+  "mep": 1517.87
+ },
+ {
+  "ticker": "DISN",
+  "tipo_mov": "compra",
+  "fecha": "2024-01-04",
+  "cantidad": 60.0,
+  "precio": 8074.5,
+  "gastos": 3986.22,
+  "moneda": "Pesos",
+  "mep": 1043.95,
+  "abierto": true
+ },
+ {
+  "ticker": "DNC3O",
+  "tipo_mov": "cupon",
+  "fecha": "2024-11-22",
+  "monto_ars": 16592.55,
+  "mep": 1075.85
+ },
+ {
+  "ticker": "DNC3O",
+  "tipo_mov": "cupon",
+  "fecha": "2025-05-22",
+  "monto_ars": 18611.04,
+  "mep": 1142.82
+ },
+ {
+  "ticker": "DNC3O",
+  "tipo_mov": "cupon",
+  "fecha": "2025-11-25",
+  "monto_ars": 23526.75,
+  "mep": 1480.94
+ },
+ {
+  "ticker": "DNC3O",
+  "tipo_mov": "cupon",
+  "fecha": "2026-05-22",
+  "monto_ars": 22565.48,
+  "mep": 1425.47
+ },
+ {
+  "ticker": "DNC3O",
+  "tipo_mov": "compra",
+  "fecha": "2024-07-05",
+  "cantidad": 336.0,
+  "precio": 1469.0,
+  "gastos": 2973.84,
+  "moneda": "Pesos",
+  "mep": 1393.13,
+  "abierto": true
+ },
+ {
+  "ticker": "EWZ",
+  "tipo_mov": "compra",
+  "fecha": "2025-09-22",
+  "cantidad": 13.0,
+  "precio": 22378.46153846,
+  "gastos": 4763.29,
+  "moneda": "Pesos",
+  "mep": 1429.93,
+  "abierto": false
+ },
+ {
+  "ticker": "EWZ",
+  "tipo_mov": "venta",
+  "fecha": "2025-11-05",
+  "cantidad": 13.0,
+  "precio": 23520.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1477.09,
+  "abierto": false
+ },
+ {
+  "ticker": "FDX",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-10-02",
+  "monto_ars": 0.96,
+  "mep": 1207.48
+ },
+ {
+  "ticker": "FDX",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-01-06",
+  "monto_ars": 0.96,
+  "mep": 1165.5
+ },
+ {
+  "ticker": "FDX",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-04-03",
+  "monto_ars": 0.96,
+  "mep": 1318.95
+ },
+ {
+  "ticker": "FDX",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-07-10",
+  "monto_ars": 1.01,
+  "mep": 1269.05
+ },
+ {
+  "ticker": "FDX",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-10-02",
+  "monto_ars": 1.01,
+  "mep": 1498.31
+ },
+ {
+  "ticker": "FDX",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-01-07",
+  "monto_ars": 1.01,
+  "mep": 1494.34
+ },
+ {
+  "ticker": "FDX",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-04-06",
+  "monto_ars": 1.01,
+  "mep": 1426.37
+ },
+ {
+  "ticker": "FDX",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-06-04",
+  "monto_ars": 84.3,
+  "mep": 1455.17
+ },
+ {
+  "ticker": "FDX",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-07-08",
+  "monto_ars": 0.85,
+  "mep": 1523.53
+ },
+ {
+  "ticker": "FDX",
+  "tipo_mov": "compra",
+  "fecha": "2024-07-02",
+  "cantidad": 11.0,
+  "precio": 42679.0,
+  "gastos": 3862.79,
+  "moneda": "Pesos",
+  "mep": 1434.87,
+  "abierto": true
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "cupon",
+  "fecha": "2024-07-10",
+  "monto_ars": 4335.32,
+  "mep": 1376.66
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "cupon",
+  "fecha": "2025-01-10",
+  "monto_ars": 4699.88,
+  "mep": 1164.17
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2024-07-02",
+  "cantidad": 1261.0,
+  "precio": 788.0,
+  "gastos": 11931.15,
+  "moneda": "Pesos",
+  "mep": 1434.87,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "venta",
+  "fecha": "2025-02-10",
+  "cantidad": 1261.0,
+  "precio": 782.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1182.59,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-09",
+  "cantidad": 1.0,
+  "precio": 809.8,
+  "gastos": 9.59,
+  "moneda": "Pesos",
+  "mep": 1166.03,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "venta",
+  "fecha": "2025-02-10",
+  "cantidad": 1.0,
+  "precio": 782.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1182.59,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-09",
+  "cantidad": 627.0,
+  "precio": 809.8,
+  "gastos": 6032.57,
+  "moneda": "Pesos",
+  "mep": 1166.03,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "venta",
+  "fecha": "2025-02-25",
+  "cantidad": 627.0,
+  "precio": 787.1,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1208.24,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-09",
+  "cantidad": 377.0,
+  "precio": 809.8,
+  "gastos": 3623.15,
+  "moneda": "Pesos",
+  "mep": 1166.03,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "venta",
+  "fecha": "2025-02-27",
+  "cantidad": 377.0,
+  "precio": 785.3,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1217.02,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2025-02-20",
+  "cantidad": 974.0,
+  "precio": 787.5,
+  "gastos": 9558.96,
+  "moneda": "Pesos",
+  "mep": 1205.09,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-03",
+  "cantidad": 974.0,
+  "precio": 841.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1318.95,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-09",
+  "cantidad": 214.0,
+  "precio": 809.8,
+  "gastos": 2128.98,
+  "moneda": "Pesos",
+  "mep": 1166.03,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-03",
+  "cantidad": 214.0,
+  "precio": 841.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1318.95,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "cupon",
+  "fecha": "2025-07-10",
+  "monto_ars": 8797.55,
+  "mep": 1269.05
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2025-02-20",
+  "cantidad": 285.0,
+  "precio": 787.5,
+  "gastos": 3049.27,
+  "moneda": "Pesos",
+  "mep": 1205.09,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "venta",
+  "fecha": "2025-11-05",
+  "cantidad": 285.0,
+  "precio": 988.3,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1477.09,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2025-05-23",
+  "cantidad": 726.0,
+  "precio": 800.2,
+  "gastos": 7823.17,
+  "moneda": "Pesos",
+  "mep": 1141.25,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "venta",
+  "fecha": "2025-11-05",
+  "cantidad": 726.0,
+  "precio": 988.3,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1477.09,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2025-05-23",
+  "cantidad": 914.0,
+  "precio": 800.2,
+  "gastos": 9826.42,
+  "moneda": "Pesos",
+  "mep": 1141.25,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "venta",
+  "fecha": "2025-11-07",
+  "cantidad": 914.0,
+  "precio": 984.2,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1452.57,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "cupon",
+  "fecha": "2026-01-12",
+  "monto_ars": 9610.4,
+  "mep": 1478.66
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2025-05-23",
+  "cantidad": 202.0,
+  "precio": 800.2,
+  "gastos": 2089.8,
+  "moneda": "Pesos",
+  "mep": 1141.25,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "venta",
+  "fecha": "2026-01-30",
+  "cantidad": 202.0,
+  "precio": 916.9,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1464.75,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2025-12-04",
+  "cantidad": 506.0,
+  "precio": 1003.1,
+  "gastos": 5853.41,
+  "moneda": "Pesos",
+  "mep": 1473.31,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "venta",
+  "fecha": "2026-01-30",
+  "cantidad": 506.0,
+  "precio": 916.9,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1464.75,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2025-12-04",
+  "cantidad": 16.0,
+  "precio": 1003.1,
+  "gastos": 184.28,
+  "moneda": "Pesos",
+  "mep": 1473.31,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "venta",
+  "fecha": "2026-02-09",
+  "cantidad": 16.0,
+  "precio": 908.5,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1438.86,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2025-12-04",
+  "cantidad": 1117.0,
+  "precio": 1003.1,
+  "gastos": 12771.38,
+  "moneda": "Pesos",
+  "mep": 1473.31,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "venta",
+  "fecha": "2026-03-02",
+  "cantidad": 1117.0,
+  "precio": 894.6,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1413.22,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2025-12-04",
+  "cantidad": 325.0,
+  "precio": 1003.1,
+  "gastos": 3832.25,
+  "moneda": "Pesos",
+  "mep": 1473.31,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "venta",
+  "fecha": "2026-06-03",
+  "cantidad": 325.0,
+  "precio": 954.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1460.17,
+  "abierto": false
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "cupon",
+  "fecha": "2026-07-10",
+  "monto_ars": 74.4,
+  "mep": 1523.53
+ },
+ {
+  "ticker": "GD30",
+  "tipo_mov": "compra",
+  "fecha": "2025-12-04",
+  "cantidad": 21.0,
+  "precio": 1003.1,
+  "gastos": 126.92,
+  "moneda": "Pesos",
+  "mep": 1473.31,
+  "abierto": true
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "cupon",
+  "fecha": "2024-07-10",
+  "monto_ars": 44648.29,
+  "mep": 1376.66
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2024-01-30",
+  "cantidad": 670.0,
+  "precio": 446.95,
+  "gastos": 3561.8,
+  "moneda": "Pesos",
+  "mep": 1197.98,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-05",
+  "cantidad": 670.0,
+  "precio": 0.45616,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1255.74,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2024-03-21",
+  "cantidad": 1078.0,
+  "precio": 459.95,
+  "gastos": 5815.21,
+  "moneda": "Pesos",
+  "mep": 1029.24,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-05",
+  "cantidad": 1078.0,
+  "precio": 0.45616,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1255.74,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2024-05-07",
+  "cantidad": 934.0,
+  "precio": 528.18929336,
+  "gastos": 5422.41,
+  "moneda": "Pesos",
+  "mep": 1047.31,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-05",
+  "cantidad": 934.0,
+  "precio": 0.45616,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1255.74,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2024-08-05",
+  "cantidad": 914.0,
+  "precio": 540.4,
+  "gastos": 5373.54,
+  "moneda": "Pesos",
+  "mep": 1350.53,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-05",
+  "cantidad": 914.0,
+  "precio": 0.45616,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1255.74,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2024-08-06",
+  "cantidad": 912.0,
+  "precio": 541.3,
+  "gastos": 5366.73,
+  "moneda": "Pesos",
+  "mep": 1334.38,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-05",
+  "cantidad": 912.0,
+  "precio": 0.45616,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1255.74,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2024-09-05",
+  "cantidad": 2558.0,
+  "precio": 575.6,
+  "gastos": 18093.63,
+  "moneda": "Pesos",
+  "mep": 1255.74,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2024-09-27",
+  "cantidad": 2558.0,
+  "precio": 598.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1206.58,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "cupon",
+  "fecha": "2025-01-10",
+  "monto_ars": 48316.38,
+  "mep": 1164.17
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2024-09-05",
+  "cantidad": 615.0,
+  "precio": 575.6,
+  "gastos": 5106.39,
+  "moneda": "Pesos",
+  "mep": 1255.74,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2025-02-10",
+  "cantidad": 615.0,
+  "precio": 802.5,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1182.59,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2024-09-05",
+  "cantidad": 259.0,
+  "precio": 575.6,
+  "gastos": 2180.26,
+  "moneda": "Pesos",
+  "mep": 1255.74,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2025-03-10",
+  "cantidad": 259.0,
+  "precio": 821.57734538,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1223.67,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2024-12-13",
+  "cantidad": 1180.0,
+  "precio": 713.5,
+  "gastos": 10913.64,
+  "moneda": "Pesos",
+  "mep": 1070.59,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2025-03-10",
+  "cantidad": 1180.0,
+  "precio": 821.57734538,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1223.67,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2024-12-13",
+  "cantidad": 204.0,
+  "precio": 713.5,
+  "gastos": 1893.53,
+  "moneda": "Pesos",
+  "mep": 1070.59,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-03",
+  "cantidad": 204.0,
+  "precio": 827.08444996,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1318.95,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-30",
+  "cantidad": 611.0,
+  "precio": 807.7,
+  "gastos": 6018.1,
+  "moneda": "Pesos",
+  "mep": 1161.68,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-03",
+  "cantidad": 611.0,
+  "precio": 827.08444996,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1318.95,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2025-03-20",
+  "cantidad": 394.0,
+  "precio": 839.6,
+  "gastos": 3956.46,
+  "moneda": "Pesos",
+  "mep": 1285.29,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-03",
+  "cantidad": 394.0,
+  "precio": 827.08444996,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1318.95,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2025-04-21",
+  "cantidad": 565.0,
+  "precio": 733.7,
+  "gastos": 5161.16,
+  "moneda": "Pesos",
+  "mep": 1120.73,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2025-05-09",
+  "cantidad": 565.0,
+  "precio": 782.44934726,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1143.92,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2025-03-20",
+  "cantidad": 201.0,
+  "precio": 839.6,
+  "gastos": 1964.34,
+  "moneda": "Pesos",
+  "mep": 1285.29,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2025-05-09",
+  "cantidad": 201.0,
+  "precio": 782.44934726,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1143.92,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "cupon",
+  "fecha": "2025-07-10",
+  "monto_ars": 20418.85,
+  "mep": 1269.05
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2025-04-21",
+  "cantidad": 630.0,
+  "precio": 733.7,
+  "gastos": 6996.32,
+  "moneda": "Pesos",
+  "mep": 1120.73,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "venta",
+  "fecha": "2025-12-03",
+  "cantidad": 630.0,
+  "precio": 1109.5,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1470.31,
+  "abierto": false
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "cupon",
+  "fecha": "2026-01-12",
+  "monto_ars": 5376.55,
+  "mep": 1478.66
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "cupon",
+  "fecha": "2026-07-10",
+  "monto_ars": 55785.12,
+  "mep": 1523.53
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-30",
+  "cantidad": 2415.0,
+  "precio": 0.81959689,
+  "gastos": 17852.52,
+  "moneda": "Dólares",
+  "mep": 1504.87,
+  "abierto": true
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-07",
+  "cantidad": 1640.0,
+  "precio": 0.8533,
+  "gastos": 12528.22,
+  "moneda": "Dólares",
+  "mep": 1529.57,
+  "abierto": true
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2025-04-21",
+  "cantidad": 159.0,
+  "precio": 733.7,
+  "gastos": 702.87,
+  "moneda": "Pesos",
+  "mep": 1120.73,
+  "abierto": true
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2025-09-23",
+  "cantidad": 19.0,
+  "precio": 815.3,
+  "gastos": 93.33,
+  "moneda": "Pesos",
+  "mep": 1397.85,
+  "abierto": true
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2026-08-10",
+  "cantidad": 1000.0,
+  "precio": 1234.7,
+  "gastos": 7439.07,
+  "moneda": "Pesos",
+  "mep": 1524.39,
+  "abierto": true
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-13",
+  "cantidad": 47.0,
+  "precio": 1262.1,
+  "gastos": 357.39,
+  "moneda": "Pesos",
+  "mep": 1522.36,
+  "abierto": true
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-16",
+  "cantidad": 1828.0,
+  "precio": 1262.71865427,
+  "gastos": 13907.21,
+  "moneda": "Pesos",
+  "mep": 1513.02,
+  "abierto": true
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-05-15",
+  "monto_ars": 5333.32,
+  "mep": 1049.2
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-05-24",
+  "monto_ars": 11508.56,
+  "mep": 1198.72
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-07-01",
+  "monto_ars": 11989.2,
+  "mep": 1406.49
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-07-24",
+  "monto_ars": 12537.95,
+  "mep": 1340.38
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-05-14",
+  "monto_ars": 9751.88,
+  "mep": 1140.38
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-07-11",
+  "monto_ars": 3765.38,
+  "mep": 1266.94
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-08-12",
+  "monto_ars": 4127.28,
+  "mep": 1322.42
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-09-10",
+  "monto_ars": 4205.77,
+  "mep": 1425.22
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-10-13",
+  "monto_ars": 4284.66,
+  "mep": 1407.5
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-11-12",
+  "monto_ars": 4373.61,
+  "mep": 1449.28
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-12-11",
+  "monto_ars": 4476.04,
+  "mep": 1472.64
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-01-14",
+  "monto_ars": 4586.73,
+  "mep": 1484.45
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-02-11",
+  "monto_ars": 4717.23,
+  "mep": 1433.48
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-03-11",
+  "monto_ars": 4853.17,
+  "mep": 1413.59
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-04-15",
+  "monto_ars": 4993.73,
+  "mep": 1399.31
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-05-08",
+  "monto_ars": 17929.95,
+  "mep": 1427.42
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "compra",
+  "fecha": "2024-05-07",
+  "cantidad": 121.0,
+  "precio": 4065.43347107,
+  "gastos": 9767.01,
+  "moneda": "Pesos",
+  "mep": 1047.31,
+  "abierto": false
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "venta",
+  "fecha": "2026-05-15",
+  "cantidad": 121.0,
+  "precio": 6010.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1426.81,
+  "abierto": false
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "compra",
+  "fecha": "2025-07-22",
+  "cantidad": 14.0,
+  "precio": 6100.0,
+  "gastos": 1354.09,
+  "moneda": "Pesos",
+  "mep": 1261.25,
+  "abierto": false
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "venta",
+  "fecha": "2026-05-15",
+  "cantidad": 14.0,
+  "precio": 6010.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1426.81,
+  "abierto": false
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-09",
+  "cantidad": 57.0,
+  "precio": 8570.0,
+  "gastos": 6713.61,
+  "moneda": "Pesos",
+  "mep": 1166.03,
+  "abierto": false
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "venta",
+  "fecha": "2026-05-15",
+  "cantidad": 57.0,
+  "precio": 6010.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1426.81,
+  "abierto": false
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-07-13",
+  "monto_ars": 921.39,
+  "mep": 1522.36
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-08-06",
+  "monto_ars": 2988.3,
+  "mep": 1518.03
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-01",
+  "cantidad": 61.0,
+  "precio": 7635.0,
+  "gastos": 3663.01,
+  "moneda": "Pesos",
+  "mep": 1518.52,
+  "abierto": true
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-01",
+  "cantidad": 50.0,
+  "precio": 7635.0,
+  "gastos": 3002.47,
+  "moneda": "Pesos",
+  "mep": 1518.52,
+  "abierto": true
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-16",
+  "cantidad": 249.0,
+  "precio": 8030.0,
+  "gastos": 15725.83,
+  "moneda": "Pesos",
+  "mep": 1513.02,
+  "abierto": true
+ },
+ {
+  "ticker": "GGALX",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-28",
+  "cantidad": 178.0,
+  "precio": 0.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1161.55,
+  "abierto": false
+ },
+ {
+  "ticker": "GGALX",
+  "tipo_mov": "venta",
+  "fecha": "2025-02-13",
+  "cantidad": 178.0,
+  "precio": 0.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1187.17,
+  "abierto": false
+ },
+ {
+  "ticker": "GLOB",
+  "tipo_mov": "compra",
+  "fecha": "2024-04-09",
+  "cantidad": 45.0,
+  "precio": 11610.0,
+  "gastos": 7227.48,
+  "moneda": "Pesos",
+  "mep": 994.62,
+  "abierto": false
+ },
+ {
+  "ticker": "GLOB",
+  "tipo_mov": "venta",
+  "fecha": "2025-05-07",
+  "cantidad": 45.0,
+  "precio": 7910.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1155.2,
+  "abierto": false
+ },
+ {
+  "ticker": "GOOGL",
+  "tipo_mov": "compra",
+  "fecha": "2024-02-09",
+  "cantidad": 1.0,
+  "precio": 3210.0,
+  "gastos": 60.42,
+  "moneda": "Pesos",
+  "mep": 1149.51,
+  "abierto": false
+ },
+ {
+  "ticker": "GOOGL",
+  "tipo_mov": "venta",
+  "fecha": "2025-07-21",
+  "cantidad": 1.0,
+  "precio": 4195.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1274.47,
+  "abierto": false
+ },
+ {
+  "ticker": "INSTITUA",
+  "tipo_mov": "compra",
+  "fecha": "2022-03-31",
+  "cantidad": 13545.233154,
+  "precio": 7.382671,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 190.15,
+  "abierto": false
+ },
+ {
+  "ticker": "INSTITUA",
+  "tipo_mov": "venta",
+  "fecha": "2022-07-15",
+  "cantidad": 13545.233154,
+  "precio": 8.12718,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 289.14,
+  "abierto": false
+ },
+ {
+  "ticker": "INSTITUA",
+  "tipo_mov": "compra",
+  "fecha": "2022-04-01",
+  "cantidad": 13511.901215,
+  "precio": 7.400883,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 189.35,
+  "abierto": false
+ },
+ {
+  "ticker": "INSTITUA",
+  "tipo_mov": "venta",
+  "fecha": "2022-07-15",
+  "cantidad": 13511.901215,
+  "precio": 8.12718,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 289.14,
+  "abierto": false
+ },
+ {
+  "ticker": "INSTITUA",
+  "tipo_mov": "compra",
+  "fecha": "2022-04-06",
+  "cantidad": 13485.57832,
+  "precio": 7.415329,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 189.54,
+  "abierto": false
+ },
+ {
+  "ticker": "INSTITUA",
+  "tipo_mov": "venta",
+  "fecha": "2022-07-15",
+  "cantidad": 13485.57832,
+  "precio": 8.12718,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 289.14,
+  "abierto": false
+ },
+ {
+  "ticker": "INSTITUA",
+  "tipo_mov": "compra",
+  "fecha": "2024-01-05",
+  "cantidad": 20853.590754,
+  "precio": 38.912078,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1087.83,
+  "abierto": false
+ },
+ {
+  "ticker": "INSTITUA",
+  "tipo_mov": "venta",
+  "fecha": "2024-08-28",
+  "cantidad": 20853.590754,
+  "precio": 56.774197,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1281.32,
+  "abierto": false
+ },
+ {
+  "ticker": "INSTITUA",
+  "tipo_mov": "compra",
+  "fecha": "2024-01-08",
+  "cantidad": 5132.527769,
+  "precio": 38.967154,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1140.14,
+  "abierto": false
+ },
+ {
+  "ticker": "INSTITUA",
+  "tipo_mov": "venta",
+  "fecha": "2024-08-28",
+  "cantidad": 5132.527769,
+  "precio": 56.774197,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1281.32,
+  "abierto": false
+ },
+ {
+  "ticker": "INSTITUA",
+  "tipo_mov": "compra",
+  "fecha": "2024-01-11",
+  "cantidad": 7631.196254,
+  "precio": 39.312117,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1118.63,
+  "abierto": false
+ },
+ {
+  "ticker": "INSTITUA",
+  "tipo_mov": "venta",
+  "fecha": "2024-08-28",
+  "cantidad": 7631.196254,
+  "precio": 56.774197,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1281.32,
+  "abierto": false
+ },
+ {
+  "ticker": "INSTITUA",
+  "tipo_mov": "compra",
+  "fecha": "2024-04-03",
+  "cantidad": 13487.753563,
+  "precio": 47.386235,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 996.05,
+  "abierto": false
+ },
+ {
+  "ticker": "INSTITUA",
+  "tipo_mov": "venta",
+  "fecha": "2024-08-28",
+  "cantidad": 13487.753563,
+  "precio": 56.774197,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1281.32,
+  "abierto": false
+ },
+ {
+  "ticker": "KO",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-01",
+  "cantidad": 33.0,
+  "precio": 25640.0,
+  "gastos": 6654.73,
+  "moneda": "Pesos",
+  "mep": 1518.52,
+  "abierto": true
+ },
+ {
+  "ticker": "LECAPSA",
+  "tipo_mov": "compra",
+  "fecha": "2024-08-29",
+  "cantidad": 2387292.449419,
+  "precio": 1.120245,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1271.95,
+  "abierto": true
+ },
+ {
+  "ticker": "LMS7O",
+  "tipo_mov": "cupon",
+  "fecha": "2024-07-12",
+  "monto_ars": 5694.8,
+  "mep": 1415.18
+ },
+ {
+  "ticker": "LMS7O",
+  "tipo_mov": "cupon",
+  "fecha": "2024-10-15",
+  "monto_ars": 6134.8,
+  "mep": 1138.24
+ },
+ {
+  "ticker": "LMS7O",
+  "tipo_mov": "cupon",
+  "fecha": "2025-01-13",
+  "monto_ars": 6507.27,
+  "mep": 1169.35
+ },
+ {
+  "ticker": "LMS7O",
+  "tipo_mov": "cupon",
+  "fecha": "2025-04-14",
+  "monto_ars": 6597.36,
+  "mep": 1249.77
+ },
+ {
+  "ticker": "LMS7O",
+  "tipo_mov": "cupon",
+  "fecha": "2025-07-14",
+  "monto_ars": 7808.69,
+  "mep": 1288.56
+ },
+ {
+  "ticker": "LMS7O",
+  "tipo_mov": "cupon",
+  "fecha": "2025-10-14",
+  "monto_ars": 8444.74,
+  "mep": 1427.13
+ },
+ {
+  "ticker": "LMS7O",
+  "tipo_mov": "cupon",
+  "fecha": "2026-01-12",
+  "monto_ars": 9170.9,
+  "mep": 1478.66
+ },
+ {
+  "ticker": "LMS7O",
+  "tipo_mov": "cupon",
+  "fecha": "2026-04-13",
+  "monto_ars": 7685.7,
+  "mep": 1403.13
+ },
+ {
+  "ticker": "LMS7O",
+  "tipo_mov": "cupon",
+  "fecha": "2026-07-13",
+  "monto_ars": 7678.08,
+  "mep": 1522.36
+ },
+ {
+  "ticker": "LMS7O",
+  "tipo_mov": "compra",
+  "fecha": "2024-07-05",
+  "cantidad": 350.0,
+  "precio": 1411.0,
+  "gastos": 2975.45,
+  "moneda": "Pesos",
+  "mep": 1393.13,
+  "abierto": true
+ },
+ {
+  "ticker": "MELI",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-09",
+  "cantidad": 28.0,
+  "precio": 17500.0,
+  "gastos": 4031.72,
+  "moneda": "Pesos",
+  "mep": 1166.03,
+  "abierto": true
+ },
+ {
+  "ticker": "META",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-03-27",
+  "monto_ars": 0.31,
+  "mep": 990.94
+ },
+ {
+  "ticker": "META",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-06-27",
+  "monto_ars": 0.31,
+  "mep": 1320.5
+ },
+ {
+  "ticker": "META",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-09-27",
+  "monto_ars": 0.3,
+  "mep": 1206.58
+ },
+ {
+  "ticker": "META",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-12-30",
+  "monto_ars": 0.3,
+  "mep": 1169.76
+ },
+ {
+  "ticker": "META",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-03-27",
+  "monto_ars": 0.32,
+  "mep": 1293.22
+ },
+ {
+  "ticker": "META",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-06-27",
+  "monto_ars": 0.32,
+  "mep": 1195.16
+ },
+ {
+  "ticker": "META",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-09-30",
+  "monto_ars": 0.32,
+  "mep": 1489.18
+ },
+ {
+  "ticker": "META",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-12-24",
+  "monto_ars": 0.33,
+  "mep": 1481.01
+ },
+ {
+  "ticker": "META",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-03-27",
+  "monto_ars": 0.33,
+  "mep": 1428.43
+ },
+ {
+  "ticker": "META",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-06-26",
+  "monto_ars": 0.33,
+  "mep": 1501.01
+ },
+ {
+  "ticker": "META",
+  "tipo_mov": "compra",
+  "fecha": "2024-02-09",
+  "cantidad": 23.0,
+  "precio": 24796.5,
+  "gastos": 4692.59,
+  "moneda": "Pesos",
+  "mep": 1149.51,
+  "abierto": true
+ },
+ {
+  "ticker": "MSFT",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-06-14",
+  "monto_ars": 0.37,
+  "mep": 1235.21
+ },
+ {
+  "ticker": "MSFT",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-09-13",
+  "monto_ars": 0.37,
+  "mep": 1219.59
+ },
+ {
+  "ticker": "MSFT",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-12-13",
+  "monto_ars": 0.41,
+  "mep": 1070.59
+ },
+ {
+  "ticker": "MSFT",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-03-14",
+  "monto_ars": 0.41,
+  "mep": 1237.06
+ },
+ {
+  "ticker": "MSFT",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-06-13",
+  "monto_ars": 0.41,
+  "mep": 1182.37
+ },
+ {
+  "ticker": "MSFT",
+  "tipo_mov": "compra",
+  "fecha": "2024-05-08",
+  "cantidad": 23.0,
+  "precio": 14983.5,
+  "gastos": 6851.78,
+  "moneda": "Pesos",
+  "mep": 1038.37,
+  "abierto": false
+ },
+ {
+  "ticker": "MSFT",
+  "tipo_mov": "venta",
+  "fecha": "2025-07-22",
+  "cantidad": 23.0,
+  "precio": 16.9,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1261.25,
+  "abierto": false
+ },
+ {
+  "ticker": "NVDA",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-07-01",
+  "monto_ars": 0.02,
+  "mep": 1406.49
+ },
+ {
+  "ticker": "NVDA",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-10-04",
+  "monto_ars": 0.02,
+  "mep": 1187.05
+ },
+ {
+  "ticker": "NVDA",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-12-30",
+  "monto_ars": 0.02,
+  "mep": 1169.76
+ },
+ {
+  "ticker": "NVDA",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-04-04",
+  "monto_ars": 0.02,
+  "mep": 1332.31
+ },
+ {
+  "ticker": "NVDA",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-07-07",
+  "monto_ars": 0.02,
+  "mep": 1278.44
+ },
+ {
+  "ticker": "NVDA",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-10-03",
+  "monto_ars": 0.02,
+  "mep": 1490.91
+ },
+ {
+  "ticker": "NVDA",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-12-29",
+  "monto_ars": 0.02,
+  "mep": 1483.58
+ },
+ {
+  "ticker": "NVDA",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-04-06",
+  "monto_ars": 0.02,
+  "mep": 1426.37
+ },
+ {
+  "ticker": "NVDA",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-06-29",
+  "monto_ars": 0.54,
+  "mep": 1510.41
+ },
+ {
+  "ticker": "NVDA",
+  "tipo_mov": "compra",
+  "fecha": "2024-06-11",
+  "cantidad": 72.0,
+  "precio": 0.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1277.72,
+  "abierto": true
+ },
+ {
+  "ticker": "NVDA",
+  "tipo_mov": "compra",
+  "fecha": "2024-05-08",
+  "cantidad": 8.0,
+  "precio": 41426.0,
+  "gastos": 2726.82,
+  "moneda": "Pesos",
+  "mep": 1038.37,
+  "abierto": true
+ },
+ {
+  "ticker": "PAMP",
+  "tipo_mov": "compra",
+  "fecha": "2026-08-10",
+  "cantidad": 108.0,
+  "precio": 3.42,
+  "gastos": 4360.64,
+  "moneda": "Dólares",
+  "mep": 1524.39,
+  "abierto": true
+ },
+ {
+  "ticker": "PAMP",
+  "tipo_mov": "compra",
+  "fecha": "2024-09-05",
+  "cantidad": 171.0,
+  "precio": 2865.0,
+  "gastos": 4031.02,
+  "moneda": "Pesos",
+  "mep": 1255.74,
+  "abierto": true
+ },
+ {
+  "ticker": "PAMP",
+  "tipo_mov": "compra",
+  "fecha": "2026-08-10",
+  "cantidad": 192.0,
+  "precio": 5205.0,
+  "gastos": 7859.96,
+  "moneda": "Pesos",
+  "mep": 1524.39,
+  "abierto": true
+ },
+ {
+  "ticker": "PFE",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-01",
+  "cantidad": 32.0,
+  "precio": 6.21,
+  "gastos": 2311.92,
+  "moneda": "Dólares",
+  "mep": 1518.52,
+  "abierto": true
+ },
+ {
+  "ticker": "QQQ",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-01-04",
+  "monto_ars": 0.4,
+  "mep": 1043.95
+ },
+ {
+  "ticker": "QQQ",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-01-17",
+  "monto_ars": 0.11,
+  "mep": 1225.4
+ },
+ {
+  "ticker": "QQQ",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-05-02",
+  "monto_ars": 0.28,
+  "mep": 1057.0
+ },
+ {
+  "ticker": "QQQ",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-08-01",
+  "monto_ars": 0.37,
+  "mep": 1304.41
+ },
+ {
+  "ticker": "QQQ",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-11-01",
+  "monto_ars": 0.33,
+  "mep": 1140.05
+ },
+ {
+  "ticker": "QQQ",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-01-03",
+  "monto_ars": 0.4,
+  "mep": 1160.69
+ },
+ {
+  "ticker": "QQQ",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-05-05",
+  "monto_ars": 0.35,
+  "mep": 1199.64
+ },
+ {
+  "ticker": "QQQ",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-08-01",
+  "monto_ars": 0.29,
+  "mep": 1365.68
+ },
+ {
+  "ticker": "QQQ",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-11-03",
+  "monto_ars": 0.34,
+  "mep": 1494.86
+ },
+ {
+  "ticker": "QQQ",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-01-05",
+  "monto_ars": 0.39,
+  "mep": 1501.35
+ },
+ {
+  "ticker": "QQQ",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-03-30",
+  "monto_ars": 0.36,
+  "mep": 1434.0
+ },
+ {
+  "ticker": "QQQ",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-07-13",
+  "monto_ars": 0.4,
+  "mep": 1522.36
+ },
+ {
+  "ticker": "QQQ",
+  "tipo_mov": "compra",
+  "fecha": "2023-10-06",
+  "cantidad": 14.0,
+  "precio": 16098.5,
+  "gastos": 1854.42,
+  "moneda": "Pesos",
+  "mep": 858.21,
+  "abierto": true
+ },
+ {
+  "ticker": "RUC3O",
+  "tipo_mov": "cupon",
+  "fecha": "2022-06-21",
+  "monto_ars": 4503.79,
+  "mep": 230.94
+ },
+ {
+  "ticker": "RUC3O",
+  "tipo_mov": "cupon",
+  "fecha": "2022-12-21",
+  "monto_ars": 6409.32,
+  "mep": 324.7
+ },
+ {
+  "ticker": "RUC3O",
+  "tipo_mov": "compra",
+  "fecha": "2022-04-07",
+  "cantidad": 194.0,
+  "precio": 0.97995,
+  "gastos": 722.41,
+  "moneda": "Dólares",
+  "mep": 190.55,
+  "abierto": false
+ },
+ {
+  "ticker": "RUC3O",
+  "tipo_mov": "venta",
+  "fecha": "2023-06-13",
+  "cantidad": 194.0,
+  "precio": 510.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 475.26,
+  "abierto": false
+ },
+ {
+  "ticker": "RUC3O",
+  "tipo_mov": "cupon",
+  "fecha": "2023-06-21",
+  "monto_ars": 7366.26,
+  "mep": 477.01
+ },
+ {
+  "ticker": "RUC3O",
+  "tipo_mov": "compra",
+  "fecha": "2022-04-07",
+  "cantidad": 806.0,
+  "precio": 0.97995,
+  "gastos": 691.64,
+  "moneda": "Dólares",
+  "mep": 190.55,
+  "abierto": false
+ },
+ {
+  "ticker": "RUC3O",
+  "tipo_mov": "venta",
+  "fecha": "2023-12-21",
+  "cantidad": 806.0,
+  "precio": -28.57839868,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 957.12,
+  "abierto": false
+ },
+ {
+  "ticker": "RUC6O",
+  "tipo_mov": "cupon",
+  "fecha": "2024-05-16",
+  "monto_ars": 15071.21,
+  "mep": 1059.08
+ },
+ {
+  "ticker": "RUC6O",
+  "tipo_mov": "compra",
+  "fecha": "2024-05-08",
+  "cantidad": 411.0,
+  "precio": 1079.9,
+  "gastos": 2782.19,
+  "moneda": "Pesos",
+  "mep": 1038.37,
+  "abierto": false
+ },
+ {
+  "ticker": "RUC6O",
+  "tipo_mov": "venta",
+  "fecha": "2024-11-04",
+  "cantidad": 411.0,
+  "precio": -41.06948905,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1149.69,
+  "abierto": false
+ },
+ {
+  "ticker": "RUC7O",
+  "tipo_mov": "compra",
+  "fecha": "2024-11-04",
+  "cantidad": 337.0,
+  "precio": 1208.5,
+  "gastos": 2557.72,
+  "moneda": "Pesos",
+  "mep": 1149.69,
+  "abierto": false
+ },
+ {
+  "ticker": "RUC7O",
+  "tipo_mov": "venta",
+  "fecha": "2025-01-13",
+  "cantidad": 337.0,
+  "precio": -42.94364985,
+  "gastos": 0,
+  "moneda": "Dólares",
+  "mep": 1169.35,
+  "abierto": false
+ },
+ {
+  "ticker": "S17A6",
+  "tipo_mov": "compra",
+  "fecha": "2026-02-10",
+  "cantidad": 482090.0,
+  "precio": 1.03714238,
+  "gastos": 1004.99,
+  "moneda": "Pesos",
+  "mep": 1433.38,
+  "abierto": false
+ },
+ {
+  "ticker": "S17A6",
+  "tipo_mov": "venta",
+  "fecha": "2026-04-17",
+  "cantidad": 482090.0,
+  "precio": 1.10124999,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1413.12,
+  "abierto": false
+ },
+ {
+  "ticker": "S30A6",
+  "tipo_mov": "compra",
+  "fecha": "2026-02-10",
+  "cantidad": 419713.0,
+  "precio": 1.19129,
+  "gastos": 1005.0,
+  "moneda": "Pesos",
+  "mep": 1433.38,
+  "abierto": false
+ },
+ {
+  "ticker": "S30A6",
+  "tipo_mov": "venta",
+  "fecha": "2026-04-30",
+  "cantidad": 419713.0,
+  "precio": 1.27485999,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1448.93,
+  "abierto": false
+ },
+ {
+  "ticker": "S31L6",
+  "tipo_mov": "compra",
+  "fecha": "2026-02-10",
+  "cantidad": 495162.0,
+  "precio": 1.00977,
+  "gastos": 1005.0,
+  "moneda": "Pesos",
+  "mep": 1433.38,
+  "abierto": false
+ },
+ {
+  "ticker": "S31L6",
+  "tipo_mov": "venta",
+  "fecha": "2026-07-31",
+  "cantidad": 495162.0,
+  "precio": 1.17676999,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1518.19,
+  "abierto": false
+ },
+ {
+  "ticker": "SMH",
+  "tipo_mov": "compra",
+  "fecha": "2026-06-25",
+  "cantidad": 30.0,
+  "precio": 19210.0,
+  "gastos": 4532.6,
+  "moneda": "Pesos",
+  "mep": 1499.3,
+  "abierto": true
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-02-01",
+  "monto_ars": 0.93,
+  "mep": 1229.02
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-05-02",
+  "monto_ars": 0.78,
+  "mep": 1057.0
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-08-01",
+  "monto_ars": 0.86,
+  "mep": 1304.41
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-11-01",
+  "monto_ars": 0.85,
+  "mep": 1140.05
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-02-03",
+  "monto_ars": 0.96,
+  "mep": 1178.06
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-05-05",
+  "monto_ars": 1.6,
+  "mep": 1199.64
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-08-01",
+  "monto_ars": 1.66,
+  "mep": 1365.68
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-11-03",
+  "monto_ars": 1.73,
+  "mep": 1494.86
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-02-03",
+  "monto_ars": 1.88,
+  "mep": 1459.53
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-04-30",
+  "monto_ars": 3.96,
+  "mep": 1448.93
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-08-03",
+  "monto_ars": 4.2,
+  "mep": 1526.68
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "compra",
+  "fecha": "2026-06-01",
+  "cantidad": 126.0,
+  "precio": 0.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1439.35,
+  "abierto": true
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "compra",
+  "fecha": "2023-10-06",
+  "cantidad": 14.0,
+  "precio": 18934.5,
+  "gastos": 2181.11,
+  "moneda": "Pesos",
+  "mep": 858.21,
+  "abierto": true
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-09",
+  "cantidad": 13.0,
+  "precio": 35300.0,
+  "gastos": 3775.83,
+  "moneda": "Pesos",
+  "mep": 1166.03,
+  "abierto": true
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "compra",
+  "fecha": "2026-03-18",
+  "cantidad": 18.0,
+  "precio": 49351.11111111,
+  "gastos": 6986.63,
+  "moneda": "Pesos",
+  "mep": 1422.58,
+  "abierto": true
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "compra",
+  "fecha": "2026-01-12",
+  "cantidad": 18.0,
+  "precio": 53250.0,
+  "gastos": 7538.6,
+  "moneda": "Pesos",
+  "mep": 1478.66,
+  "abierto": true
+ },
+ {
+  "ticker": "TGSU2",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-01",
+  "cantidad": 83.0,
+  "precio": 9025.0,
+  "gastos": 5891.47,
+  "moneda": "Pesos",
+  "mep": 1518.52,
+  "abierto": true
+ },
+ {
+  "ticker": "TSLA",
+  "tipo_mov": "compra",
+  "fecha": "2024-01-22",
+  "cantidad": 2.0,
+  "precio": 18145.0,
+  "gastos": 298.6,
+  "moneda": "Pesos",
+  "mep": 1239.72,
+  "abierto": true
+ },
+ {
+  "ticker": "TSLA",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-30",
+  "cantidad": 8.0,
+  "precio": 31050.0,
+  "gastos": 2043.83,
+  "moneda": "Pesos",
+  "mep": 1161.68,
+  "abierto": true
+ },
+ {
+  "ticker": "TSLA",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-09",
+  "cantidad": 15.0,
+  "precio": 31750.0,
+  "gastos": 3918.59,
+  "moneda": "Pesos",
+  "mep": 1166.03,
+  "abierto": true
+ },
+ {
+  "ticker": "TTCDO",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-16",
+  "cantidad": 1000.0,
+  "precio": 1654.8,
+  "gastos": 9970.17,
+  "moneda": "Pesos",
+  "mep": 1513.02,
+  "abierto": true
+ },
+ {
+  "ticker": "VIST",
+  "tipo_mov": "compra",
+  "fecha": "2024-05-08",
+  "cantidad": 17.0,
+  "precio": 17150.0,
+  "gastos": 4930.62,
+  "moneda": "Pesos",
+  "mep": 1038.37,
+  "abierto": false
+ },
+ {
+  "ticker": "VIST",
+  "tipo_mov": "venta",
+  "fecha": "2025-05-09",
+  "cantidad": 17.0,
+  "precio": 18100.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1143.92,
+  "abierto": false
+ },
+ {
+  "ticker": "VIST",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-30",
+  "cantidad": 22.0,
+  "precio": 21950.0,
+  "gastos": 7249.69,
+  "moneda": "Pesos",
+  "mep": 1161.68,
+  "abierto": false
+ },
+ {
+  "ticker": "VIST",
+  "tipo_mov": "venta",
+  "fecha": "2025-05-09",
+  "cantidad": 22.0,
+  "precio": 18100.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1143.92,
+  "abierto": false
+ },
+ {
+  "ticker": "VSCVO",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-13",
+  "cantidad": 1000.0,
+  "precio": 1.1175,
+  "gastos": 10029.12,
+  "moneda": "Dólares",
+  "mep": 1522.36,
+  "abierto": true
+ },
+ {
+  "ticker": "VSCVO",
+  "tipo_mov": "compra",
+  "fecha": "2026-08-10",
+  "cantidad": 1000.0,
+  "precio": 1.1235,
+  "gastos": 10144.85,
+  "moneda": "Dólares",
+  "mep": 1524.39,
+  "abierto": true
+ },
+ {
+  "ticker": "XLE",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-06-27",
+  "monto_ars": 1.5,
+  "mep": 1320.5
+ },
+ {
+  "ticker": "XLE",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-09-26",
+  "monto_ars": 1.53,
+  "mep": 1209.53
+ },
+ {
+  "ticker": "XLE",
+  "tipo_mov": "dividendo",
+  "fecha": "2024-12-27",
+  "monto_ars": 1.47,
+  "mep": 1166.09
+ },
+ {
+  "ticker": "XLE",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-03-27",
+  "monto_ars": 1.5,
+  "mep": 1293.22
+ },
+ {
+  "ticker": "XLE",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-06-26",
+  "monto_ars": 1.51,
+  "mep": 1195.52
+ },
+ {
+  "ticker": "XLE",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-09-25",
+  "monto_ars": 1.57,
+  "mep": 1375.51
+ },
+ {
+  "ticker": "XLE",
+  "tipo_mov": "dividendo",
+  "fecha": "2025-12-29",
+  "monto_ars": 1.57,
+  "mep": 1483.58
+ },
+ {
+  "ticker": "XLE",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-03-26",
+  "monto_ars": 1.62,
+  "mep": 1399.61
+ },
+ {
+  "ticker": "XLE",
+  "tipo_mov": "dividendo",
+  "fecha": "2026-06-25",
+  "monto_ars": 1.62,
+  "mep": 1499.3
+ },
+ {
+  "ticker": "XLE",
+  "tipo_mov": "compra",
+  "fecha": "2025-12-10",
+  "cantidad": 6.0,
+  "precio": 0.0,
+  "gastos": 425.44,
+  "moneda": "Pesos",
+  "mep": 1470.5,
+  "abierto": true
+ },
+ {
+  "ticker": "XLE",
+  "tipo_mov": "compra",
+  "fecha": "2024-05-08",
+  "cantidad": 6.0,
+  "precio": 51011.0,
+  "gastos": 2518.31,
+  "moneda": "Pesos",
+  "mep": 1038.37,
+  "abierto": true
+ },
+ {
+  "ticker": "YMCJO",
+  "tipo_mov": "cupon",
+  "fecha": "2024-09-30",
+  "monto_ars": 24308.2,
+  "mep": 1211.09
+ },
+ {
+  "ticker": "YMCJO",
+  "tipo_mov": "cupon",
+  "fecha": "2025-03-31",
+  "monto_ars": 42607.22,
+  "mep": 1316.17
+ },
+ {
+  "ticker": "YMCJO",
+  "tipo_mov": "cupon",
+  "fecha": "2025-09-30",
+  "monto_ars": 53978.4,
+  "mep": 1489.18
+ },
+ {
+  "ticker": "YMCJO",
+  "tipo_mov": "cupon",
+  "fecha": "2026-03-31",
+  "monto_ars": 55486.62,
+  "mep": 1422.12
+ },
+ {
+  "ticker": "YMCJO",
+  "tipo_mov": "compra",
+  "fecha": "2026-07-13",
+  "cantidad": 997.0,
+  "precio": 1.07245035,
+  "gastos": 9593.14,
+  "moneda": "Dólares",
+  "mep": 1522.36,
+  "abierto": true
+ },
+ {
+  "ticker": "YMCJO",
+  "tipo_mov": "compra",
+  "fecha": "2024-05-08",
+  "cantidad": 645.0,
+  "precio": 976.5,
+  "gastos": 3779.06,
+  "moneda": "Pesos",
+  "mep": 1038.37,
+  "abierto": true
+ },
+ {
+  "ticker": "YMCJO",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-30",
+  "cantidad": 418.0,
+  "precio": 1179.39760766,
+  "gastos": 2970.25,
+  "moneda": "Pesos",
+  "mep": 1161.68,
+  "abierto": true
+ },
+ {
+  "ticker": "YMCJO",
+  "tipo_mov": "compra",
+  "fecha": "2024-07-05",
+  "cantidad": 71.0,
+  "precio": 1326.0,
+  "gastos": 567.23,
+  "moneda": "Pesos",
+  "mep": 1393.13,
+  "abierto": true
+ },
+ {
+  "ticker": "YPFD",
+  "tipo_mov": "compra",
+  "fecha": "2024-04-09",
+  "cantidad": 21.0,
+  "precio": 22657.0,
+  "gastos": 10489.43,
+  "moneda": "Pesos",
+  "mep": 994.62,
+  "abierto": false
+ },
+ {
+  "ticker": "YPFD",
+  "tipo_mov": "venta",
+  "fecha": "2025-04-10",
+  "cantidad": 21.0,
+  "precio": 38050.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1362.52,
+  "abierto": false
+ },
+ {
+  "ticker": "YPFD",
+  "tipo_mov": "compra",
+  "fecha": "2026-08-04",
+  "cantidad": 81.0,
+  "precio": 0.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1517.59,
+  "abierto": true
+ },
+ {
+  "ticker": "YPFD",
+  "tipo_mov": "compra",
+  "fecha": "2025-01-09",
+  "cantidad": 9.0,
+  "precio": 54850.0,
+  "gastos": 4061.75,
+  "moneda": "Pesos",
+  "mep": 1166.03,
+  "abierto": true
+ }
+]

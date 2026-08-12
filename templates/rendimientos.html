@@ -1,0 +1,130 @@
+{% extends "base.html" %}
+{% block title %}Rendimientos – EML Finance{% endblock %}
+
+{% block content %}
+<div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:10px;">
+  <h1 class="page-title" style="margin-bottom:0;">Comparador de rendimientos</h1>
+  <span style="font-size:11px;color:var(--muted);font-family:var(--mono);">
+    TIR anualizada (XIRR) · basada en historial real de compras/ventas/cupones/dividendos de Balanz
+  </span>
+</div>
+
+<div style="margin-bottom:20px;font-size:12px;color:var(--muted);line-height:1.5;max-width:760px;">
+  La TIR anualizada te permite comparar instrumentos comprados en momentos distintos de forma justa
+  (a diferencia del % simple de <a href="{{ url_for('cotizaciones') }}" style="color:var(--accent);">Cotizaciones</a>,
+  que no tiene en cuenta el tiempo). Se calcula en pesos y en dólares (convirtiendo cada flujo al dólar MEP del día en que ocurrió),
+  incluyendo compras, ventas, cupones y dividendos cobrados según tu historial de Balanz.
+  <strong>Verde en TIR USD</strong> = le ganaste a la estrategia de solo comprar dólares y no hacer nada.
+</div>
+
+<div class="stat-grid" style="margin-bottom:28px;">
+  <div class="stat-card">
+    <div class="label">Instrumentos con TIR calculada</div>
+    <div class="value">{{ con_tir }}/{{ total_filas }}</div>
+    <div class="sub">El resto (típicamente Fondos de Galicia) todavía no tiene historial de lotes cargado</div>
+  </div>
+</div>
+
+<!-- Por bucket -->
+<h2 style="font-size:11px;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">
+  Por horizonte de inversión (bucket)
+</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:28px;">
+  {% for bucket, g in por_bucket.items() %}
+  <div class="card card-sm">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">{{ bucket }}</div>
+    <div style="font-size:20px;font-weight:700;color:{% if g.tir_usd_prom and g.tir_usd_prom >= 0 %}var(--accent2){% else %}#f87171{% endif %};">
+      {% if g.tir_usd_prom is not none %}{% if g.tir_usd_prom >= 0 %}+{% endif %}{{ '{:.1f}'.format(g.tir_usd_prom * 100) }}%{% else %}–{% endif %}
+    </div>
+    <div style="font-size:10px;color:var(--muted);margin-top:4px;">TIR USD promedio · ${{ '{:,.0f}'.format(g.valor_actual_ars).replace(',','.') }} ARS actuales</div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Por tipo -->
+<h2 style="font-size:11px;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">
+  Por tipo de instrumento
+</h2>
+<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:28px;">
+  {% for tipo, g in por_tipo.items() %}
+  <div class="card card-sm" style="border-top:3px solid {{ colores.get(tipo,'#64748b') }};">
+    <div style="font-size:11px;color:var(--muted);margin-bottom:8px;">{{ tipo }}</div>
+    <div style="font-size:18px;font-weight:700;color:{% if g.tir_usd_prom and g.tir_usd_prom >= 0 %}var(--accent2){% else %}#f87171{% endif %};">
+      {% if g.tir_usd_prom is not none %}{% if g.tir_usd_prom >= 0 %}+{% endif %}{{ '{:.1f}'.format(g.tir_usd_prom * 100) }}%{% else %}–{% endif %}
+    </div>
+    <div style="font-size:10px;color:var(--muted);margin-top:4px;">TIR USD promedio</div>
+  </div>
+  {% endfor %}
+</div>
+
+<!-- Tabla por instrumento -->
+<h2 style="font-size:11px;font-family:var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:12px;">
+  Detalle por instrumento · ordenado de peor a mejor TIR en USD
+</h2>
+<div class="card">
+  <div class="table-wrap">
+    <table id="tabla-rend">
+      <thead>
+        <tr>
+          <th>Tipo</th>
+          <th>Bucket</th>
+          <th>Ticker</th>
+          <th>Descripción</th>
+          <th class="text-right">Invertido ARS</th>
+          <th class="text-right">Rentas cobradas ARS</th>
+          <th class="text-right">Valor actual ARS</th>
+          <th class="text-right">TIR ARS</th>
+          <th class="text-right">TIR USD</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for f in filas %}
+        <tr>
+          <td>
+            <span style="display:inline-block;width:7px;height:7px;border-radius:50%;background:{{ colores.get(f.tipo,'#64748b') }};margin-right:6px;"></span>
+            <span style="font-size:11px;color:var(--muted);">{{ f.tipo }}</span>
+          </td>
+          <td style="font-size:11px;color:var(--muted);">{{ f.bucket }}</td>
+          <td>
+            <span style="font-family:var(--mono);font-weight:700;font-size:13px;color:{{ colores.get(f.tipo,'#e2e8f0') }};">{{ f.ticker }}</span>
+            {% if not f.precio_es_live %}<span title="Precio estimado, sin cotización en vivo" style="font-size:9px;color:var(--muted);margin-left:4px;">~</span>{% endif %}
+          </td>
+          <td style="font-size:11px;color:var(--muted);max-width:220px;">{{ f.descripcion }}</td>
+          <td class="text-right mono" style="font-size:12px;color:var(--muted);">
+            {% if f.invertido_ars %}${{ '{:,.0f}'.format(f.invertido_ars).replace(',','.') }}{% else %}–{% endif %}
+          </td>
+          <td class="text-right mono" style="font-size:12px;color:var(--muted);">
+            {% if f.rentas_cobradas_ars %}${{ '{:,.0f}'.format(f.rentas_cobradas_ars).replace(',','.') }}{% else %}–{% endif %}
+          </td>
+          <td class="text-right mono" style="font-size:12px;">
+            {% if f.valor_actual_ars %}${{ '{:,.0f}'.format(f.valor_actual_ars).replace(',','.') }}{% else %}–{% endif %}
+          </td>
+          <td class="text-right" style="font-size:12px;">
+            {% if f.tir_ars is not none %}
+              <span style="color:{% if f.tir_ars >= 0 %}var(--accent2){% else %}#f87171{% endif %};font-weight:600;">
+                {% if f.tir_ars >= 0 %}+{% endif %}{{ '{:.1f}'.format(f.tir_ars * 100) }}%
+              </span>
+            {% else %}<span style="color:var(--muted);">–</span>{% endif %}
+          </td>
+          <td class="text-right" style="font-size:12px;">
+            {% if f.tir_usd is not none %}
+              <span style="color:{% if f.tir_usd >= 0 %}var(--accent2){% else %}#f87171{% endif %};font-weight:700;">
+                {% if f.tir_usd >= 0 %}▲{% else %}▼{% endif %} {% if f.tir_usd >= 0 %}+{% endif %}{{ '{:.1f}'.format(f.tir_usd * 100) }}%
+              </span>
+            {% else %}<span style="color:var(--muted);">sin historial</span>{% endif %}
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div style="margin-top:12px;font-size:11px;color:var(--muted);line-height:1.6;">
+  * "~" junto al ticker = precio estimado (sin cotización en vivo, típico de Fondos). "Sin historial" = todavía no cargamos
+  las operaciones de compra reales de ese ticker (hoy son los Fondos de Galicia: FIMAPREM, FIMARFDA).<br>
+  Pendiente para una próxima vuelta: comparar cada TIR contra inflación (IPC) y contra índices de referencia
+  específicos por tipo — hoy podés comparar a ojo CEDEARs individuales contra SPY/QQQ en esta misma tabla.
+</div>
+
+{% endblock %}
