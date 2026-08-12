@@ -5728,5 +5728,104 @@
   "moneda": "Pesos",
   "mep": 1166.03,
   "abierto": true
+ },
+ {
+  "ticker": "AO27",
+  "tipo_mov": "compra",
+  "fecha": "2026-08-12",
+  "cantidad": 453,
+  "precio": 1562.5,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1523.0,
+  "abierto": true
+ },
+ {
+  "ticker": "AO27",
+  "tipo_mov": "compra",
+  "fecha": "2026-08-12",
+  "cantidad": 895,
+  "precio": 1562.6,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1523.0,
+  "abierto": true
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2026-08-12",
+  "cantidad": 443,
+  "precio": 1239.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1523.0,
+  "abierto": true
+ },
+ {
+  "ticker": "GD35",
+  "tipo_mov": "compra",
+  "fecha": "2026-08-12",
+  "cantidad": 1186,
+  "precio": 1240.4,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1523.0,
+  "abierto": true
+ },
+ {
+  "ticker": "PAMP",
+  "tipo_mov": "compra",
+  "fecha": "2026-08-12",
+  "cantidad": 53,
+  "precio": 5070.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1523.0,
+  "abierto": true
+ },
+ {
+  "ticker": "GGAL",
+  "tipo_mov": "compra",
+  "fecha": "2026-08-12",
+  "cantidad": 42,
+  "precio": 7010.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1523.0,
+  "abierto": true
+ },
+ {
+  "ticker": "YMCJO",
+  "tipo_mov": "compra",
+  "fecha": "2026-08-12",
+  "cantidad": 406,
+  "precio": 1648.5,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1523.0,
+  "abierto": true
+ },
+ {
+  "ticker": "QQQ",
+  "tipo_mov": "compra",
+  "fecha": "2026-08-12",
+  "cantidad": 5,
+  "precio": 57475.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1523.0,
+  "abierto": true
+ },
+ {
+  "ticker": "SPY",
+  "tipo_mov": "compra",
+  "fecha": "2026-08-12",
+  "cantidad": 34,
+  "precio": 20440.0,
+  "gastos": 0,
+  "moneda": "Pesos",
+  "mep": 1523.0,
+  "abierto": true
  }
 ]

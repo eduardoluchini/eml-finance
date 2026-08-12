@@ -83,23 +83,35 @@ def init_db():
         # Seed histórico de operaciones (Balanz) desde data/operaciones_balanz.json,
         # una sola vez. Ver README / MEJORAS.md — sale del extracto "resultados por
         # info completa" descargado en Balanz > Resultados.
-        count_ops = conn.execute('SELECT COUNT(*) FROM operaciones').fetchone()[0]
-        if count_ops == 0:
-            seed_path = os.path.join(os.path.dirname(__file__), 'data', 'operaciones_balanz.json')
-            if os.path.exists(seed_path):
-                with open(seed_path, encoding='utf-8') as fh:
-                    seed_ops = json.load(fh)
-                for op in seed_ops:
-                    conn.execute(
-                        'INSERT INTO operaciones (ticker, fecha, tipo_mov, cantidad, precio, gastos, moneda, mep, monto_ars, abierto) '
-                        'VALUES (?,?,?,?,?,?,?,?,?,?)',
-                        (
-                            op['ticker'], op['fecha'], op['tipo_mov'],
-                            op.get('cantidad'), op.get('precio'), op.get('gastos'),
-                            op.get('moneda'), op.get('mep'), op.get('monto_ars'),
-                            1 if op.get('abierto') else 0,
-                        )
+        # Upsert idempotente: cada vez que arranca la app revisa data/operaciones_balanz.json
+        # y suma solo las filas que todavía no están en la tabla (por ticker+fecha+tipo_mov+
+        # cantidad+precio). Así, cuando agregamos operaciones nuevas al JSON (ej. las compras
+        # de un día), entran solas al próximo deploy sin necesidad de vaciar la tabla ni
+        # duplicar lo que ya estaba cargado.
+        seed_path = os.path.join(os.path.dirname(__file__), 'data', 'operaciones_balanz.json')
+        if os.path.exists(seed_path):
+            with open(seed_path, encoding='utf-8') as fh:
+                seed_ops = json.load(fh)
+            existentes = set(
+                (r['ticker'], r['fecha'], r['tipo_mov'], r['cantidad'], r['precio'])
+                for r in conn.execute('SELECT ticker, fecha, tipo_mov, cantidad, precio FROM operaciones').fetchall()
+            )
+            nuevas = 0
+            for op in seed_ops:
+                clave = (op['ticker'], op['fecha'], op['tipo_mov'], op.get('cantidad'), op.get('precio'))
+                if clave in existentes:
+                    continue
+                conn.execute(
+                    'INSERT INTO operaciones (ticker, fecha, tipo_mov, cantidad, precio, gastos, moneda, mep, monto_ars, abierto) '
+                    'VALUES (?,?,?,?,?,?,?,?,?,?)',
+                    (
+                        op['ticker'], op['fecha'], op['tipo_mov'],
+                        op.get('cantidad'), op.get('precio'), op.get('gastos'),
+                        op.get('moneda'), op.get('mep'), op.get('monto_ars'),
+                        1 if op.get('abierto') else 0,
                     )
+                )
+                nuevas += 1
         conn.commit()
 
 def get_precios_iniciales():
@@ -127,8 +139,12 @@ def login_required(f):
 
 # ── Datos cartera (posición 03/07/2026) ──────────────────────────────────────
 PORTFOLIO_INICIAL = {
-    'fecha': '10/08/2026',
-    'total_ars': 68930000,
+    'fecha': '12/08/2026',
+    # OJO: total_ars quedó recalculado con los instrumentos nuevos, pero el efectivo
+    # (monedas/disponibilidad más abajo) NO se actualizó — no tenemos confirmado en
+    # qué cuenta entró el nuevo pago de $5.880.000 ni cuánto quedó disponible después
+    # de comprar. Corregir disponibilidad cuando Eduardo confirme los saldos reales.
+    'total_ars': 75320305,
     'tc_mep': 1517.87,
     'tc_usd': 1583.98,
     'monedas': {
@@ -148,8 +164,8 @@ PORTFOLIO_INICIAL = {
         'Acciones': [
             {'ticker': 'BBAR',  'descripcion': 'Banco Frances Escriturales',    'cantidad': 58,  'precio': 10050.00, 'valor': 582900},
             {'ticker': 'BMA',   'descripcion': 'Banco Macro S.A.',              'cantidad': 45,  'precio': 14550.00, 'valor': 654750},
-            {'ticker': 'GGAL',  'descripcion': 'Grupo Financiero Galicia',      'cantidad': 360, 'precio': 7945.00,  'valor': 2860200},
-            {'ticker': 'PAMP',  'descripcion': 'Pampa Energia',                 'cantidad': 471, 'precio': 5205.00,  'valor': 2451555},
+            {'ticker': 'GGAL',  'descripcion': 'Grupo Financiero Galicia',      'cantidad': 402, 'precio': 7010.00,  'valor': 2818020},
+            {'ticker': 'PAMP',  'descripcion': 'Pampa Energia',                 'cantidad': 524, 'precio': 5070.00,  'valor': 2656680},
             {'ticker': 'TGSU2', 'descripcion': 'Transportadora de Gas del Sur', 'cantidad': 83,  'precio': 9995.00,  'valor': 829585},
             {'ticker': 'YPFD',  'descripcion': 'YPF S.A.',                     'cantidad': 90,  'precio': 8247.00,  'valor': 742230},
         ],
@@ -159,11 +175,11 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'AL30',  'descripcion': 'Bono Rep. Argentina USD Step Up 2030', 'cantidad': 1375, 'precio': 862.10,  'valor': 1185388},
             {'ticker': 'AL35',  'descripcion': 'Bono Rep. Argentina USD Step Up 2035', 'cantidad': 724,  'precio': 1221.80, 'valor': 884583},
             {'ticker': 'AL41',  'descripcion': 'Bono Rep. Argentina USD Step Up 2041', 'cantidad': 1137, 'precio': 1152.80, 'valor': 1310734},
-            {'ticker': 'AO27',  'descripcion': 'Bono Tesoro Nacional 6% 29/10/27',     'cantidad': 2868, 'precio': 1551.30, 'valor': 4447127},
+            {'ticker': 'AO27',  'descripcion': 'Bono Tesoro Nacional 6% 29/10/27',     'cantidad': 4216, 'precio': 1562.50, 'valor': 6587500},
             {'ticker': 'AO28',  'descripcion': 'Bono Tesoro Nacional 6% 31/10/28',     'cantidad': 1124, 'precio': 1492.00, 'valor': 1677008},
             {'ticker': 'BPOD7', 'descripcion': 'Bopreal S.1-D Vto 31/10/27',           'cantidad': 632,  'precio': 1566.60, 'valor': 990091},
             {'ticker': 'GD30',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2030',     'cantidad': 21,   'precio': 884.00,  'valor': 18564},
-            {'ticker': 'GD35',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2035',     'cantidad': 8154, 'precio': 1234.70, 'valor': 10068554},
+            {'ticker': 'GD35',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2035',     'cantidad': 9783, 'precio': 1239.40, 'valor': 12125050},
         ],
         'CEDEARs': [
             {'ticker': 'AAPL', 'descripcion': 'Apple Inc.',                  'cantidad': 31,  'precio': 25480.00, 'valor': 789880},
@@ -176,9 +192,9 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'META', 'descripcion': 'Meta Platforms Inc.',         'cantidad': 23,  'precio': 40140.00, 'valor': 923220},
             {'ticker': 'NVDA', 'descripcion': 'NVIDIA Corporation',          'cantidad': 80,  'precio': 13720.00, 'valor': 1097600},
             {'ticker': 'PFE',  'descripcion': 'Pfizer Inc.',                 'cantidad': 32,  'precio': 9920.00,  'valor': 317440},
-            {'ticker': 'QQQ',  'descripcion': 'Invesco QQQ Trust (ETF)',     'cantidad': 14,  'precio': 54850.00, 'valor': 767900},
+            {'ticker': 'QQQ',  'descripcion': 'Invesco QQQ Trust (ETF)',     'cantidad': 19,  'precio': 57475.00, 'valor': 1092025},
             {'ticker': 'SMH',  'descripcion': 'VanEck Semiconductor ETF',    'cantidad': 30,  'precio': 18290.00, 'valor': 548700},
-            {'ticker': 'SPY',  'descripcion': 'SPDR S&P 500 ETF',            'cantidad': 189, 'precio': 19500.00, 'valor': 3685500},
+            {'ticker': 'SPY',  'descripcion': 'SPDR S&P 500 ETF',            'cantidad': 223, 'precio': 20440.00, 'valor': 4558120},
             {'ticker': 'TSLA', 'descripcion': 'Tesla Inc.',                  'cantidad': 25,  'precio': 33840.00, 'valor': 846000},
             {'ticker': 'XLE',  'descripcion': 'Energy Select Sector SPDR',   'cantidad': 12,  'precio': 47080.00, 'valor': 564960},
         ],
@@ -187,7 +203,7 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'LMS7O', 'descripcion': 'ON Aluar S.7 Vto 12/10/28',             'cantidad': 350,  'precio': 1184.80, 'valor': 414680},
             {'ticker': 'TTCDO', 'descripcion': 'ON Tecpetrol 7.625% Vto 11/2030 USD',   'cantidad': 1000, 'precio': 1665.40, 'valor': 1665400},
             {'ticker': 'VSCVO', 'descripcion': 'ON Vista Energy 8.5% Vto 06/2033 USD',  'cantidad': 2000, 'precio': 1705.60, 'valor': 3411200},
-            {'ticker': 'YMCJO', 'descripcion': 'ON YPF REGS 1.5% Vto 30/09/2033',      'cantidad': 2131, 'precio': 1654.00, 'valor': 3524674},
+            {'ticker': 'YMCJO', 'descripcion': 'ON YPF REGS 1.5% Vto 30/09/2033',      'cantidad': 2537, 'precio': 1648.50, 'valor': 4182245},
         ],
         'Fondos': [
             {'ticker': 'BRTA',     'descripcion': 'Renta Mixta Clase A (Balanz)',               'cantidad': 1227.43,    'precio': 748.10,      'valor': 918234,  'fuente': 'Balanz', 'moneda': 'ARS'},
@@ -195,6 +211,9 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'BAHUSDA',  'descripcion': 'Corporativo Clase A (Balanz)',               'cantidad': 4445.58,    'precio': 1.43,        'valor': 6364,    'fuente': 'Balanz', 'moneda': 'ARS'},
             {'ticker': 'FIMAPREM', 'descripcion': 'Fima Premium Clase A (Galicia)',             'cantidad': 57447.00,   'precio': 82.67,       'valor': 4749040, 'fuente': 'Galicia','moneda': 'ARS'},
             {'ticker': 'FIMARFDA', 'descripcion': 'Fima Renta Fija Dolares Clase A (Galicia)', 'cantidad': 914.53,     'precio': 1699.47,     'valor': 1554466, 'fuente': 'Galicia','moneda': 'USD', 'precio_usd': 1.11970, 'valor_usd': 1024.04},
+            # Cantidad/precio son un placeholder (1 cuota = $1.000.000) hasta que tengamos
+            # la cantidad real de cuotas y el valor cuota de Galicia para esta suscripción.
+            {'ticker': 'FIMARPLUS','descripcion': 'Fima Renta Plus (Galicia)',                  'cantidad': 1,          'precio': 1000000.00,  'valor': 1000000, 'fuente': 'Galicia','moneda': 'ARS'},
         ],
         'Letras': [],
     }
