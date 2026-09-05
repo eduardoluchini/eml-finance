@@ -185,14 +185,12 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'AO28',  'descripcion': 'Bono Tesoro Nacional 6% 31/10/28',     'cantidad': 1124, 'precio': 1445.90, 'valor': 1625192},
             {'ticker': 'BPOD7', 'descripcion': 'Bopreal S.1-D Vto 31/10/27',           'cantidad': 632,  'precio': 1587.90, 'valor': 1003553},
             {'ticker': 'GD30',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2030',     'cantidad': 21,   'precio': 885.10,  'valor': 18587},
-            # OJO: bajó de 9.783 a 8.737 nominales (-1.046) entre el 12/08 y el 04/09.
-            # No es un cambio de precio, es un cambio de CANTIDAD y no hay ninguna venta
-            # cargada en data/operaciones_balanz.json que lo explique. Eduardo no recuerda
-            # haber vendido — pendiente revisar "Movimientos"/"Operaciones" en Balanz (el
-            # resumen de posición no muestra el historial de movimientos) para encontrar
-            # fecha y precio reales y cargar la venta. Hasta entonces, la TIR de GD35 en
-            # /rendimientos va a subestimarse (compras registradas > tenencia actual, sin
-            # un flujo de venta que compense esa diferencia).
+            # RESUELTO: la baja de 9.783 (registrada el 12/08) a 8.737 nominales NO fue una
+            # venta. El 12/08 se había cargado mal la compra del 12/08 (append aproximado,
+            # sin el detalle real de Balanz) y quedó de más 1.046 nominales que nunca
+            # existieron. Con el Excel de operaciones que pasó Eduardo (lotes iniciales
+            # 31/07 vs. finales 04/09) se confirmó que la cantidad real siempre fue 8.737 y
+            # se corrigió data/operaciones_balanz.json en consecuencia.
             {'ticker': 'GD35',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2035',     'cantidad': 8737, 'precio': 1219.00, 'valor': 10650403},
         ],
         'CEDEARs': [
