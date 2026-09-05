@@ -221,22 +221,9 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'BRTA',     'descripcion': 'Renta Mixta Clase A (Balanz)',               'cantidad': 1227.43,    'precio': 745.64,      'valor': 915216,  'fuente': 'Balanz', 'moneda': 'ARS'},
             {'ticker': 'LECAPSA',  'descripcion': 'Lecaps Clase A (Balanz)',                    'cantidad': 2387292.45, 'precio': 2.12,        'valor': 5051740, 'fuente': 'Balanz', 'moneda': 'ARS'},
             {'ticker': 'BAHUSDA',  'descripcion': 'Corporativo Clase A (Balanz)',               'cantidad': 4445.58,    'precio': 1.43,        'valor': 6368,    'fuente': 'Balanz', 'moneda': 'ARS'},
-            # Galicia dejó de discriminar FIMAPREM vs. Fima Renta Plus por separado: su
-            # "Tu portfolio" ahora solo reporta un agregado en pesos (100% FIMA). El
-            # 12/08 quedaron cargados por separado: FIMAPREM (cuotapartes reales)
-            # $4.142.912 + Fima Renta Plus (placeholder, pendiente de acreditación)
-            # $1.000.000 = $5.142.912. Hoy Galicia reporta un agregado de $5.201.711,60
-            # (+1,1% en 23 días, coherente con el rendimiento normal de un fondo money
-            # market en pesos) — Eduardo confirmó que hubo además un rescate parcial en
-            # este período, pero no un monto/fecha exactos, así que no se puede aislar
-            # ese movimiento del rendimiento del fondo con la información actual. Se
-            # fusionan las dos líneas anteriores en una sola con el total reportado hoy.
-            {'ticker': 'FIMAPREM', 'descripcion': 'Fima agregado en pesos (Galicia) — FIMAPREM + Fima Renta Plus fusionados', 'cantidad': 1, 'precio': 5201711.60, 'valor': 5201711.60, 'fuente': 'Galicia', 'moneda': 'ARS'},
-            # Fondo en dólares: la cantidad de cuotas no cambió (no hubo rescate acá, la
-            # diferencia es solo la variación normal del valor cuota); se recalculó el
-            # precio en dólares para que el valor coincida con lo que reporta Galicia hoy
-            # (USD 1.024,91) y el valor en ARS usa el MEP del día ($1.515,10).
-            {'ticker': 'FIMARFDA', 'descripcion': 'Fima Renta Fija Dolares Clase A (Galicia)', 'cantidad': 914.53,     'precio': 1697.86,     'valor': 1552841, 'fuente': 'Galicia','moneda': 'USD', 'precio_usd': 1.12067, 'valor_usd': 1024.91},
+            {'ticker': 'FIMAPREM', 'descripcion': 'Fima Premium Clase A (Galicia)',           'cantidad': 49663.34,   'precio': 84.451893,   'valor': 4194163, 'fuente': 'Galicia', 'moneda': 'ARS'},
+            {'ticker': 'FIMARPLUS','descripcion': 'Fima Renta Plus Clase A (Galicia)',         'cantidad': 1068.94,    'precio': 949.905957,  'valor': 1015392, 'fuente': 'Galicia', 'moneda': 'ARS'},
+            {'ticker': 'FIMARFDA', 'descripcion': 'Fima Renta Fija Dolares Clase A (Galicia)','cantidad': 914.53,     'precio': 1702.13,     'valor': 1556810, 'fuente': 'Galicia', 'moneda': 'USD', 'precio_usd': 1.123345, 'valor_usd': 1027.33},
         ],
         'Letras': [],
     }
