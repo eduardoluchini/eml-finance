@@ -137,27 +137,37 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated
 
-# ── Datos cartera (posición 04/09/2026) ──────────────────────────────────────
+# ── Datos cartera (posición 04/09/2026, actualizada parcialmente el 10/09/2026) ─
 PORTFOLIO_INICIAL = {
+    # OJO: esto es una actualización PARCIAL. El 10/09 Eduardo pasó $5.670.636,05
+    # nuevos a Balanz y ejecutó las compras de ordenesdeldia.xlsx (ver detalle en
+    # data/operaciones_balanz.json, filas del 2026-09-10). Se actualizaron cantidad/
+    # precio/valor SOLO de los tickers efectivamente operados ese día (AO27, GD35,
+    # PFE, FDX, XLE, AMZN, MELI, AAPL, DISN, KO, TSLA, META, QQQ, AMD, SPY, y las
+    # posiciones nuevas BRKB/GOOGL/MSFT). El resto de los instrumentos (Acciones,
+    # Bonos que no sean AO27/GD35, Corporativos, Fondos, y también NVDA y SMH entre
+    # los Cedears) sigue con precios del 04/09 — no hay un resumen nuevo completo.
+    # SMH quedó afuera: la orden figura "Ejecutada" pero con Precio/Cantidad Operada
+    # en -1 en el Excel; Eduardo no pudo confirmar si se ejecutó o no, así que no se
+    # cargó. Si se confirma, hay que sumarla (5 nominales, ~$17.950 c/u).
     'fecha': '04/09/2026',
     # total_ars = suma de instrumentos (Balanz + Galicia) + efectivo de las 4 cuentas
-    # (Balanz, Galicia, MercadoPago), NO el "Total $73.599.837" que figura en el
-    # encabezado del resumen de Balanz del 04/09. Ese número no concilia con el propio
-    # detalle del PDF: Acciones+Bonos+Cedears+Corporativos+Fondos+Fondos (páginas 2-4)
-    # suman $63.875.250, ~$9,72M MENOS que el "Total" de la página 1. Puede ser una
-    # caución, plazo fijo u otra posición que ese resumen no detalla — pendiente que
-    # Eduardo revise en la app de Balanz de dónde sale esa diferencia. Mientras tanto
-    # se usa acá la suma verificable ítem por ítem.
-    'total_ars': 71877910,
+    # (Balanz, Galicia, MercadoPago), NO el "Total $73.599.837" que figuraba en el
+    # encabezado del resumen de Balanz del 04/09 (ver nota histórica más abajo en el
+    # historial de commits — esa diferencia de ~$9,72M sigue sin explicar).
+    'total_ars': 77712585,
     'tc_mep': 1515.10,
     'tc_usd': 1578.26,
     'monedas': {
-        'Pesos': 70636.05,
+        'Pesos': 301161.00,
         'Dólares': 0.80,
         'USD Cable': 6.68,
     },
     'disponibilidad': {
-        'Balanz Pesos':  {'ars': 70636.05,   'usd': None},
+        # Balanz Pesos = $70.636,05 (04/09) + $5.670.636,05 (depósito 10/09) -
+        # $5.440.111,10 (comprado el 10/09, sin contar SMH ni gastos/comisiones que
+        # ordenesdeldia.xlsx no desglosa — el saldo real puede ser algo menor).
+        'Balanz Pesos':  {'ars': 301161.00,   'usd': None},
         'Balanz USD':    {'ars': None,        'usd': 0.80},
         'Balanz Cable':  {'ars': None,        'usd': 6.68},
         'Galicia Pesos': {'ars': 612.62,      'usd': None},
@@ -181,7 +191,7 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'AL30',  'descripcion': 'Bono Rep. Argentina USD Step Up 2030', 'cantidad': 1375, 'precio': 853.00,  'valor': 1172875},
             {'ticker': 'AL35',  'descripcion': 'Bono Rep. Argentina USD Step Up 2035', 'cantidad': 724,  'precio': 1165.00, 'valor': 843460},
             {'ticker': 'AL41',  'descripcion': 'Bono Rep. Argentina USD Step Up 2041', 'cantidad': 1137, 'precio': 1085.20, 'valor': 1233872},
-            {'ticker': 'AO27',  'descripcion': 'Bono Tesoro Nacional 6% 29/10/27',     'cantidad': 4216, 'precio': 1569.90, 'valor': 6618698},
+            {'ticker': 'AO27',  'descripcion': 'Bono Tesoro Nacional 6% 29/10/27',     'cantidad': 5104, 'precio': 1578.20, 'valor': 8055133},
             {'ticker': 'AO28',  'descripcion': 'Bono Tesoro Nacional 6% 31/10/28',     'cantidad': 1124, 'precio': 1445.90, 'valor': 1625192},
             {'ticker': 'BPOD7', 'descripcion': 'Bopreal S.1-D Vto 31/10/27',           'cantidad': 632,  'precio': 1587.90, 'valor': 1003553},
             {'ticker': 'GD30',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2030',     'cantidad': 21,   'precio': 885.10,  'valor': 18587},
@@ -191,24 +201,31 @@ PORTFOLIO_INICIAL = {
             # existieron. Con el Excel de operaciones que pasó Eduardo (lotes iniciales
             # 31/07 vs. finales 04/09) se confirmó que la cantidad real siempre fue 8.737 y
             # se corrigió data/operaciones_balanz.json en consecuencia.
-            {'ticker': 'GD35',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2035',     'cantidad': 8737, 'precio': 1219.00, 'valor': 10650403},
+            {'ticker': 'GD35',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2035',     'cantidad': 9557, 'precio': 1217.60, 'valor': 11636603},
         ],
         'CEDEARs': [
-            {'ticker': 'AAPL', 'descripcion': 'Apple Inc.',                  'cantidad': 31,  'precio': 25380.00, 'valor': 786780},
-            {'ticker': 'AMD',  'descripcion': 'Advanced Micro Devices',      'cantidad': 17,  'precio': 75475.00, 'valor': 1283075},
-            {'ticker': 'AMZN', 'descripcion': 'Amazon.com Inc.',             'cantidad': 243, 'precio': 2855.00,  'valor': 693765},
-            {'ticker': 'DISN', 'descripcion': 'The Walt Disney Company',     'cantidad': 60,  'precio': 13920.00, 'valor': 835200},
-            {'ticker': 'FDX',  'descripcion': 'FedEx Corporation',           'cantidad': 11,  'precio': 51000.00, 'valor': 561000},
-            {'ticker': 'KO',   'descripcion': 'Coca-Cola Company',           'cantidad': 33,  'precio': 27900.00, 'valor': 920700},
-            {'ticker': 'MELI', 'descripcion': 'MercadoLibre Inc.',           'cantidad': 28,  'precio': 26100.00, 'valor': 730800},
-            {'ticker': 'META', 'descripcion': 'Meta Platforms Inc.',         'cantidad': 23,  'precio': 40720.00, 'valor': 936560},
+            {'ticker': 'AAPL', 'descripcion': 'Apple Inc.',                  'cantidad': 36,  'precio': 25980.00, 'valor': 935280},
+            {'ticker': 'AMD',  'descripcion': 'Advanced Micro Devices',      'cantidad': 19,  'precio': 80600.00, 'valor': 1531400},
+            {'ticker': 'AMZN', 'descripcion': 'Amazon.com Inc.',             'cantidad': 286, 'precio': 2802.50,  'valor': 801515},
+            {'ticker': 'BRKB', 'descripcion': 'Berkshire Hathaway Inc. B',   'cantidad': 6,   'precio': 36660.00, 'valor': 219960},
+            {'ticker': 'DISN', 'descripcion': 'The Walt Disney Company',     'cantidad': 70,  'precio': 14010.00, 'valor': 980700},
+            {'ticker': 'FDX',  'descripcion': 'FedEx Corporation',           'cantidad': 12,  'precio': 49940.00, 'valor': 599280},
+            {'ticker': 'GOOGL','descripcion': 'Alphabet Inc. Class A',       'cantidad': 32,  'precio': 9175.00,  'valor': 293600},
+            {'ticker': 'KO',   'descripcion': 'Coca-Cola Company',           'cantidad': 38,  'precio': 28200.00, 'valor': 1071600},
+            {'ticker': 'MELI', 'descripcion': 'MercadoLibre Inc.',           'cantidad': 33,  'precio': 25520.00, 'valor': 842160},
+            {'ticker': 'META', 'descripcion': 'Meta Platforms Inc.',         'cantidad': 26,  'precio': 42980.00, 'valor': 1117480},
+            {'ticker': 'MSFT', 'descripcion': 'Microsoft Corporation',       'cantidad': 11,  'precio': 26120.00, 'valor': 287320},
             {'ticker': 'NVDA', 'descripcion': 'NVIDIA Corporation',          'cantidad': 80,  'precio': 15220.00, 'valor': 1217600},
-            {'ticker': 'PFE',  'descripcion': 'Pfizer Inc.',                 'cantidad': 32,  'precio': 11250.00, 'valor': 360000},
-            {'ticker': 'QQQ',  'descripcion': 'Invesco QQQ Trust (ETF)',     'cantidad': 19,  'precio': 57050.00, 'valor': 1083950},
+            {'ticker': 'PFE',  'descripcion': 'Pfizer Inc.',                 'cantidad': 34,  'precio': 10980.00, 'valor': 373320},
+            {'ticker': 'QQQ',  'descripcion': 'Invesco QQQ Trust (ETF)',     'cantidad': 22,  'precio': 56750.00, 'valor': 1248500},
+            # Orden "Ejecutada" en ordenesdeldia.xlsx pero con Precio/Cantidad Operada
+            # en -1 (sin dato). Eduardo no pudo confirmar si se ejecutó — queda con la
+            # cantidad/precio del 04/09 hasta que se confirme (pendiente: 5 nominales
+            # más si se confirma que sí se ejecutó, a ~$17.950 c/u).
             {'ticker': 'SMH',  'descripcion': 'VanEck Semiconductor ETF',    'cantidad': 30,  'precio': 18000.00, 'valor': 540000},
-            {'ticker': 'SPY',  'descripcion': 'SPDR S&P 500 ETF',            'cantidad': 223, 'precio': 20390.00, 'valor': 4546970},
-            {'ticker': 'TSLA', 'descripcion': 'Tesla Inc.',                  'cantidad': 25,  'precio': 37460.00, 'valor': 936500},
-            {'ticker': 'XLE',  'descripcion': 'Energy Select Sector SPDR',   'cantidad': 12,  'precio': 50800.00, 'valor': 609600},
+            {'ticker': 'SPY',  'descripcion': 'SPDR S&P 500 ETF',            'cantidad': 262, 'precio': 20199.23, 'valor': 5292198},
+            {'ticker': 'TSLA', 'descripcion': 'Tesla Inc.',                  'cantidad': 29,  'precio': 38960.00, 'valor': 1129840},
+            {'ticker': 'XLE',  'descripcion': 'Energy Select Sector SPDR',   'cantidad': 14,  'precio': 52175.00, 'valor': 730450},
         ],
         'Corporativos': [
             {'ticker': 'DNC3O', 'descripcion': 'ON Edenor Cl.3 Vto 22/11/26',           'cantidad': 336,  'precio': 1585.90, 'valor': 532862},

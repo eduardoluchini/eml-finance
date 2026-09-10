@@ -5854,5 +5854,203 @@
     "fecha": "2026-09-02",
     "monto_ars": 3419.46,
     "mep": 1533.39
+  },
+  {
+    "ticker": "AO27",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 888,
+    "precio": 1578.2,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "GD35",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 820,
+    "precio": 1217.6,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "PFE",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 2,
+    "precio": 10980,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "FDX",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 1,
+    "precio": 49940,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "XLE",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 2,
+    "precio": 52175,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "AMZN",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 43,
+    "precio": 2802.5,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "MELI",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 5,
+    "precio": 25520,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "AAPL",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 5,
+    "precio": 25980,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "DISN",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 10,
+    "precio": 14010,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "KO",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 5,
+    "precio": 28200,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "TSLA",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 4,
+    "precio": 38960,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "META",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 3,
+    "precio": 42980,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "QQQ",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 3,
+    "precio": 56750,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "AMD",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 2,
+    "precio": 80600,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "SPY",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 39,
+    "precio": 20199.23076923,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "BRKB",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 6,
+    "precio": 36660,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "GOOGL",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 32,
+    "precio": 9175,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
+  },
+  {
+    "ticker": "MSFT",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 11,
+    "precio": 26120,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1529.45,
+    "abierto": true
   }
 ]
