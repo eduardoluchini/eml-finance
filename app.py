@@ -137,7 +137,7 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated
 
-# ── Datos cartera (posición 04/09/2026, actualizada parcialmente el 10/09/2026) ─
+# ── Datos cartera (posición 04/09/2026, actualizada parcialmente el 10/09 y 11/09/2026) ─
 PORTFOLIO_INICIAL = {
     # OJO: esto es una actualización PARCIAL. El 10/09 Eduardo pasó $5.670.636,05
     # nuevos a Balanz y ejecutó las compras de ordenesdeldia.xlsx (ver detalle en
@@ -150,24 +150,54 @@ PORTFOLIO_INICIAL = {
     # SMH quedó afuera: la orden figura "Ejecutada" pero con Precio/Cantidad Operada
     # en -1 en el Excel; Eduardo no pudo confirmar si se ejecutó o no, así que no se
     # cargó. Si se confirma, hay que sumarla (5 nominales, ~$17.950 c/u).
+    #
+    # 11/09: segunda actualización parcial. Eduardo recibió un depósito de $3.000.000
+    # y, siguiendo la estrategia acordada (~80% reforzar el bucket de mediano plazo,
+    # ~20% reforzar el momentum de largo plazo), ejecutó en Balanz:
+    #   AO27:  +1.067 nominales @ $1.574,00  = $1.679.458,00 (orden 107469352, 11:50)
+    #   QQQ:   +11 nominales    @ $57.125,00 = $628.375,00   (orden 107467209, 11:43)
+    #   BPOD7: +517 nominales   @ $1.592,80  = $823.477,60   (orden 107472243, 12:01)
+    # Por separado, en Galicia hubo movimientos (no relacionados con este depósito)
+    # sobre FIMAPREM: retiros el 07/09 ($1.736.000) y 09/09 ($1.500.000), altas el
+    # 10/09 ($3.200.000) y 11/09 ($1.953.000) — neto +$1.917.000, cantidad pasó de
+    # 49.663,34 a 72.282,38 cuotapartes. No se identificó de qué cuenta salió/entró
+    # esa plata (no es el depósito de Balanz), así que 'disponibilidad' y 'total_ars'
+    # de abajo NO reflejan ese movimiento — están desactualizados en esa parte hasta
+    # confirmar el origen/destino. FIMARFDA y FIMARPLUS solo tuvieron revalorización
+    # de precio, sin cambio de cantidad (confirmado con la pantalla de posición
+    # consolidada de Galicia).
+    # MEP usado para las 7 operaciones de hoy (11/09): $1.515,10 — es el último MEP
+    # confirmado que tengo (el de la última actualización), NO uno reconfirmado hoy
+    # (la búsqueda web y el acceso automatizado a Balanz/Galicia no funcionaron en el
+    # momento de cargar esto). Si el MEP real de hoy fue distinto, el tir_usd de estas
+    # 7 filas en operaciones_balanz.json va a tener un pequeño margen de error.
     'fecha': '04/09/2026',
     # total_ars = suma de instrumentos (Balanz + Galicia) + efectivo de las 4 cuentas
     # (Balanz, Galicia, MercadoPago), NO el "Total $73.599.837" que figuraba en el
     # encabezado del resumen de Balanz del 04/09 (ver nota histórica más abajo en el
     # historial de commits — esa diferencia de ~$9,72M sigue sin explicar).
-    'total_ars': 77712585,
+    # 11/09: recalculado como suma(instrumentos) + efectivo (fórmula de la nota de
+    # arriba), no a mano por delta — así se contempla el depósito de $3.000.000 en
+    # sí (dinero nuevo) y el mark-to-market de reprecificar AO27/QQQ/BPOD7 completos
+    # (no solo lo comprado hoy) al precio de ejecución de hoy.
+    'total_ars': 82455206,
     'tc_mep': 1515.10,
     'tc_usd': 1578.26,
     'monedas': {
-        'Pesos': 301161.00,
+        'Pesos': 522.40,
         'Dólares': 0.80,
         'USD Cable': 6.68,
     },
     'disponibilidad': {
-        # Balanz Pesos = $70.636,05 (04/09) + $5.670.636,05 (depósito 10/09) -
-        # $5.440.111,10 (comprado el 10/09, sin contar SMH ni gastos/comisiones que
-        # ordenesdeldia.xlsx no desglosa — el saldo real puede ser algo menor).
-        'Balanz Pesos':  {'ars': 301161.00,   'usd': None},
+        # Balanz Pesos = $301.161,00 (10/09) + $3.000.000,00 (depósito 11/09) -
+        # $1.679.458,00 (AO27) - $628.375,00 (QQQ) - $823.477,60 (BPOD7) ≈ $-169.850,60
+        # en teoría con los montos brutos del ordenesdeldia — pero Eduardo reportó
+        # ~$824.000 disponibles justo antes de la compra de BPOD7 (que sí coincide
+        # con lo que gastó en BPOD7), así que hay gastos/comisiones no desglosados
+        # comiéndose más de lo que las columnas "Monto" muestran. Se deja el saldo
+        # anclado al dato real que dio Eduardo ($824.000 - $823.477,60 gastados en
+        # BPOD7 ≈ $522,40) en vez de la resta teórica, hasta poder reconciliar mejor.
+        'Balanz Pesos':  {'ars': 522.40,   'usd': None},
         'Balanz USD':    {'ars': None,        'usd': 0.80},
         'Balanz Cable':  {'ars': None,        'usd': 6.68},
         'Galicia Pesos': {'ars': 612.62,      'usd': None},
@@ -191,9 +221,9 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'AL30',  'descripcion': 'Bono Rep. Argentina USD Step Up 2030', 'cantidad': 1375, 'precio': 853.00,  'valor': 1172875},
             {'ticker': 'AL35',  'descripcion': 'Bono Rep. Argentina USD Step Up 2035', 'cantidad': 724,  'precio': 1165.00, 'valor': 843460},
             {'ticker': 'AL41',  'descripcion': 'Bono Rep. Argentina USD Step Up 2041', 'cantidad': 1137, 'precio': 1085.20, 'valor': 1233872},
-            {'ticker': 'AO27',  'descripcion': 'Bono Tesoro Nacional 6% 29/10/27',     'cantidad': 5104, 'precio': 1578.20, 'valor': 8055133},
+            {'ticker': 'AO27',  'descripcion': 'Bono Tesoro Nacional 6% 29/10/27',     'cantidad': 6171, 'precio': 1574.00, 'valor': 9713154},
             {'ticker': 'AO28',  'descripcion': 'Bono Tesoro Nacional 6% 31/10/28',     'cantidad': 1124, 'precio': 1445.90, 'valor': 1625192},
-            {'ticker': 'BPOD7', 'descripcion': 'Bopreal S.1-D Vto 31/10/27',           'cantidad': 632,  'precio': 1587.90, 'valor': 1003553},
+            {'ticker': 'BPOD7', 'descripcion': 'Bopreal S.1-D Vto 31/10/27',           'cantidad': 1149, 'precio': 1592.80, 'valor': 1830127},
             {'ticker': 'GD30',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2030',     'cantidad': 21,   'precio': 885.10,  'valor': 18587},
             # RESUELTO: la baja de 9.783 (registrada el 12/08) a 8.737 nominales NO fue una
             # venta. El 12/08 se había cargado mal la compra del 12/08 (append aproximado,
@@ -217,7 +247,7 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'MSFT', 'descripcion': 'Microsoft Corporation',       'cantidad': 11,  'precio': 26120.00, 'valor': 287320},
             {'ticker': 'NVDA', 'descripcion': 'NVIDIA Corporation',          'cantidad': 80,  'precio': 15220.00, 'valor': 1217600},
             {'ticker': 'PFE',  'descripcion': 'Pfizer Inc.',                 'cantidad': 34,  'precio': 10980.00, 'valor': 373320},
-            {'ticker': 'QQQ',  'descripcion': 'Invesco QQQ Trust (ETF)',     'cantidad': 22,  'precio': 56750.00, 'valor': 1248500},
+            {'ticker': 'QQQ',  'descripcion': 'Invesco QQQ Trust (ETF)',     'cantidad': 33,  'precio': 57125.00, 'valor': 1885125},
             # Orden "Ejecutada" en ordenesdeldia.xlsx pero con Precio/Cantidad Operada
             # en -1 (sin dato). Eduardo no pudo confirmar si se ejecutó — queda con la
             # cantidad/precio del 04/09 hasta que se confirme (pendiente: 5 nominales
@@ -238,9 +268,9 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'BRTA',     'descripcion': 'Renta Mixta Clase A (Balanz)',               'cantidad': 1227.43,    'precio': 745.64,      'valor': 915216,  'fuente': 'Balanz', 'moneda': 'ARS'},
             {'ticker': 'LECAPSA',  'descripcion': 'Lecaps Clase A (Balanz)',                    'cantidad': 2387292.45, 'precio': 2.12,        'valor': 5051740, 'fuente': 'Balanz', 'moneda': 'ARS'},
             {'ticker': 'BAHUSDA',  'descripcion': 'Corporativo Clase A (Balanz)',               'cantidad': 4445.58,    'precio': 1.43,        'valor': 6368,    'fuente': 'Balanz', 'moneda': 'ARS'},
-            {'ticker': 'FIMAPREM', 'descripcion': 'Fima Premium Clase A (Galicia)',           'cantidad': 49663.34,   'precio': 84.451893,   'valor': 4194163, 'fuente': 'Galicia', 'moneda': 'ARS'},
-            {'ticker': 'FIMARPLUS','descripcion': 'Fima Renta Plus Clase A (Galicia)',         'cantidad': 1068.94,    'precio': 949.905957,  'valor': 1015392, 'fuente': 'Galicia', 'moneda': 'ARS'},
-            {'ticker': 'FIMARFDA', 'descripcion': 'Fima Renta Fija Dolares Clase A (Galicia)','cantidad': 914.53,     'precio': 1702.13,     'valor': 1556810, 'fuente': 'Galicia', 'moneda': 'USD', 'precio_usd': 1.123345, 'valor_usd': 1027.33},
+            {'ticker': 'FIMAPREM', 'descripcion': 'Fima Premium Clase A (Galicia)',           'cantidad': 72282.38,   'precio': 84.611282,   'valor': 6115905, 'fuente': 'Galicia', 'moneda': 'ARS'},
+            {'ticker': 'FIMARPLUS','descripcion': 'Fima Renta Plus Clase A (Galicia)',         'cantidad': 1068.94,    'precio': 952.554196,  'valor': 1018223, 'fuente': 'Galicia', 'moneda': 'ARS'},
+            {'ticker': 'FIMARFDA', 'descripcion': 'Fima Renta Fija Dolares Clase A (Galicia)','cantidad': 914.53,     'precio': 1700.05,     'valor': 1554750, 'fuente': 'Galicia', 'moneda': 'USD', 'precio_usd': 1.122069, 'valor_usd': 1026.17},
         ],
         'Letras': [],
     }

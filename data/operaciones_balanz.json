@@ -6052,5 +6052,82 @@
     "moneda": "Pesos",
     "mep": 1529.45,
     "abierto": true
+  },
+  {
+    "ticker": "AO27",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-11",
+    "cantidad": 1067,
+    "precio": 1574.0,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1515.1,
+    "abierto": true
+  },
+  {
+    "ticker": "QQQ",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-11",
+    "cantidad": 11,
+    "precio": 57125.0,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1515.1,
+    "abierto": true
+  },
+  {
+    "ticker": "BPOD7",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-11",
+    "cantidad": 517,
+    "precio": 1592.8,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1515.1,
+    "abierto": true
+  },
+  {
+    "ticker": "FIMAPREM",
+    "tipo_mov": "venta",
+    "fecha": "2026-09-07",
+    "cantidad": 20556.08,
+    "precio": 84.451893,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1515.1,
+    "abierto": false
+  },
+  {
+    "ticker": "FIMAPREM",
+    "tipo_mov": "venta",
+    "fecha": "2026-09-09",
+    "cantidad": 17744.87,
+    "precio": 84.531449,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1515.1,
+    "abierto": false
+  },
+  {
+    "ticker": "FIMAPREM",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-10",
+    "cantidad": 37837.96,
+    "precio": 84.57116,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1515.1,
+    "abierto": true
+  },
+  {
+    "ticker": "FIMAPREM",
+    "tipo_mov": "compra",
+    "fecha": "2026-09-11",
+    "cantidad": 23082.03,
+    "precio": 84.611282,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1515.1,
+    "abierto": true
   }
 ]
