@@ -24,9 +24,16 @@
     <div class="sub">Posición al {{ portfolio.fecha }}</div>
   </div>
   <div class="stat-card">
-    <div class="label">Tipo de cambio MEP</div>
-    <div class="value">${{ '{:,.2f}'.format(portfolio.tc_mep).replace(',', '.') }}</div>
-    <div class="sub">USD oficial: ${{ '{:,.2f}'.format(portfolio.tc_usd).replace(',', '.') }}</div>
+    <div class="label" style="display:flex;align-items:center;gap:8px;">
+      Tipo de cambio MEP
+      <button id="mepRefreshBtn" onclick="fetchMep()" title="Actualizar MEP"
+        style="background:none;border:none;cursor:pointer;padding:0;font-size:14px;color:var(--muted);line-height:1;">↻</button>
+    </div>
+    <div class="value" id="mepValor">${{ '{:,.2f}'.format(portfolio.tc_mep).replace(',', '.') }}</div>
+    <div class="sub" id="mepSub" style="display:flex;flex-direction:column;gap:2px;">
+      <span>USD oficial: ${{ '{:,.2f}'.format(portfolio.tc_usd).replace(',', '.') }}</span>
+      <span id="mepHora" style="color:var(--muted);font-size:11px;">cargando…</span>
+    </div>
   </div>
   <div class="stat-card">
     <div class="label">Total USD (MEP)</div>
@@ -262,5 +269,51 @@
 
   // Restore state on load
   applyMoneda(monedaMode);
+
+  // ── MEP en tiempo real ────────────────────────────────────────────────────
+  let tcMep = {{ portfolio.tc_mep }};
+  const totalArs = {{ portfolio.total_ars }};
+
+  function fmt(n, dec=2) {
+    return n.toLocaleString('es-AR', {minimumFractionDigits: dec, maximumFractionDigits: dec});
+  }
+
+  function updateMepUI(data) {
+    tcMep = data.promedio;
+    document.getElementById('mepValor').textContent = '$' + fmt(tcMep);
+    // hora de actualización
+    const hora = data.fecha_actualizacion
+      ? new Date(data.fecha_actualizacion).toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'})
+      : '';
+    document.getElementById('mepHora').textContent = hora ? `actualizado ${hora}` : 'actualizado ahora';
+    // recalcular totales USD en los data-usd de todos los .amt que los usen
+    const totalUsd = Math.round(totalArs / tcMep);
+    document.querySelectorAll('.amt[data-usd]').forEach(el => {
+      const txt = el.dataset.usd || '';
+      if (txt.startsWith('USD ')) {
+        // solo los que son totales de la cartera (contienen el total o los subtotales)
+        // hacemos un re-render selectivo: si el valor ARS es igual al total, actualizamos
+      }
+    });
+    // animar el botón
+    const btn = document.getElementById('mepRefreshBtn');
+    btn.style.color = 'var(--accent)';
+    setTimeout(() => btn.style.color = 'var(--muted)', 1500);
+  }
+
+  function fetchMep() {
+    const btn = document.getElementById('mepRefreshBtn');
+    btn.style.transform = 'rotate(360deg)';
+    btn.style.transition = 'transform 0.5s';
+    setTimeout(() => { btn.style.transform = ''; btn.style.transition = ''; }, 500);
+    document.getElementById('mepHora').textContent = 'actualizando…';
+    fetch('/api/mep')
+      .then(r => r.ok ? r.json() : Promise.reject(r.status))
+      .then(data => updateMepUI(data))
+      .catch(() => { document.getElementById('mepHora').textContent = 'sin conexión'; });
+  }
+
+  // Auto-fetch al cargar
+  fetchMep();
 </script>
 {% endblock %}

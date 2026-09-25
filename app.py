@@ -533,6 +533,23 @@ def cartera_tipo(tipo):
         color=COLORES.get(tipo, '#3b82f6'),
     )
 
+@app.route('/api/mep')
+@login_required
+def api_mep():
+    """Devuelve el MEP en tiempo real desde dolarapi.com."""
+    from flask import jsonify
+    dolares = fetch_dolares()
+    mep = next((d for d in dolares if d.get('casa') == 'bolsa'), None)
+    if not mep:
+        return jsonify({'error': 'no disponible'}), 503
+    promedio = (mep.get('compra', 0) + mep.get('venta', 0)) / 2
+    return jsonify({
+        'compra': mep.get('compra'),
+        'venta':  mep.get('venta'),
+        'promedio': round(promedio, 2),
+        'fecha_actualizacion': mep.get('fechaActualizacion'),
+    })
+
 @app.route('/cotizaciones')
 @login_required
 def cotizaciones():
