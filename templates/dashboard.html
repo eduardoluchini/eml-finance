@@ -38,13 +38,11 @@
   <div class="stat-card">
     <div class="label">Total USD (MEP)</div>
     <div class="value">
-      <span class="amt"
-        data-ars="USD {{ '{:,.0f}'.format(portfolio.total_ars / portfolio.tc_mep).replace(',', '.') }}"
-        data-usd="USD {{ '{:,.0f}'.format(portfolio.total_ars / portfolio.tc_mep).replace(',', '.') }}">
+      <span id="totalUsdValor">
         USD {{ '{:,.0f}'.format(portfolio.total_ars / portfolio.tc_mep).replace(',', '.') }}
       </span>
     </div>
-    <div class="sub">≈ {{ '{:,.1f}'.format(portfolio.total_ars / portfolio.tc_mep / 1000) }}k USD</div>
+    <div class="sub" id="totalUsdSub">≈ {{ '{:,.1f}'.format(portfolio.total_ars / portfolio.tc_mep / 1000) }}k USD</div>
   </div>
   <div class="stat-card">
     <div class="label">Efectivo disponible</div>
@@ -286,19 +284,15 @@
       ? new Date(data.fecha_actualizacion).toLocaleTimeString('es-AR', {hour:'2-digit', minute:'2-digit'})
       : '';
     document.getElementById('mepHora').textContent = hora ? `actualizado ${hora}` : 'actualizado ahora';
-    // recalcular totales USD en los data-usd de todos los .amt que los usen
+    // recalcular Total USD con el MEP real
     const totalUsd = Math.round(totalArs / tcMep);
-    document.querySelectorAll('.amt[data-usd]').forEach(el => {
-      const txt = el.dataset.usd || '';
-      if (txt.startsWith('USD ')) {
-        // solo los que son totales de la cartera (contienen el total o los subtotales)
-        // hacemos un re-render selectivo: si el valor ARS es igual al total, actualizamos
-      }
-    });
+    const totalUsdK = (totalArs / tcMep / 1000).toLocaleString('es-AR', {minimumFractionDigits:1, maximumFractionDigits:1});
+    document.getElementById('totalUsdValor').textContent = 'USD ' + totalUsd.toLocaleString('es-AR');
+    document.getElementById('totalUsdSub').textContent = '≈ ' + totalUsdK + 'k USD';
     // animar el botón
     const btn = document.getElementById('mepRefreshBtn');
     btn.style.color = 'var(--accent)';
-    setTimeout(() => btn.style.color = 'var(--muted)', 1500);
+    setTimeout(() => btn.style.color = '', 1500);
   }
 
   function fetchMep() {
