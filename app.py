@@ -137,9 +137,41 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated
 
-# ── Datos cartera (posición 04/09/2026, actualizada parcialmente el 10/09 y 11/09/2026) ─
+# ── Datos cartera (posición 25/09/2026 — reconciliación completa) ──────────────
 PORTFOLIO_INICIAL = {
-    # OJO: esto es una actualización PARCIAL. El 10/09 Eduardo pasó $5.670.636,05
+    # 25/09: reconciliación COMPLETA con el resumen de cuenta consolidado de Balanz
+    # (ResumenDeCuenta_20260925.pdf, "FULL INVESTMENT HOUSE" — incluye Balanz +
+    # fondos Galicia en el total) y la pantalla de posición de Fondos Fima de
+    # Galicia. A diferencia de las dos actualizaciones anteriores (10/09 y 11/09,
+    # parciales), acá se repricearon TODOS los instrumentos al valor del resumen.
+    #
+    # Se detectaron 2 cambios de CANTIDAD que no coinciden con lo que tenía cargado
+    # (todo lo demás fue únicamente reprecificación, sin cambio de cantidad):
+    #  - SMH: 30 -> 35. Esto RESUELVE la ambigüedad de la orden del 10/09 (Precio/
+    #    Cantidad Operada en -1 en ordenesdeldia.xlsx, sin confirmar en su momento):
+    #    sí se ejecutó. Se cargó la fila de compra en el ledger con fecha 2026-09-10
+    #    al precio que ya se había estimado entonces (~$17.950) — pendiente confirmar
+    #    el precio real con Eduardo.
+    #  - PFE: 34 -> 35. Esta SÍ es nueva — no hay registro de que Eduardo haya
+    #    comprado PFE. Puede ser un dividendo reinvertido (DRIP) o una compra que no
+    #    se reportó. Se cargó una fila de compra estimada (fecha y precio de hoy)
+    #    para no perder la cantidad real, PENDIENTE DE CONFIRMAR con Eduardo.
+    #
+    # tc_mep $1.549,02 es el que figura en el resumen — dato real, no aproximado
+    # (a diferencia de los $1.515,10 usados para las operaciones del 10/09 y 11/09,
+    # que siguen siendo una aproximación por no haber podido reconfirmarlos).
+    #
+    # 'disponibilidad': se actualizó Balanz Pesos/USD/Cable con los datos reales del
+    # resumen ("Monedas"). Galicia Pesos/USD y MercadoPago NO se reconfirmaron esta
+    # ronda (no vinieron en las capturas) — se mantienen los últimos valores
+    # conocidos, así que 'total_ars' de abajo (tomado directo del resumen de Balanz,
+    # que sí consolida todo) no va a coincidir exactamente con
+    # suma(instrumentos)+disponibilidad — la diferencia es el efectivo de Galicia/
+    # MercadoPago no reconfirmado. Mismo patrón que el gap histórico ya documentado.
+    #
+    # Historial de actualizaciones parciales anteriores (10/09 y 11/09), para
+    # referencia:
+    # OJO: esto fue una actualización PARCIAL. El 10/09 Eduardo pasó $5.670.636,05
     # nuevos a Balanz y ejecutó las compras de ordenesdeldia.xlsx (ver detalle en
     # data/operaciones_balanz.json, filas del 2026-09-10). Se actualizaron cantidad/
     # precio/valor SOLO de los tickers efectivamente operados ese día (AO27, GD35,
@@ -171,35 +203,28 @@ PORTFOLIO_INICIAL = {
     # (la búsqueda web y el acceso automatizado a Balanz/Galicia no funcionaron en el
     # momento de cargar esto). Si el MEP real de hoy fue distinto, el tir_usd de estas
     # 7 filas en operaciones_balanz.json va a tener un pequeño margen de error.
-    'fecha': '04/09/2026',
-    # total_ars = suma de instrumentos (Balanz + Galicia) + efectivo de las 4 cuentas
-    # (Balanz, Galicia, MercadoPago), NO el "Total $73.599.837" que figuraba en el
-    # encabezado del resumen de Balanz del 04/09 (ver nota histórica más abajo en el
-    # historial de commits — esa diferencia de ~$9,72M sigue sin explicar).
-    # 11/09: recalculado como suma(instrumentos) + efectivo (fórmula de la nota de
-    # arriba), no a mano por delta — así se contempla el depósito de $3.000.000 en
-    # sí (dinero nuevo) y el mark-to-market de reprecificar AO27/QQQ/BPOD7 completos
-    # (no solo lo comprado hoy) al precio de ejecución de hoy.
-    'total_ars': 82455206,
-    'tc_mep': 1515.10,
-    'tc_usd': 1578.26,
+    'fecha': '25/09/2026',
+    # 25/09: total tomado directo del encabezado del resumen consolidado de Balanz
+    # ("FULL INVESTMENT HOUSE"), que ya incluye Balanz + los 3 fondos de Galicia.
+    # Ya no es una suma manual — es el número que Balanz calcula. Ver nota de más
+    # arriba sobre el gap con disponibilidad (Galicia efectivo/MercadoPago sin
+    # reconfirmar).
+    'total_ars': 82394211,
+    'tc_mep': 1549.02,
+    'tc_usd': 1620.36,
     'monedas': {
-        'Pesos': 522.40,
+        'Pesos': -3747.08,
         'Dólares': 0.80,
-        'USD Cable': 6.68,
+        'USD Cable': 8.53,
     },
     'disponibilidad': {
-        # Balanz Pesos = $301.161,00 (10/09) + $3.000.000,00 (depósito 11/09) -
-        # $1.679.458,00 (AO27) - $628.375,00 (QQQ) - $823.477,60 (BPOD7) ≈ $-169.850,60
-        # en teoría con los montos brutos del ordenesdeldia — pero Eduardo reportó
-        # ~$824.000 disponibles justo antes de la compra de BPOD7 (que sí coincide
-        # con lo que gastó en BPOD7), así que hay gastos/comisiones no desglosados
-        # comiéndose más de lo que las columnas "Monto" muestran. Se deja el saldo
-        # anclado al dato real que dio Eduardo ($824.000 - $823.477,60 gastados en
-        # BPOD7 ≈ $522,40) en vez de la resta teórica, hasta poder reconciliar mejor.
-        'Balanz Pesos':  {'ars': 522.40,   'usd': None},
+        # 25/09: datos reales del resumen de Balanz ("Monedas"). El saldo en pesos
+        # está en negativo ($-3.747,08) — probablemente un ajuste/gasto pendiente de
+        # liquidación, no un error de carga; así lo muestra el resumen.
+        'Balanz Pesos':  {'ars': -3747.08,    'usd': None},
         'Balanz USD':    {'ars': None,        'usd': 0.80},
-        'Balanz Cable':  {'ars': None,        'usd': 6.68},
+        'Balanz Cable':  {'ars': None,        'usd': 8.53},
+        # No reconfirmado esta ronda (no vino en las capturas) — último valor conocido.
         'Galicia Pesos': {'ars': 612.62,      'usd': None},
         'Galicia USD':   {'ars': None,        'usd': 107.64},
         # No reconfirmado en esta actualización (no vino en las capturas de esta
@@ -208,69 +233,76 @@ PORTFOLIO_INICIAL = {
     },
     'instrumentos': {
         'Acciones': [
-            {'ticker': 'BBAR',  'descripcion': 'Banco Frances Escriturales',    'cantidad': 58,  'precio': 7835.00,  'valor': 454430},
-            {'ticker': 'BMA',   'descripcion': 'Banco Macro S.A.',              'cantidad': 45,  'precio': 12480.00, 'valor': 561600},
-            {'ticker': 'GGAL',  'descripcion': 'Grupo Financiero Galicia',      'cantidad': 402, 'precio': 7005.00,  'valor': 2816010},
-            {'ticker': 'PAMP',  'descripcion': 'Pampa Energia',                 'cantidad': 524, 'precio': 5365.00,  'valor': 2811260},
-            {'ticker': 'TGSU2', 'descripcion': 'Transportadora de Gas del Sur', 'cantidad': 83,  'precio': 9160.00,  'valor': 760280},
-            {'ticker': 'YPFD',  'descripcion': 'YPF S.A.',                     'cantidad': 90,  'precio': 8355.00,  'valor': 751950},
+            {'ticker': 'BBAR',  'descripcion': 'Banco Frances Escriturales',    'cantidad': 58,  'precio': 7175.00,  'valor': 416150},
+            {'ticker': 'BMA',   'descripcion': 'Banco Macro S.A.',              'cantidad': 45,  'precio': 11150.00, 'valor': 501750},
+            {'ticker': 'GGAL',  'descripcion': 'Grupo Financiero Galicia',      'cantidad': 402, 'precio': 6335.00,  'valor': 2546670},
+            {'ticker': 'PAMP',  'descripcion': 'Pampa Energia',                 'cantidad': 524, 'precio': 5055.00,  'valor': 2648820},
+            {'ticker': 'TGSU2', 'descripcion': 'Transportadora de Gas del Sur', 'cantidad': 83,  'precio': 8595.00,  'valor': 713385},
+            {'ticker': 'YPFD',  'descripcion': 'YPF S.A.',                     'cantidad': 90,  'precio': 8450.00,  'valor': 760500},
         ],
         'Bonos': [
-            {'ticker': 'AE38',  'descripcion': 'Bono Rep. Argentina USD Step Up 2038', 'cantidad': 137,  'precio': 1203.30, 'valor': 164852},
-            {'ticker': 'AL29',  'descripcion': 'Bono Rep. Argentina USD 1% 2029',      'cantidad': 253,  'precio': 830.00,  'valor': 209990},
-            {'ticker': 'AL30',  'descripcion': 'Bono Rep. Argentina USD Step Up 2030', 'cantidad': 1375, 'precio': 853.00,  'valor': 1172875},
-            {'ticker': 'AL35',  'descripcion': 'Bono Rep. Argentina USD Step Up 2035', 'cantidad': 724,  'precio': 1165.00, 'valor': 843460},
-            {'ticker': 'AL41',  'descripcion': 'Bono Rep. Argentina USD Step Up 2041', 'cantidad': 1137, 'precio': 1085.20, 'valor': 1233872},
-            {'ticker': 'AO27',  'descripcion': 'Bono Tesoro Nacional 6% 29/10/27',     'cantidad': 6171, 'precio': 1574.00, 'valor': 9713154},
-            {'ticker': 'AO28',  'descripcion': 'Bono Tesoro Nacional 6% 31/10/28',     'cantidad': 1124, 'precio': 1445.90, 'valor': 1625192},
-            {'ticker': 'BPOD7', 'descripcion': 'Bopreal S.1-D Vto 31/10/27',           'cantidad': 1149, 'precio': 1592.80, 'valor': 1830127},
-            {'ticker': 'GD30',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2030',     'cantidad': 21,   'precio': 885.10,  'valor': 18587},
+            {'ticker': 'AE38',  'descripcion': 'Bono Rep. Argentina USD Step Up 2038', 'cantidad': 137,  'precio': 1125.00, 'valor': 154125},
+            {'ticker': 'AL29',  'descripcion': 'Bono Rep. Argentina USD 1% 2029',      'cantidad': 253,  'precio': 826.60,  'valor': 209130},
+            {'ticker': 'AL30',  'descripcion': 'Bono Rep. Argentina USD Step Up 2030', 'cantidad': 1375, 'precio': 837.40,  'valor': 1151425},
+            {'ticker': 'AL35',  'descripcion': 'Bono Rep. Argentina USD Step Up 2035', 'cantidad': 724,  'precio': 1079.40, 'valor': 781486},
+            {'ticker': 'AL41',  'descripcion': 'Bono Rep. Argentina USD Step Up 2041', 'cantidad': 1137, 'precio': 1000.50, 'valor': 1137569},
+            {'ticker': 'AO27',  'descripcion': 'Bono Tesoro Nacional 6% 29/10/27',     'cantidad': 6171, 'precio': 1589.00, 'valor': 9805719},
+            {'ticker': 'AO28',  'descripcion': 'Bono Tesoro Nacional 6% 31/10/28',     'cantidad': 1124, 'precio': 1421.20, 'valor': 1597429},
+            {'ticker': 'BPOD7', 'descripcion': 'Bopreal S.1-D Vto 31/10/27',           'cantidad': 1149, 'precio': 1615.70, 'valor': 1856439},
+            {'ticker': 'GD30',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2030',     'cantidad': 21,   'precio': 874.00,  'valor': 18354},
             # RESUELTO: la baja de 9.783 (registrada el 12/08) a 8.737 nominales NO fue una
             # venta. El 12/08 se había cargado mal la compra del 12/08 (append aproximado,
             # sin el detalle real de Balanz) y quedó de más 1.046 nominales que nunca
             # existieron. Con el Excel de operaciones que pasó Eduardo (lotes iniciales
             # 31/07 vs. finales 04/09) se confirmó que la cantidad real siempre fue 8.737 y
             # se corrigió data/operaciones_balanz.json en consecuencia.
-            {'ticker': 'GD35',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2035',     'cantidad': 9557, 'precio': 1217.60, 'valor': 11636603},
+            {'ticker': 'GD35',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2035',     'cantidad': 9557, 'precio': 1154.50, 'valor': 11033557},
         ],
         'CEDEARs': [
-            {'ticker': 'AAPL', 'descripcion': 'Apple Inc.',                  'cantidad': 36,  'precio': 25980.00, 'valor': 935280},
-            {'ticker': 'AMD',  'descripcion': 'Advanced Micro Devices',      'cantidad': 19,  'precio': 80600.00, 'valor': 1531400},
-            {'ticker': 'AMZN', 'descripcion': 'Amazon.com Inc.',             'cantidad': 286, 'precio': 2802.50,  'valor': 801515},
-            {'ticker': 'BRKB', 'descripcion': 'Berkshire Hathaway Inc. B',   'cantidad': 6,   'precio': 36660.00, 'valor': 219960},
-            {'ticker': 'DISN', 'descripcion': 'The Walt Disney Company',     'cantidad': 70,  'precio': 14010.00, 'valor': 980700},
-            {'ticker': 'FDX',  'descripcion': 'FedEx Corporation',           'cantidad': 12,  'precio': 49940.00, 'valor': 599280},
-            {'ticker': 'GOOGL','descripcion': 'Alphabet Inc. Class A',       'cantidad': 32,  'precio': 9175.00,  'valor': 293600},
-            {'ticker': 'KO',   'descripcion': 'Coca-Cola Company',           'cantidad': 38,  'precio': 28200.00, 'valor': 1071600},
-            {'ticker': 'MELI', 'descripcion': 'MercadoLibre Inc.',           'cantidad': 33,  'precio': 25520.00, 'valor': 842160},
-            {'ticker': 'META', 'descripcion': 'Meta Platforms Inc.',         'cantidad': 26,  'precio': 42980.00, 'valor': 1117480},
-            {'ticker': 'MSFT', 'descripcion': 'Microsoft Corporation',       'cantidad': 11,  'precio': 26120.00, 'valor': 287320},
+            {'ticker': 'AAPL', 'descripcion': 'Apple Inc.',                  'cantidad': 36,  'precio': 27560.00, 'valor': 992160},
+            {'ticker': 'AMD',  'descripcion': 'Advanced Micro Devices',      'cantidad': 19,  'precio': 102150.00,'valor': 1940850},
+            {'ticker': 'AMZN', 'descripcion': 'Amazon.com Inc.',             'cantidad': 286, 'precio': 2827.50,  'valor': 808665},
+            {'ticker': 'BRKB', 'descripcion': 'Berkshire Hathaway Inc. B',   'cantidad': 6,   'precio': 37280.00, 'valor': 223680},
+            {'ticker': 'DISN', 'descripcion': 'The Walt Disney Company',     'cantidad': 70,  'precio': 14270.00, 'valor': 998900},
+            {'ticker': 'FDX',  'descripcion': 'FedEx Corporation',           'cantidad': 12,  'precio': 46100.00, 'valor': 553200},
+            {'ticker': 'GOOGL','descripcion': 'Alphabet Inc. Class A',       'cantidad': 32,  'precio': 9645.00,  'valor': 308640},
+            {'ticker': 'KO',   'descripcion': 'Coca-Cola Company',           'cantidad': 38,  'precio': 28580.00, 'valor': 1086040},
+            {'ticker': 'MELI', 'descripcion': 'MercadoLibre Inc.',           'cantidad': 33,  'precio': 23680.00, 'valor': 781440},
+            {'ticker': 'META', 'descripcion': 'Meta Platforms Inc.',         'cantidad': 26,  'precio': 50675.00, 'valor': 1317550},
+            {'ticker': 'MSFT', 'descripcion': 'Microsoft Corporation',       'cantidad': 11,  'precio': 27860.00, 'valor': 306460},
             {'ticker': 'NVDA', 'descripcion': 'NVIDIA Corporation',          'cantidad': 80,  'precio': 15220.00, 'valor': 1217600},
-            {'ticker': 'PFE',  'descripcion': 'Pfizer Inc.',                 'cantidad': 34,  'precio': 10980.00, 'valor': 373320},
-            {'ticker': 'QQQ',  'descripcion': 'Invesco QQQ Trust (ETF)',     'cantidad': 33,  'precio': 57125.00, 'valor': 1885125},
-            # Orden "Ejecutada" en ordenesdeldia.xlsx pero con Precio/Cantidad Operada
-            # en -1 (sin dato). Eduardo no pudo confirmar si se ejecutó — queda con la
-            # cantidad/precio del 04/09 hasta que se confirme (pendiente: 5 nominales
-            # más si se confirma que sí se ejecutó, a ~$17.950 c/u).
-            {'ticker': 'SMH',  'descripcion': 'VanEck Semiconductor ETF',    'cantidad': 30,  'precio': 18000.00, 'valor': 540000},
-            {'ticker': 'SPY',  'descripcion': 'SPDR S&P 500 ETF',            'cantidad': 262, 'precio': 20199.23, 'valor': 5292198},
-            {'ticker': 'TSLA', 'descripcion': 'Tesla Inc.',                  'cantidad': 29,  'precio': 38960.00, 'valor': 1129840},
-            {'ticker': 'XLE',  'descripcion': 'Energy Select Sector SPDR',   'cantidad': 14,  'precio': 52175.00, 'valor': 730450},
+            # OJO: cantidad subió de 34 a 35 en el resumen de Balanz del 25/09 sin que
+            # Eduardo me haya contado una compra nueva de PFE. Puede ser un dividendo
+            # reinvertido (DRIP) o una compra que no me pasó. Se dejó la cantidad real
+            # (35) para que la posición sea correcta, pero la fila de ledger que se
+            # agregó para la unidad nueva usa fecha/precio de HOY como aproximación —
+            # falta confirmar con Eduardo la fecha y el precio real de esa operación.
+            {'ticker': 'PFE',  'descripcion': 'Pfizer Inc.',                 'cantidad': 35,  'precio': 11470.00, 'valor': 401450},
+            {'ticker': 'QQQ',  'descripcion': 'Invesco QQQ Trust (ETF)',     'cantidad': 33,  'precio': 60450.00, 'valor': 1994850},
+            # RESUELTO: el resumen del 25/09 confirma 35 nominales (30 + 5), o sea que
+            # la orden ambigua del 10/09 (Precio/Cantidad Operada en -1 en el Excel) SÍ
+            # se ejecutó. Se cargó la fila de compra en el ledger con fecha 2026-09-10
+            # (misma tanda que el resto de esa orden) al precio estimado que ya se
+            # había anotado en su momento (~$17.950) — falta confirmar el precio real.
+            {'ticker': 'SMH',  'descripcion': 'VanEck Semiconductor ETF',    'cantidad': 35,  'precio': 19720.00, 'valor': 690200},
+            {'ticker': 'SPY',  'descripcion': 'SPDR S&P 500 ETF',            'cantidad': 262, 'precio': 20860.00, 'valor': 5465320},
+            {'ticker': 'TSLA', 'descripcion': 'Tesla Inc.',                  'cantidad': 29,  'precio': 40320.00, 'valor': 1169280},
+            {'ticker': 'XLE',  'descripcion': 'Energy Select Sector SPDR',   'cantidad': 14,  'precio': 50050.00, 'valor': 700700},
         ],
         'Corporativos': [
-            {'ticker': 'DNC3O', 'descripcion': 'ON Edenor Cl.3 Vto 22/11/26',           'cantidad': 336,  'precio': 1585.90, 'valor': 532862},
-            {'ticker': 'LMS7O', 'descripcion': 'ON Aluar S.7 Vto 12/10/28',             'cantidad': 350,  'precio': 1211.80, 'valor': 424130},
-            {'ticker': 'TTCDO', 'descripcion': 'ON Tecpetrol 7.625% Vto 11/2030 USD',   'cantidad': 1000, 'precio': 1660.30, 'valor': 1660300},
-            {'ticker': 'VSCVO', 'descripcion': 'ON Vista Energy 8.5% Vto 06/2033 USD',  'cantidad': 2000, 'precio': 1714.80, 'valor': 3429600},
-            {'ticker': 'YMCJO', 'descripcion': 'ON YPF REGS 1.5% Vto 30/09/2033',      'cantidad': 2537, 'precio': 1622.20, 'valor': 4115521},
+            {'ticker': 'DNC3O', 'descripcion': 'ON Edenor Cl.3 Vto 22/11/26',           'cantidad': 336,  'precio': 1618.50, 'valor': 543816},
+            {'ticker': 'LMS7O', 'descripcion': 'ON Aluar S.7 Vto 12/10/28',             'cantidad': 350,  'precio': 1200.50, 'valor': 420175},
+            {'ticker': 'TTCDO', 'descripcion': 'ON Tecpetrol 7.625% Vto 11/2030 USD',   'cantidad': 1000, 'precio': 1684.00, 'valor': 1684000},
+            {'ticker': 'VSCVO', 'descripcion': 'ON Vista Energy 8.5% Vto 06/2033 USD',  'cantidad': 2000, 'precio': 1740.20, 'valor': 3480400},
+            {'ticker': 'YMCJO', 'descripcion': 'ON YPF REGS 1.5% Vto 30/09/2033',      'cantidad': 2537, 'precio': 1624.90, 'valor': 4122371},
         ],
         'Fondos': [
-            {'ticker': 'BRTA',     'descripcion': 'Renta Mixta Clase A (Balanz)',               'cantidad': 1227.43,    'precio': 745.64,      'valor': 915216,  'fuente': 'Balanz', 'moneda': 'ARS'},
-            {'ticker': 'LECAPSA',  'descripcion': 'Lecaps Clase A (Balanz)',                    'cantidad': 2387292.45, 'precio': 2.12,        'valor': 5051740, 'fuente': 'Balanz', 'moneda': 'ARS'},
-            {'ticker': 'BAHUSDA',  'descripcion': 'Corporativo Clase A (Balanz)',               'cantidad': 4445.58,    'precio': 1.43,        'valor': 6368,    'fuente': 'Balanz', 'moneda': 'ARS'},
-            {'ticker': 'FIMAPREM', 'descripcion': 'Fima Premium Clase A (Galicia)',           'cantidad': 72282.38,   'precio': 84.611282,   'valor': 6115905, 'fuente': 'Galicia', 'moneda': 'ARS'},
-            {'ticker': 'FIMARPLUS','descripcion': 'Fima Renta Plus Clase A (Galicia)',         'cantidad': 1068.94,    'precio': 952.554196,  'valor': 1018223, 'fuente': 'Galicia', 'moneda': 'ARS'},
-            {'ticker': 'FIMARFDA', 'descripcion': 'Fima Renta Fija Dolares Clase A (Galicia)','cantidad': 914.53,     'precio': 1700.05,     'valor': 1554750, 'fuente': 'Galicia', 'moneda': 'USD', 'precio_usd': 1.122069, 'valor_usd': 1026.17},
+            {'ticker': 'BRTA',     'descripcion': 'Renta Mixta Clase A (Balanz)',               'cantidad': 1227.43,    'precio': 744.00,      'valor': 913207,  'fuente': 'Balanz', 'moneda': 'ARS'},
+            {'ticker': 'LECAPSA',  'descripcion': 'Lecaps Clase A (Balanz)',                    'cantidad': 2387292.45, 'precio': 2.14,        'valor': 5113017, 'fuente': 'Balanz', 'moneda': 'ARS'},
+            {'ticker': 'BAHUSDA',  'descripcion': 'Corporativo Clase A (Balanz)',               'cantidad': 4445.58,    'precio': 1.43,        'valor': 6337,    'fuente': 'Balanz', 'moneda': 'ARS'},
+            {'ticker': 'FIMAPREM', 'descripcion': 'Fima Premium Clase A (Galicia)',           'cantidad': 72282.38,   'precio': 85.168189,   'valor': 6156159, 'fuente': 'Galicia', 'moneda': 'ARS'},
+            {'ticker': 'FIMARPLUS','descripcion': 'Fima Renta Plus Clase A (Galicia)',         'cantidad': 1068.94,    'precio': 959.952521,  'valor': 1026132, 'fuente': 'Galicia', 'moneda': 'ARS'},
+            {'ticker': 'FIMARFDA', 'descripcion': 'Fima Renta Fija Dolares Clase A (Galicia)','cantidad': 914.53,     'precio': 1734.49,     'valor': 1586243, 'fuente': 'Galicia', 'moneda': 'USD', 'precio_usd': 1.119731, 'valor_usd': 1024.03},
         ],
         'Letras': [],
     }
