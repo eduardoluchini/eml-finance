@@ -24,15 +24,15 @@
     <div class="sub">Posición al {{ portfolio.fecha }}</div>
   </div>
   <div class="stat-card">
-    <div class="label" style="display:flex;align-items:center;gap:8px;">
-      Tipo de cambio MEP
-      <button id="mepRefreshBtn" onclick="fetchMep()" title="Actualizar MEP"
-        style="background:none;border:none;cursor:pointer;padding:0;font-size:14px;color:var(--muted);line-height:1;">↻</button>
-    </div>
+    <div class="label">Tipo de cambio MEP</div>
     <div class="value" id="mepValor">${{ '{:,.2f}'.format(portfolio.tc_mep).replace(',', '.') }}</div>
-    <div class="sub" id="mepSub" style="display:flex;flex-direction:column;gap:2px;">
+    <div class="sub" style="display:flex;flex-direction:column;gap:4px;">
       <span>USD oficial: ${{ '{:,.2f}'.format(portfolio.tc_usd).replace(',', '.') }}</span>
       <span id="mepHora" style="color:var(--muted);font-size:11px;">cargando…</span>
+      <button id="mepRefreshBtn" onclick="fetchMep()"
+        style="margin-top:4px;padding:4px 10px;font-size:12px;border-radius:6px;border:1px solid var(--accent);background:transparent;color:var(--accent);cursor:pointer;width:fit-content;">
+        ↻ Actualizar MEP
+      </button>
     </div>
   </div>
   <div class="stat-card">
