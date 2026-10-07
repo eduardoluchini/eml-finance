@@ -6141,17 +6141,5 @@
     "mep": 1515.1,
     "abierto": true,
     "estimado": true
-  },
-  {
-    "ticker": "PFE",
-    "tipo_mov": "compra",
-    "fecha": "2026-09-25",
-    "cantidad": 1,
-    "precio": 11470.0,
-    "gastos": 0,
-    "moneda": "Pesos",
-    "mep": 1549.02,
-    "abierto": true,
-    "estimado": true
   }
 ]

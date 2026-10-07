@@ -271,12 +271,11 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'META', 'descripcion': 'Meta Platforms Inc.',         'cantidad': 26,  'precio': 50675.00, 'valor': 1317550},
             {'ticker': 'MSFT', 'descripcion': 'Microsoft Corporation',       'cantidad': 11,  'precio': 27860.00, 'valor': 306460},
             {'ticker': 'NVDA', 'descripcion': 'NVIDIA Corporation',          'cantidad': 80,  'precio': 15220.00, 'valor': 1217600},
-            # OJO: cantidad subió de 34 a 35 en el resumen de Balanz del 25/09 sin que
-            # Eduardo me haya contado una compra nueva de PFE. Puede ser un dividendo
-            # reinvertido (DRIP) o una compra que no me pasó. Se dejó la cantidad real
-            # (35) para que la posición sea correcta, pero la fila de ledger que se
-            # agregó para la unidad nueva usa fecha/precio de HOY como aproximación —
-            # falta confirmar con Eduardo la fecha y el precio real de esa operación.
+            # RESUELTO: cantidad subió de 34 a 35 (resumen del 25/09). Eduardo confirmó
+            # que fue un dividendo reinvertido (DRIP), no una compra con efectivo. Por
+            # eso NO hay fila de 'compra' en el ledger para esta unidad — un DRIP no es
+            # una salida de plata real, cargarlo como compra inflaría 'invertido_usd' y
+            # distorsionaría el TIR. La unidad extra queda en la cantidad/valor actual.
             {'ticker': 'PFE',  'descripcion': 'Pfizer Inc.',                 'cantidad': 35,  'precio': 11470.00, 'valor': 401450},
             {'ticker': 'QQQ',  'descripcion': 'Invesco QQQ Trust (ETF)',     'cantidad': 33,  'precio': 60450.00, 'valor': 1994850},
             # RESUELTO: el resumen del 25/09 confirma 35 nominales (30 + 5), o sea que
