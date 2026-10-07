@@ -698,6 +698,8 @@ def rendimientos():
                     'invertido_usd': None, 'rentas_cobradas_usd': None,
                     'valor_actual_usd': valor_actual_usd,
                     'tir_ars': None, 'tir_usd': None,
+                    'ganancia_ars': None, 'ganancia_usd': None,
+                    'ganancia_pct_ars': None, 'ganancia_pct_usd': None,
                     'precio_es_live': precio_es_live,
                     'sin_historial': True,
                     'ops': [],
