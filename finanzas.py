@@ -187,6 +187,11 @@ def resumen_ticker(ticker, operaciones_ticker, valor_actual_ars,
     invertido_usd = -sum(m for _, m in flujos_usd if m < 0)
     rentas_usd = sum(m for f, m in flujos_usd if m > 0 and f != fecha_valuacion)
 
+    ganancia_usd = (rentas_usd + (valor_actual_usd or 0)) - invertido_usd if invertido_usd else None
+    ganancia_pct_usd = (ganancia_usd / invertido_usd) if (ganancia_usd is not None and invertido_usd) else None
+    ganancia_ars = (rentas_ars + (valor_actual_ars or 0)) - invertido_ars if invertido_ars else None
+    ganancia_pct_ars = (ganancia_ars / invertido_ars) if (ganancia_ars is not None and invertido_ars) else None
+
     return {
         'ticker': ticker,
         'bucket': get_bucket(ticker),
@@ -196,6 +201,10 @@ def resumen_ticker(ticker, operaciones_ticker, valor_actual_ars,
         'rentas_cobradas_usd': rentas_usd,
         'valor_actual_ars': valor_actual_ars,
         'valor_actual_usd': valor_actual_usd,
+        'ganancia_usd': ganancia_usd,
+        'ganancia_pct_usd': ganancia_pct_usd,
+        'ganancia_ars': ganancia_ars,
+        'ganancia_pct_ars': ganancia_pct_ars,
         'tir_ars': xirr(flujos_ars),
         'tir_usd': xirr(flujos_usd),
         'n_flujos': len(flujos_ars),
