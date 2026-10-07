@@ -33,6 +33,7 @@ from datetime import date, datetime
 BUCKETS = {
     'AO27': 'Anticipo depto (corto plazo)',
     'FIMARFDA': 'Anticipo depto (corto plazo)',
+    'BPOD7': 'Anticipo depto (corto plazo)',
 
     'GD35': 'Largo plazo',
     'VSCVO': 'Largo plazo',

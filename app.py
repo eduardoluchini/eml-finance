@@ -203,27 +203,42 @@ PORTFOLIO_INICIAL = {
     # (la búsqueda web y el acceso automatizado a Balanz/Galicia no funcionaron en el
     # momento de cargar esto). Si el MEP real de hoy fue distinto, el tir_usd de estas
     # 7 filas en operaciones_balanz.json va a tener un pequeño margen de error.
+    # 07/10: actualización PARCIAL sobre la base del 25/09. Eduardo recibió $3.800.000
+    # y los invirtió en Balanz (80% mediano / 20% largo plazo, misma postura de
+    # siempre), ejecutado a las 14:57-14:58 (órdenes del día):
+    #   BPOD7: +1.179 nominales @ $1.609,90 = $1.898.072,10 (orden 109522601)
+    #   AO27:  +720 nominales   @ $1.583,10 = $1.139.832,00 (orden 109522732)
+    #   QQQ:   +11 nominales    @ $61.075,00 = $671.825,00   (orden 109522852)
+    # Solo se repricearon esos 3 tickers (al precio de ejecución); el resto sigue con
+    # los precios del 25/09. total_ars = total del 25/09 + variación de esos 3
+    # instrumentos + variación del efectivo de Balanz (pesos, USD y Cable), así se
+    # preserva el residual ya conocido de Galicia/MercadoPago sin reconfirmar.
+    # Efectivo en pesos: $3.834.713,86 antes de comprar - $3.709.729,10 de las 3
+    # compras = $124.984,76 (sin descontar comisiones, que Balanz no desglosa acá).
+    # Aparecieron USD 129 nuevos (Dólares 0,80 -> 37,25 y Cable 8,53 -> 101,45) sin
+    # una operación reportada; probablemente rentas cobradas — pendiente de confirmar.
+    # MEP/Cable de la pantalla de Balanz del 07/10 ($1.540,17 / $1.609,75).
     'fecha': '25/09/2026',
     # 25/09: total tomado directo del encabezado del resumen consolidado de Balanz
     # ("FULL INVESTMENT HOUSE"), que ya incluye Balanz + los 3 fondos de Galicia.
     # Ya no es una suma manual — es el número que Balanz calcula. Ver nota de más
     # arriba sobre el gap con disponibilidad (Galicia efectivo/MercadoPago sin
     # reconfirmar).
-    'total_ars': 82394211,
-    'tc_mep': 1549.02,
-    'tc_usd': 1620.36,
+    'total_ars': 86409476,
+    'tc_mep': 1540.17,
+    'tc_usd': 1609.75,
     'monedas': {
-        'Pesos': -3747.08,
-        'Dólares': 0.80,
-        'USD Cable': 8.53,
+        'Pesos': 124984.76,
+        'Dólares': 37.25,
+        'USD Cable': 101.45,
     },
     'disponibilidad': {
         # 25/09: datos reales del resumen de Balanz ("Monedas"). El saldo en pesos
         # está en negativo ($-3.747,08) — probablemente un ajuste/gasto pendiente de
         # liquidación, no un error de carga; así lo muestra el resumen.
-        'Balanz Pesos':  {'ars': -3747.08,    'usd': None},
-        'Balanz USD':    {'ars': None,        'usd': 0.80},
-        'Balanz Cable':  {'ars': None,        'usd': 8.53},
+        'Balanz Pesos':  {'ars': 124984.76,    'usd': None},
+        'Balanz USD':    {'ars': None,        'usd': 37.25},
+        'Balanz Cable':  {'ars': None,        'usd': 101.45},
         # No reconfirmado esta ronda (no vino en las capturas) — último valor conocido.
         'Galicia Pesos': {'ars': 612.62,      'usd': None},
         'Galicia USD':   {'ars': None,        'usd': 107.64},
@@ -246,9 +261,9 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'AL30',  'descripcion': 'Bono Rep. Argentina USD Step Up 2030', 'cantidad': 1375, 'precio': 837.40,  'valor': 1151425},
             {'ticker': 'AL35',  'descripcion': 'Bono Rep. Argentina USD Step Up 2035', 'cantidad': 724,  'precio': 1079.40, 'valor': 781486},
             {'ticker': 'AL41',  'descripcion': 'Bono Rep. Argentina USD Step Up 2041', 'cantidad': 1137, 'precio': 1000.50, 'valor': 1137569},
-            {'ticker': 'AO27',  'descripcion': 'Bono Tesoro Nacional 6% 29/10/27',     'cantidad': 6171, 'precio': 1589.00, 'valor': 9805719},
+            {'ticker': 'AO27',  'descripcion': 'Bono Tesoro Nacional 6% 29/10/27',     'cantidad': 6891, 'precio': 1583.10, 'valor': 10909142},
             {'ticker': 'AO28',  'descripcion': 'Bono Tesoro Nacional 6% 31/10/28',     'cantidad': 1124, 'precio': 1421.20, 'valor': 1597429},
-            {'ticker': 'BPOD7', 'descripcion': 'Bopreal S.1-D Vto 31/10/27',           'cantidad': 1149, 'precio': 1615.70, 'valor': 1856439},
+            {'ticker': 'BPOD7', 'descripcion': 'Bopreal S.1-D Vto 31/10/27',           'cantidad': 2328, 'precio': 1609.90, 'valor': 3747847},
             {'ticker': 'GD30',  'descripcion': 'Bonos Rep. Arg. USD Step Up 2030',     'cantidad': 21,   'precio': 874.00,  'valor': 18354},
             # RESUELTO: la baja de 9.783 (registrada el 12/08) a 8.737 nominales NO fue una
             # venta. El 12/08 se había cargado mal la compra del 12/08 (append aproximado,
@@ -277,7 +292,7 @@ PORTFOLIO_INICIAL = {
             # una salida de plata real, cargarlo como compra inflaría 'invertido_usd' y
             # distorsionaría el TIR. La unidad extra queda en la cantidad/valor actual.
             {'ticker': 'PFE',  'descripcion': 'Pfizer Inc.',                 'cantidad': 35,  'precio': 11470.00, 'valor': 401450},
-            {'ticker': 'QQQ',  'descripcion': 'Invesco QQQ Trust (ETF)',     'cantidad': 33,  'precio': 60450.00, 'valor': 1994850},
+            {'ticker': 'QQQ',  'descripcion': 'Invesco QQQ Trust (ETF)',     'cantidad': 44,  'precio': 61075.00, 'valor': 2687300},
             # RESUELTO: el resumen del 25/09 confirma 35 nominales (30 + 5), o sea que
             # la orden ambigua del 10/09 (Precio/Cantidad Operada en -1 en el Excel) SÍ
             # se ejecutó. Se cargó la fila de compra en el ledger con fecha 2026-09-10

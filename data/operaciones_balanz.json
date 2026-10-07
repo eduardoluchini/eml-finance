@@ -6141,5 +6141,38 @@
     "mep": 1515.1,
     "abierto": true,
     "estimado": true
+  },
+  {
+    "ticker": "BPOD7",
+    "tipo_mov": "compra",
+    "fecha": "2026-10-07",
+    "cantidad": 1179,
+    "precio": 1609.9,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1540.17,
+    "abierto": true
+  },
+  {
+    "ticker": "AO27",
+    "tipo_mov": "compra",
+    "fecha": "2026-10-07",
+    "cantidad": 720,
+    "precio": 1583.1,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1540.17,
+    "abierto": true
+  },
+  {
+    "ticker": "QQQ",
+    "tipo_mov": "compra",
+    "fecha": "2026-10-07",
+    "cantidad": 11,
+    "precio": 61075.0,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1540.17,
+    "abierto": true
   }
 ]
