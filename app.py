@@ -218,7 +218,7 @@ PORTFOLIO_INICIAL = {
     # Aparecieron USD 129 nuevos (Dólares 0,80 -> 37,25 y Cable 8,53 -> 101,45) sin
     # una operación reportada; probablemente rentas cobradas — pendiente de confirmar.
     # MEP/Cable de la pantalla de Balanz del 07/10 ($1.540,17 / $1.609,75).
-    'fecha': '25/09/2026',
+    'fecha': '07/10/2026',
     # 25/09: total tomado directo del encabezado del resumen consolidado de Balanz
     # ("FULL INVESTMENT HOUSE"), que ya incluye Balanz + los 3 fondos de Galicia.
     # Ya no es una suma manual — es el número que Balanz calcula. Ver nota de más
