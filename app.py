@@ -393,13 +393,26 @@ COLORES = {
 }
 
 def get_portfolio():
-    """Devuelve el snapshot más reciente de DB, o el inicial del PDF."""
+    """Devuelve el snapshot más reciente de DB solo si es más nuevo que PORTFOLIO_INICIAL."""
     try:
         with get_db() as conn:
             row = conn.execute(
                 'SELECT * FROM snapshots ORDER BY fecha DESC, id DESC LIMIT 1'
             ).fetchone()
         if row:
+            # Ignorar snapshots anteriores a la posición hardcodeada
+            from datetime import datetime
+            def parse_fecha(f):
+                for fmt in ('%d/%m/%Y', '%Y-%m-%d'):
+                    try:
+                        return datetime.strptime(f, fmt)
+                    except ValueError:
+                        pass
+                return None
+            snap_fecha  = parse_fecha(row['fecha'])
+            inic_fecha  = parse_fecha(PORTFOLIO_INICIAL['fecha'])
+            if snap_fecha and inic_fecha and snap_fecha <= inic_fecha:
+                return PORTFOLIO_INICIAL
             data = json.loads(row['data_json'])
             data['total_ars'] = row['total_ars']
             data['tc_mep']    = row['tc_mep']
