@@ -6174,5 +6174,38 @@
     "moneda": "Pesos",
     "mep": 1540.17,
     "abierto": true
+  },
+  {
+    "ticker": "SLV",
+    "tipo_mov": "compra",
+    "fecha": "2026-10-09",
+    "cantidad": 11,
+    "precio": 9.22,
+    "gastos": 0,
+    "moneda": "Dólares",
+    "mep": 1533.45,
+    "abierto": true
+  },
+  {
+    "ticker": "GLD",
+    "tipo_mov": "compra",
+    "fecha": "2026-10-09",
+    "cantidad": 80,
+    "precio": 12390.0,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1533.45,
+    "abierto": true
+  },
+  {
+    "ticker": "IBIT",
+    "tipo_mov": "compra",
+    "fecha": "2026-10-09",
+    "cantidad": 132,
+    "precio": 7565.0,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1533.45,
+    "abierto": true
   }
 ]

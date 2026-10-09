@@ -36,6 +36,7 @@ BUCKETS = {
     'BPOD7': 'Anticipo depto (corto plazo)',
 
     'GD35': 'Largo plazo',
+    'GLD': 'Largo plazo', 'IBIT': 'Largo plazo', 'SLV': 'Largo plazo',
     'VSCVO': 'Largo plazo',
     'TTCDO': 'Largo plazo',
     'YMCJO': 'Largo plazo',
