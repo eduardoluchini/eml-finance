@@ -6207,5 +6207,60 @@
     "moneda": "Pesos",
     "mep": 1533.45,
     "abierto": true
+  },
+  {
+    "ticker": "GLD",
+    "tipo_mov": "compra",
+    "fecha": "2026-10-13",
+    "cantidad": 80,
+    "precio": 12370.0,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1537.26,
+    "abierto": true
+  },
+  {
+    "ticker": "SLV",
+    "tipo_mov": "compra",
+    "fecha": "2026-10-13",
+    "cantidad": 66,
+    "precio": 14970.0,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1537.26,
+    "abierto": true
+  },
+  {
+    "ticker": "IBIT",
+    "tipo_mov": "compra",
+    "fecha": "2026-10-13",
+    "cantidad": 65,
+    "precio": 7620.0,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1537.26,
+    "abierto": true
+  },
+  {
+    "ticker": "AO27",
+    "tipo_mov": "compra",
+    "fecha": "2026-10-13",
+    "cantidad": 628,
+    "precio": 1591.20,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1537.26,
+    "abierto": true
+  },
+  {
+    "ticker": "PAMP",
+    "tipo_mov": "compra",
+    "fecha": "2026-10-13",
+    "cantidad": 113,
+    "precio": 5205.0,
+    "gastos": 0,
+    "moneda": "Pesos",
+    "mep": 1537.26,
+    "abierto": true
   }
 ]
