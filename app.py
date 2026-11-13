@@ -224,7 +224,10 @@ PORTFOLIO_INICIAL = {
     # Galicia: suscripción Fima Premium +22.939 cuotapartes (~$2M).
     # Galicia fondos actualizados desde pantalla del 13/11.
     # MEP $1.574,59 | USD $1.669,99.
-    'total_ars': 94954134,
+    # total_ars es el TOTAL REAL de toda la cartera: Balanz ($94.954.134) +
+    # Galicia fondos pesos ($9.831.962) + Galicia fondos USD ($8.869.000 al MEP)
+    # + Galicia cash ($144.904) + MercadoPago ($1.001.968).
+    'total_ars': 114802000,
     'tc_mep': 1574.59,
     'tc_usd': 1669.99,
     'monedas': {
@@ -236,8 +239,8 @@ PORTFOLIO_INICIAL = {
         'Balanz Pesos':  {'ars': 980654.06,   'usd': None},
         'Balanz USD':    {'ars': None,        'usd': 138.44},
         'Balanz Cable':  {'ars': None,        'usd': 77.86},
-        'Galicia Pesos': {'ars': 612.62,      'usd': None},
-        'Galicia USD':   {'ars': None,        'usd': 107.64},
+        'Galicia Pesos': {'ars': 504.23,      'usd': None},
+        'Galicia USD':   {'ars': None,        'usd': 91.74},
         'MercadoPago':   {'ars': 1001968.00,  'usd': None},
     },
     'instrumentos': {
@@ -298,7 +301,7 @@ PORTFOLIO_INICIAL = {
             {'ticker': 'FIMAPREM', 'descripcion': 'Fima Premium Clase A (Galicia)',                'cantidad': 89335.71,   'precio': 87.186892,   'valor': 7788903, 'fuente': 'Galicia', 'moneda': 'ARS'},
             {'ticker': 'FIMARPLUS','descripcion': 'Fima Renta Plus Clase A (Galicia)',             'cantidad': 1068.94,    'precio': 1001.100859, 'valor': 1070117, 'fuente': 'Galicia', 'moneda': 'ARS'},
             {'ticker': 'FIMARPE',  'descripcion': 'Fima Renta En Pesos Clase A (Galicia)',         'cantidad': 4748.89,    'precio': 204.877848,  'valor': 972942,  'fuente': 'Galicia', 'moneda': 'ARS'},
-            {'ticker': 'FIMARFDA', 'descripcion': 'Fima Premium Dolares Clase A (Galicia)',        'cantidad': 5543.96,    'precio': 1573.70,     'valor': 8721050, 'fuente': 'Galicia', 'moneda': 'USD', 'precio_usd': 1.015983, 'valor_usd': 5632.57},
+            {'ticker': 'FIMARFDA', 'descripcion': 'Fima Premium Dolares Clase A (Galicia)',        'cantidad': 5543.96,    'precio': 1599.11,     'valor': 8869000, 'fuente': 'Galicia', 'moneda': 'USD', 'precio_usd': 1.015983, 'valor_usd': 5632.57},
         ],
         'Letras': [],
     }
